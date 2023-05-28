@@ -5,7 +5,7 @@ html {
 
 body {
   font-family: "Outfit", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
@@ -164,15 +164,16 @@ header #headerInformationContainer {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 14vh 14vw 10vh 0vw;
+  padding: 12vh 14vw 8vh 0vw;
   height: 100%;
   width: 100%;
 }
 header #headerInformationContainer h1 {
-  font-size: 3.8rem;
+  font-size: calc(2.8rem + 1vh);
   color: rgb(255, 223, 239);
   white-space: nowrap;
   filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
+  margin-bottom: 3 vh;
 }
 header #headerInformationContainer p {
   padding: 0 5.5vw;
@@ -216,6 +217,28 @@ header #headerInformationContainer h4 {
 header #headerImageContainer {
   width: 60%;
   position: relative;
+}
+
+#chapters {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10vw;
+  justify-content: flex-end;
+}
+#chapters h1 {
+  font-size: 5rem;
+  margin-bottom: 0;
+}
+#chapters #chaptersContainer {
+  width: 100%;
+  height: 70%;
+  border: solid 1px blue;
+  display: flex;
+  gap: 4rem;
+  overflow-y: hidden;
+  align-items: flex-end;
 }
 
 @media (max-width: 1300px) {
