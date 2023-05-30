@@ -38,12 +38,6 @@ body {
 /* scroll bar edit */
 
 // universal here
-img,
-svg,
-video {
-  max-width: 100%;
-  display: block;
-}
 
 button {
   height: 60px;
@@ -147,6 +141,7 @@ header {
   height: 100svh;
   display: flex;
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -181,12 +176,12 @@ header {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 12vh 14vw 8vh 0vw;
+    padding: 12vh 14vw 10vh 0vw;
     height: 100%;
     width: 100%;
 
     h1 {
-      font-size: calc(2.8rem + 1vh);
+      font-size: calc(2.8rem + 2vh);
       color: $light-pink-color;
       white-space: nowrap;
       filter: $text-shadow;
@@ -195,6 +190,7 @@ header {
 
     p {
       padding: 0 5.5vw;
+      font-size: calc(1rem + 0.9vh);
       text-align: left;
       margin-top: 6vh;
       position: relative;
@@ -226,7 +222,7 @@ header {
         position: absolute;
         z-index: -1;
         top: 50%;
-        left: 49%;
+        left: 50%;
         transform: translate(-50%, -50%);
         width: calc(100% - 9vw);
         height: calc(100% + 3vh);
@@ -246,45 +242,75 @@ header {
     width: 60%;
     position: relative;
 
-    // div {
-    //   background-color: red;
-    //   width: 115vw;
-    //   height: 100vh;
-    //   border-radius: 90% 0% 0% 0%;
-    //   position: absolute;
-    //   // top: 30vh;
-    //   filter: blur(1.5vh);
-    //   opacity: 65%;
-    //   transition: 1s;
-    // }
+    .headerImageBall {
+      background-color: red;
+      width: 500vw;
+      height: 100vh;
+      border-radius: 100vh 0% 0% 0%;
+      position: absolute;
+      filter: blur(1.5vh);
+      opacity: 65%;
+      transition: 1s;
+      overflow-x: hidden;
+
+      inset: 30vh 0vh 0vh -30vh;
+    }
   }
 }
 
 #chapters {
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   display: flex;
   flex-direction: column;
-  padding-left: 10vw;
-  justify-content: flex-end;
+  padding-left: 8vw;
+  justify-content: center;
 
-  h1 {
-    font-size: 5rem;
-    margin-bottom: 0;
+  #chaptersTitle {
+    font-size: 5vw;
+    margin-bottom: 1vh;
+    color: $light-pink-color;
+    position: relative;
+
+    .backgroundText {
+      position: absolute;
+      top: -3vw;
+      left: -5vw;
+      font-size: 10vw;
+      color: rgb(18 18 18);
+      text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239),
+        0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239),
+        1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff,
+        -1px 1px rgb(255, 223, 239);
+      opacity: 15%;
+      z-index: -1;
+    }
   }
 
   #chaptersContainer {
-    width: 100%;
-    height: 70%;
-    border: solid 1px blue;
     display: flex;
-    gap: 4rem;
+    gap: 5vh;
+    width: fit-content;
+    height: 65%;
+    width: 100%;
+    overflow-x: auto;
     overflow-y: hidden;
-    align-items: flex-end;
+
+    img {
+      height: calc(60% + 12vw);
+      border-radius: 1vh;
+      transition: 500ms;
+      margin-top: 2vh;
+      justify-content: flex-end;
+
+      &:hover {
+        transform: translateY(-2vh);
+      }
+    }
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
   nav {
     #menuIcon {
       display: block;
