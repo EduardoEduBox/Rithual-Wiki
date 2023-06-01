@@ -5,6 +5,7 @@ $text-shadow: drop-shadow(0px 0px 10px rgb(0, 0, 0));
 
 html {
   color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -56,6 +57,11 @@ button {
   }
 }
 
+a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits text color from parent */
+}
+
 // ------------------
 
 nav {
@@ -88,11 +94,22 @@ nav {
     border: solid $light-pink-color 2px;
   }
 
-  h1 {
-    font-size: 2.5rem;
+  div {
     position: absolute;
-    left: 46%;
-    bottom: -38%;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    h1 {
+      font-size: 2.5rem;
+      position: absolute;
+      bottom: -38%;
+    }
   }
 
   #menuIcon {
@@ -136,6 +153,14 @@ nav {
     }
   }
 }
+
+// the other nav bar vvvvv
+
+// .navMediaQuery {
+//   display: none;
+// }
+
+//the other nav bar ^^^^^^
 
 header {
   height: 100svh;
@@ -310,6 +335,24 @@ header {
   }
 }
 
+footer {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 5vh;
+  background-image: linear-gradient(to bottom, transparent, rgb(6, 6, 6));
+  text-shadow: 0px 0px 10px rgb(46 46 46);
+  bottom: 0px;
+  position: fixed;
+  z-index: 999;
+
+  strong {
+    color: pink;
+  }
+}
+
 @media (max-width: 1279px) {
   nav {
     #menuIcon {
@@ -321,6 +364,76 @@ header {
 
     ul {
       display: none;
+    }
+  }
+
+  .navMediaQuery {
+    background-color: rgb(187, 83, 135);
+    opacity: 83%;
+    position: fixed;
+    right: calc(-188px - 1.5rem);
+    top: 3.9rem;
+    height: calc(100% - 3.9rem);
+    z-index: 999;
+    text-align: right;
+    padding-right: 2vw;
+    transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    .navList2 {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5vh;
+      margin-top: 5vh;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 1.5rem;
+        height: 100%;
+        background-image: linear-gradient(
+          to right,
+          transparent,
+          rgb(98, 44, 71)
+        );
+
+        left: -1.5rem;
+        top: 0;
+      }
+
+      li {
+        transition: 0.3s;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -5px;
+          right: 0;
+          width: 0;
+          height: 3px;
+          background-color: #fff;
+          opacity: 70%;
+          transition: width 0.3s ease-in-out;
+        }
+
+        &:hover::before {
+          width: 100%;
+          opacity: 70%;
+          box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+          border-radius: 1rem;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+          z-index: 1;
+        }
+
+        hr {
+          width: 100%;
+          height: 3px;
+          background-color: white;
+        }
+      }
     }
   }
 }
