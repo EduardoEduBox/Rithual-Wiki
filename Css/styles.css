@@ -14,6 +14,7 @@ body {
 
 * {
   box-sizing: border-box;
+  transition: 500ms;
 }
 
 /* scroll bar edit */
@@ -38,6 +39,7 @@ body {
 
 /* scroll bar edit */
 button {
+  cursor: pointer;
   height: 60px;
   width: 160px;
   border-radius: 5px;
@@ -45,12 +47,14 @@ button {
   color: white;
   border: none;
   font-size: 18px;
-  transition: ease-out 400ms;
+  transition: ease-out 400ms !important;
 }
 button:hover {
   box-shadow: inset 400px 0px 0 0 #ff009d;
   filter: drop-shadow(0px 0px 15px #ff009d);
-  font-size: 21px;
+}
+button:hover span {
+  font-size: 25px;
 }
 
 a {
@@ -160,9 +164,10 @@ header #headerBackgroundImages {
   left: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover; /* Ensure the image covers the entire header */
-  z-index: -1; /* Place the image behind other header content */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
 }
 header div {
   height: 100%;
@@ -177,13 +182,14 @@ header #headerInformationContainer {
   padding: 12vh 14vw 10vh 0vw;
   height: 100%;
   width: 100%;
+  position: relative;
 }
 header #headerInformationContainer h1 {
   font-size: calc(2.8rem + 2vh);
   color: rgb(255, 223, 239);
   white-space: nowrap;
   filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
-  margin-bottom: 3 vh;
+  margin-bottom: 3vh;
 }
 header #headerInformationContainer p {
   padding: 0 5.5vw;
@@ -229,6 +235,13 @@ header #headerImageContainer {
   width: 60%;
   position: relative;
 }
+header #headerImageContainer #headerCharacterImages {
+  height: 128vh;
+  position: absolute;
+  z-index: 998;
+  top: 0vh;
+  right: 0;
+}
 header #headerImageContainer .headerImageBall {
   background-color: red;
   width: 500vw;
@@ -239,6 +252,7 @@ header #headerImageContainer .headerImageBall {
   opacity: 65%;
   transition: 1s;
   overflow-x: hidden;
+  z-index: 997;
   inset: 30vh 0vh 0vh -30vh;
 }
 
@@ -305,6 +319,9 @@ footer strong {
 }
 
 @media (max-width: 1279px) {
+  body {
+    font-size: calc(1rem + 2vw);
+  }
   nav #menuIcon {
     display: block;
     cursor: pointer;
@@ -370,5 +387,53 @@ footer strong {
     width: 100%;
     height: 3px;
     background-color: white;
+  }
+  header {
+    height: -moz-fit-content;
+    height: fit-content;
+    flex-direction: column;
+  }
+  header #headerInformationContainer {
+    height: 100vh;
+    padding: 7vh 10vw 0 10vw;
+    width: 100%;
+  }
+  header #headerInformationContainer h1 {
+    font-size: calc(2rem + 4vw);
+    margin: 6vh 0 5vh 0;
+  }
+  header #headerInformationContainer p {
+    padding: 0;
+    margin-top: 0;
+  }
+  header #headerInformationContainer p::before {
+    width: calc(100% + 6vw);
+  }
+  header #headerInformationContainer h4 {
+    margin-top: 0;
+    margin-left: 1vw;
+  }
+  header #headerImageContainer {
+    height: 70vh;
+    width: 100%;
+  }
+  header #headerImageContainer #headerCharacterImages {
+    height: calc(90vh + 30vw);
+    top: -20vw !important;
+    right: -15vw;
+  }
+  header #headerImageContainer .headerImageBall {
+    background-color: red;
+    width: 500vw;
+    height: 60vh;
+    transform: rotate(-30deg);
+    border-radius: 0;
+    position: absolute;
+    filter: blur(1.5vh);
+    opacity: 65%;
+    transition: 1s;
+    overflow-x: hidden;
+    z-index: 997;
+    inset: 0vh 0vh 0vh -125vw;
   }
 }/*# sourceMappingURL=styles.css.map */

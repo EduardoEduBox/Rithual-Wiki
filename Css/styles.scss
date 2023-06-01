@@ -18,6 +18,7 @@ body {
 
 * {
   box-sizing: border-box;
+  transition: 500ms;
 }
 
 /* scroll bar edit */
@@ -41,6 +42,7 @@ body {
 // universal here
 
 button {
+  cursor: pointer;
   height: 60px;
   width: 160px;
   border-radius: 5px;
@@ -48,12 +50,16 @@ button {
   color: white;
   border: none;
   font-size: 18px;
-  transition: ease-out 400ms;
+  transition: ease-out 400ms !important;
+  // transition: font-size 10ms !important;
 
   &:hover {
     box-shadow: inset 400px 0px 0 0 #ff009d;
     filter: drop-shadow(0px 0px 15px #ff009d);
-    font-size: 21px;
+
+    span {
+      font-size: 25px;
+    }
   }
 }
 
@@ -154,13 +160,7 @@ nav {
   }
 }
 
-// the other nav bar vvvvv
-
-// .navMediaQuery {
-//   display: none;
-// }
-
-//the other nav bar ^^^^^^
+// here is the header, below navBar
 
 header {
   height: 100svh;
@@ -180,18 +180,20 @@ header {
   }
 
   #headerBackgroundImages {
+    // IMAGE IN THE BACKGROUND!!!!!
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the image covers the entire header */
-    z-index: -1; /* Place the image behind other header content */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
   }
 
   div {
     height: 100%;
-    // width: 50%;
     z-index: 998;
   }
 
@@ -204,13 +206,14 @@ header {
     padding: 12vh 14vw 10vh 0vw;
     height: 100%;
     width: 100%;
+    position: relative;
 
     h1 {
       font-size: calc(2.8rem + 2vh);
       color: $light-pink-color;
       white-space: nowrap;
       filter: $text-shadow;
-      margin-bottom: 3 vh;
+      margin-bottom: 3vh;
     }
 
     p {
@@ -267,7 +270,17 @@ header {
     width: 60%;
     position: relative;
 
+    #headerCharacterImages {
+      // CHARACTER IMAGEEEEE
+      height: 128vh;
+      position: absolute;
+      z-index: 998;
+      top: 0vh;
+      right: 0;
+    }
+
     .headerImageBall {
+      // BALL IN THE BACKGROUND
       background-color: red;
       width: 500vw;
       height: 100vh;
@@ -277,11 +290,13 @@ header {
       opacity: 65%;
       transition: 1s;
       overflow-x: hidden;
-
+      z-index: 997;
       inset: 30vh 0vh 0vh -30vh;
     }
   }
 }
+
+// here is the chapter section, below header
 
 #chapters {
   width: 100%;
@@ -354,6 +369,10 @@ footer {
 }
 
 @media (max-width: 1279px) {
+  body {
+    font-size: calc(1rem + 2vw);
+  }
+
   nav {
     #menuIcon {
       display: block;
@@ -433,6 +452,64 @@ footer {
           height: 3px;
           background-color: white;
         }
+      }
+    }
+  }
+
+  // header here vvvvvvvvvv
+
+  header {
+    height: fit-content;
+    flex-direction: column;
+
+    #headerInformationContainer {
+      height: 100vh;
+      padding: 7vh 10vw 0 10vw;
+      width: 100%;
+
+      h1 {
+        font-size: calc(2rem + 4vw);
+        margin: 6vh 0 5vh 0;
+      }
+
+      p {
+        padding: 0;
+        margin-top: 0;
+
+        &::before {
+          width: calc(100% - -6vw);
+        }
+      }
+
+      h4 {
+        margin-top: 0;
+        margin-left: 1vw;
+      }
+    }
+
+    #headerImageContainer {
+      height: 70vh;
+      width: 100%;
+
+      #headerCharacterImages {
+        height: calc(90vh + 30vw);
+        top: -20vw !important;
+        right: -15vw;
+      }
+
+      .headerImageBall {
+        background-color: red;
+        width: 500vw;
+        height: 60vh;
+        transform: rotate(-30deg);
+        border-radius: 0;
+        position: absolute;
+        filter: blur(1.5vh);
+        opacity: 65%;
+        transition: 1s;
+        overflow-x: hidden;
+        z-index: 997;
+        inset: 0vh 0vh 0vh -125vw;
       }
     }
   }
