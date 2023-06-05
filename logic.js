@@ -45,6 +45,32 @@ function handleResize() {
 
 window.addEventListener("resize", handleResize);
 
+const advice = document.querySelectorAll(
+  ".navList li:nth-child(3), .navList li:nth-child(4), .navList2 li:nth-child(3), .navList2 li:nth-child(4)"
+);
+
+advice.forEach(function (li) {
+  li.addEventListener("click", function () {
+    Swal.fire({
+      title: "DEU RUIM!",
+      text: "Tá em beta o site, sendo assim existem coisas aqui que só estão por aqui por questão de organização, essas sessões irão aparecer no futuro, CONFIA!",
+      imageUrl:
+        "https://cdn.discordapp.com/attachments/421344962303623189/1113987029550764052/image.png",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "eeee agua eeeee agua",
+    });
+
+    // Swal.fire({
+    //   title: "Site em Beta :(",
+    //   text: "Por conta do site não estar completo, algumas features e sessões não existem ainda",
+    //   icon: "error",
+    //   confirmButtonText: "Entendi.",
+    // });
+  });
+});
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 // Header part
 
 const headerBackgroundImages = document.querySelector(
@@ -108,3 +134,51 @@ setInterval(() => {
     i = 1;
   }
 }, 10000);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// Chapters section part
+
+const images = document.getElementsByClassName("prePages");
+const textElement = document.getElementById("chaptersTitle");
+const backgroundTextElement = document.querySelector(".backgroundText");
+
+for (let i = 0; i < images.length; i++) {
+  images[i].addEventListener("mouseover", function () {
+    switch (i) {
+      case 0:
+        textElement.textContent = "Cap - 0: Invasão";
+        backgroundTextElement.textContent = "Cap - 0: Invasão";
+        break;
+      case 1:
+        textElement.textContent = "Cap - 1: Padaria";
+        backgroundTextElement.textContent = "Cap - 1: Padaria";
+        break;
+      case 2:
+        textElement.textContent = "Cap - 2: Pai e irmão";
+        backgroundTextElement.textContent = "Cap - 2: Pai e irmão";
+        break;
+      case 3:
+        textElement.textContent = "Cap - 3: Paisagem";
+        backgroundTextElement.textContent = "Cap - 3: Paisagem";
+        break;
+      case 4:
+        textElement.textContent = "Cap - 4: Escola";
+        backgroundTextElement.textContent = "Cap - 4: Escola";
+        break;
+      default:
+        textElement.textContent = "Capítulos";
+        backgroundTextElement.textContent = "Capítulos";
+    }
+  });
+
+  images[i].addEventListener("mouseout", function () {
+    textElement.textContent = "Capítulos";
+    backgroundTextElement.textContent = "Capítulos";
+  });
+}
+
+// okay, here we goooooooooo!!!!
+
+function changeToolTip() {
+  // yeeeahhh
+}

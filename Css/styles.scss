@@ -68,7 +68,7 @@ a {
   color: inherit; /* Inherits text color from parent */
 }
 
-// ------------------
+//////////////////////////////////////////////////////////////////////////////
 
 nav {
   display: flex;
@@ -160,7 +160,7 @@ nav {
   }
 }
 
-// here is the header, below navBar
+//////////////////////////////////////////////////////////////////////////////
 
 header {
   height: 100svh;
@@ -296,7 +296,7 @@ header {
   }
 }
 
-// here is the chapter section, below header
+//////////////////////////////////////////////////////////////////////////////
 
 #chapters {
   width: 100%;
@@ -307,24 +307,23 @@ header {
   justify-content: center;
 
   #chaptersTitle {
-    font-size: 5vw;
+    font-size: 4.8vw;
     margin-bottom: 1vh;
     color: $light-pink-color;
-    position: relative;
+  }
 
-    .backgroundText {
-      position: absolute;
-      top: -3vw;
-      left: -5vw;
-      font-size: 10vw;
-      color: rgb(18 18 18);
-      text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239),
-        0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239),
-        1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff,
-        -1px 1px rgb(255, 223, 239);
-      opacity: 15%;
-      z-index: -1;
-    }
+  .backgroundText {
+    position: absolute;
+    margin-top: -570px;
+    margin-left: -5vw;
+    font-size: 9vw;
+    color: rgb(18 18 18);
+    text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239),
+      0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239),
+      1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff,
+      -1px 1px rgb(255, 223, 239);
+    opacity: 15%;
+    z-index: -1;
   }
 
   #chaptersContainer {
@@ -349,6 +348,15 @@ header {
     }
   }
 }
+
+//////////////////////////////////////////////////////////////////////////////
+
+#sla {
+  width: 100%;
+  height: 100vh;
+}
+
+//////////////////////////////////////////////////////////////////////////////
 
 footer {
   font-size: 1.6rem;
