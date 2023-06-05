@@ -349,6 +349,34 @@ header {
   }
 }
 
+.tooltip {
+  position: absolute;
+  display: flex;
+  border-radius: 1vh;
+  background-color: rgb(15, 15, 15);
+  // padding: 4vw;
+  gap: 3rem;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 998;
+  /* Add more styles as needed */
+  transition: 0ms;
+
+  img {
+    border-radius: 1vh;
+  }
+
+  .tooltipInformation {
+    display: flex;
+    padding-right: 3rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    // justify-content: center;
+  }
+}
+
 //////////////////////////////////////////////////////////////////////////////
 
 #sla {
