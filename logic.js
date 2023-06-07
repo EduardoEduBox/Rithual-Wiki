@@ -109,6 +109,13 @@ const config3 = new Images(
   "rgb(90, 206, 255)"
 );
 
+const terror = new Images(
+  4,
+  "Css/assets/backgrounds/tortura.png",
+  "Css/assets/characters/iseeyou.png",
+  "rgba(255, 0, 0, .7)"
+);
+
 const changeHeaderImages = [config1, config2, config3];
 
 // seting the first object as default when you load the page
@@ -117,13 +124,43 @@ headerBackgroundImages.style.backgroundImage = `url('${config1.backgroundImage}'
 headerCharacterImages.src = config1.characterImage;
 headerBall.style.backgroundColor = config1.ballColor;
 
+let randomNumber = () => {
+  return Math.floor(Math.random() * changeHeaderImages.length);
+};
+
+console.log(randomNumber()); // they are different values so it is working :D
+console.log(randomNumber());
+
 let i = 1;
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 setInterval(() => {
   if (i < changeHeaderImages.length) {
     headerBackgroundImages.style.backgroundImage = `url('${changeHeaderImages[i].backgroundImage}')`;
     headerCharacterImages.src = changeHeaderImages[i].characterImage;
     headerBall.style.backgroundColor = changeHeaderImages[i].ballColor;
+
+    if (i === randomNumber()) {
+      setTimeout(() => {
+        headerBackgroundImages.style.backgroundImage = `url('${terror.backgroundImage}')`;
+        headerCharacterImages.src = terror.characterImage;
+        headerBall.style.backgroundColor = terror.ballColor;
+
+        console.log(randomNumber());
+
+        delay(200).then(() => {
+          headerBackgroundImages.style.backgroundImage = `url('${
+            changeHeaderImages[i - 1].backgroundImage
+          }')`;
+          headerCharacterImages.src = changeHeaderImages[i - 1].characterImage;
+          headerBall.style.backgroundColor =
+            changeHeaderImages[i - 1].ballColor;
+        });
+      }, 200);
+    }
 
     i++;
   } else {
@@ -223,8 +260,9 @@ function changeToolTip(imageSrc, title, description) {
   textContainer.classList.add("tooltipInformation");
   tooltip.appendChild(textContainer);
 
-  const titleElement = document.createElement("p");
+  const titleElement = document.createElement("h3");
   titleElement.textContent = title;
+  titleElement.style.color = "rgb(224, 108, 108)";
   textContainer.appendChild(titleElement);
 
   const descElement = document.createElement("p");
