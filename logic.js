@@ -1,14 +1,14 @@
 // when you load the page vvvvvvv
-// Swal.fire({
-//   title: "Aviso!",
-//   text: "o site está em beta, isso significa que algumas sessões estão incompletas e você pode se deparar com algum bug CABULOSO!",
-//   imageUrl:
-//     "https://cdn.discordapp.com/attachments/421344962303623189/1116205964052410459/image.png",
-//   imageWidth: 400,
-//   imageHeight: "auto",
-//   imageAlt: "Custom image",
-//   confirmButtonText: "Beleza chefe!",
-// });
+Swal.fire({
+  title: "Aviso!",
+  text: "o site está em beta, isso significa que algumas sessões estão incompletas e você pode se deparar com algum bug CABULOSO! (Para melhor experiência, ultilize um pc)",
+  imageUrl:
+    "https://cdn.discordapp.com/attachments/421344962303623189/1116205964052410459/image.png",
+  imageWidth: 400,
+  imageHeight: "auto",
+  imageAlt: "Custom image",
+  confirmButtonText: "Beleza chefe!",
+});
 
 // Nav bar part
 
@@ -27,8 +27,8 @@ hamburguerIcon.addEventListener("click", function () {
       <ul class="navList2">
         <li><a href="#header">Home</a></li>
         <li><a href="#chapters">Capítulos</a></li>
-        <li><a href="">Personagens</a></li>
-        <li><a href="">Sobre mim</a></li>
+        <li class="charactersMedia"><a href="">Personagens</a></li>
+        <li class="aboutMedia"><a href="">Sobre mim</a></li>
         <li><hr></li> 
       </ul>`;
 
@@ -202,7 +202,7 @@ setInterval(() => {
 
         headerKnowmore.innerHTML = "Conheça mais esse universo!";
         headerButton.innerHTML = "Capítulos";
-      }, 20);
+      }, 200);
     }
 
     i++;
@@ -299,7 +299,7 @@ function changeToolTip(imageSrc, title, description) {
 
   const image = document.createElement("img");
   image.src = imageSrc;
-  image.style.height = "270px"; // Set the image height
+  image.style.height = "300px"; // Set the image height
   tooltip.appendChild(image);
 
   const textContainer = document.createElement("div"); // Create a container div for the text elements
@@ -325,7 +325,7 @@ function changeToolTip(imageSrc, title, description) {
     const tooltipHeight = tooltip.offsetHeight;
 
     // Calculate the position based on the cursor's coordinates
-    let tooltipX = event.clientX + 150; // Add 10px offset to the right of the cursor
+    let tooltipX = event.clientX + 100; // Add 10px offset to the right of the cursor
 
     // Check if the tooltip exceeds the right edge of the screen
     if (tooltipX + tooltipWidth > window.innerWidth - 200) {
@@ -334,7 +334,7 @@ function changeToolTip(imageSrc, title, description) {
 
     // Set the tooltip position
     tooltip.style.left = tooltipX + "px";
-    tooltip.style.top = event.clientY / 2 + tooltipHeight * 3.5 + "px";
+    tooltip.style.top = event.clientY / 2 + tooltipHeight * 2.95 + "px";
   });
 
   return tooltip;
