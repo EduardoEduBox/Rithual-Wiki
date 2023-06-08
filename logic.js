@@ -1,3 +1,15 @@
+// when you load the page vvvvvvv
+// Swal.fire({
+//   title: "Aviso!",
+//   text: "o site está em beta, isso significa que algumas sessões estão incompletas e você pode se deparar com algum bug CABULOSO!",
+//   imageUrl:
+//     "https://cdn.discordapp.com/attachments/421344962303623189/1116205964052410459/image.png",
+//   imageWidth: 400,
+//   imageHeight: "auto",
+//   imageAlt: "Custom image",
+//   confirmButtonText: "Beleza chefe!",
+// });
+
 // Nav bar part
 
 const hamburguerIcon = document.querySelector("#menuIcon");
@@ -60,13 +72,6 @@ advice.forEach(function (li) {
       imageHeight: 200,
       imageAlt: "eeee agua eeeee agua",
     });
-
-    // Swal.fire({
-    //   title: "Site em Beta :(",
-    //   text: "Por conta do site não estar completo, algumas features e sessões não existem ainda",
-    //   icon: "error",
-    //   confirmButtonText: "Entendi.",
-    // });
   });
 });
 
@@ -128,38 +133,76 @@ let randomNumber = () => {
   return Math.floor(Math.random() * changeHeaderImages.length);
 };
 
-console.log(randomNumber()); // they are different values so it is working :D
-console.log(randomNumber());
+console.log("printing the first value: ", randomNumber()); // they are different values so it is working :D
+console.log("printing the second value: ", randomNumber());
 
 let i = 1;
 
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// the variable to link the dom to the header text elements
+const headerTitle = document.querySelector(".headerTitle");
+const headerParagraph = document.querySelector(".headerParagraph");
+const headerKnowmore = document.querySelector(".headerKnowMore");
+const headerButton = document.querySelector(".headerButton");
 
 setInterval(() => {
-  if (i < changeHeaderImages.length) {
+  if (changeHeaderImages[i]) {
     headerBackgroundImages.style.backgroundImage = `url('${changeHeaderImages[i].backgroundImage}')`;
     headerCharacterImages.src = changeHeaderImages[i].characterImage;
     headerBall.style.backgroundColor = changeHeaderImages[i].ballColor;
 
     if (i === randomNumber()) {
+      headerBackgroundImages.style.backgroundImage = `url('${terror.backgroundImage}')`;
+      headerCharacterImages.src = terror.characterImage;
+      headerBall.style.backgroundColor = terror.ballColor;
+
+      // setting the transition to 0ms so it goes faster
+
+      headerBackgroundImages.style.transition = "0ms";
+      headerCharacterImages.style.transition = "0ms";
+      headerBall.style.transition = "0ms";
+
+      console.log(randomNumber());
+
+      // setting the custom font and message
+      headerTitle.innerHTML = "Eu vejo você";
+      headerParagraph.style.fontFamily = "Dialeto Ancestral";
+      headerParagraph.innerHTML = `e todos eles ergueram suas cabecas ao ceu com um olhar explicito de terror, 
+      temendo o que encontrariam em seus futuros. repentinamente, 
+      a escuridao da morte os consumiu em seu abraço cruel.`;
+
+      headerKnowmore.innerHTML = "HAHAHAHAHAHAHAHAHAHA";
+      headerButton.innerHTML = "Sofra";
+
       setTimeout(() => {
-        headerBackgroundImages.style.backgroundImage = `url('${terror.backgroundImage}')`;
-        headerCharacterImages.src = terror.characterImage;
-        headerBall.style.backgroundColor = terror.ballColor;
+        i - 1;
+        headerBackgroundImages.style.backgroundImage = `url('${
+          changeHeaderImages[i - 1].backgroundImage
+        }')`;
+        headerCharacterImages.src = changeHeaderImages[i - 1].characterImage;
+        headerBall.style.backgroundColor = changeHeaderImages[i - 1].ballColor;
 
-        console.log(randomNumber());
+        // setting the transition to normal when its done
 
-        delay(200).then(() => {
-          headerBackgroundImages.style.backgroundImage = `url('${
-            changeHeaderImages[i - 1].backgroundImage
-          }')`;
-          headerCharacterImages.src = changeHeaderImages[i - 1].characterImage;
-          headerBall.style.backgroundColor =
-            changeHeaderImages[i - 1].ballColor;
-        });
-      }, 200);
+        headerBackgroundImages.style.transition = "500ms";
+        headerCharacterImages.style.transition = "500ms";
+        headerBall.style.transition = "500ms";
+
+        // setting the font family and content inside to normal
+
+        headerTitle.innerHTML = "Bem vindos ao <br /> (૨¡Ƭષαℓ";
+        headerParagraph.style.fontFamily = "Outfit";
+        headerParagraph.innerHTML = `(૨¡Ƭષαℓ é um mangá brasileiro sobre um mundo dividido entre duas
+              raças: humanos e demônios. Disputando a influência total sobre a
+              sociedade, essas duas raças travam uma exorbitante guerra de poder
+              entre si! Nesta história você encontrará
+              <strong>Singer Faksumi</strong>, um garoto tímido e bastante
+              sorridente que está descobrindo o mundo pela primeira vez. além de
+              <strong>Aika'Nu</strong>, <strong>San Majutsu-Shi</strong> e
+              <strong>Madger Yasáshi</strong>`;
+
+        headerKnowmore.innerHTML = "Conheça mais esse universo!";
+        headerButton.innerHTML = "Capítulos";
+      }, 20);
     }
 
     i++;
@@ -167,7 +210,6 @@ setInterval(() => {
     headerBackgroundImages.style.backgroundImage = `url('${changeHeaderImages[0].backgroundImage}')`;
     headerCharacterImages.src = changeHeaderImages[0].characterImage;
     headerBall.style.backgroundColor = changeHeaderImages[0].ballColor;
-
     i = 1;
   }
 }, 10000);
@@ -192,35 +234,39 @@ for (let i = 0; i < images.length; i++) {
         backgroundTextElement.textContent = "Cap - 0: Invasão";
 
         description =
-          "Uma grande invasão na vila Yasáshi, humanos contra pessoas que se entitulam 'demônios', quem saiu vitorioso?";
+          "A carnificina assola o vilarejo enquanto um demônio mata impiedosamente. Um garoto se confronta com o assassino e uma lança revela seu verdadeiro poder.";
         srcImages = "Css/assets/tooltipPages/random1.png";
         break;
       case 1:
         textElement.textContent = "Cap - 1: Padaria";
         backgroundTextElement.textContent = "Cap - 1: Padaria";
 
-        description = "Description for Cap - 1";
+        description =
+          "Singer sai de casa e vai à padaria em Belgadina. Novidades sobre sua matrícula escolar deixam-no ansioso. O que o futuro reserva para ele após essa compra significativa?";
         srcImages = "Css/assets/tooltipPages/random2.png";
         break;
       case 2:
         textElement.textContent = "Cap - 2: Pai e irmão";
         backgroundTextElement.textContent = "Cap - 2: Pai e irmão";
 
-        description = "Description for Cap - 2";
+        description =
+          "Singer reflete sobre a matrícula escolar e suas expectativas de liberdade. Em casa, encontra seus familiares e descansa. O que o aguarda no tão esperado primeiro dia de aula?";
         srcImages = "Css/assets/tooltipPages/random3.png";
         break;
       case 3:
         textElement.textContent = "Cap - 3: Paisagem";
         backgroundTextElement.textContent = "Cap - 3: Paisagem";
 
-        description = "Description for Cap - 2";
+        description =
+          "Singer está ansioso para o primeiro dia de aula. Seu irmão o acompanha e novas experiências o cercam. Chegando à escola, Singer está repleto de expectativas. O que o aguarda nesse novo ambiente?";
         srcImages = "Css/assets/tooltipPages/random4.png";
         break;
       case 4:
         textElement.textContent = "Cap - 4: Escola";
         backgroundTextElement.textContent = "Cap - 4: Escola";
 
-        description = "Description for Cap - 2";
+        description =
+          "Singer maravilhado com a escola, adentra seus corredores. Enquanto isso, seu irmão deixa a escola, encontra seus parceiros e seguem em frente. A pergunta paira: estão realmente prontos? Armas são preparadas.";
         srcImages = "Css/assets/tooltipPages/random5.png";
         break;
       default:
@@ -262,11 +308,11 @@ function changeToolTip(imageSrc, title, description) {
 
   const titleElement = document.createElement("h3");
   titleElement.textContent = title;
-  titleElement.style.color = "rgb(224, 108, 108)";
+  titleElement.style.color = "pink";
   textContainer.appendChild(titleElement);
 
   const descElement = document.createElement("p");
-  descElement.textContent = description;
+  descElement.innerHTML += `<hr>${description}`;
   descElement.style.wordWrap = "break-word"; // Set word-wrap property to break long words
   descElement.style.maxWidth = "300px"; // Specify a maximum width for the element
 
@@ -288,7 +334,7 @@ function changeToolTip(imageSrc, title, description) {
 
     // Set the tooltip position
     tooltip.style.left = tooltipX + "px";
-    tooltip.style.top = event.clientY / 5 + tooltipHeight * 4.3 + "px";
+    tooltip.style.top = event.clientY / 2 + tooltipHeight * 3.5 + "px";
   });
 
   return tooltip;

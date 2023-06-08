@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
+@font-face {
+  font-family: "Dialeto Ancestral";
+  src: url("font/DialetoAncestral-Regular.ttf") format("truetype");
+}
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
@@ -191,30 +195,38 @@ header #headerInformationContainer h1 {
   filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
   margin-bottom: 3vh;
 }
-header #headerInformationContainer p {
+header #headerInformationContainer .paragraphContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+header #headerInformationContainer .paragraphContainer p {
   padding: 0 5.5vw;
   font-size: calc(1rem + 0.9vh);
   text-align: left;
-  margin-top: 6vh;
+  bottom: 0;
   position: relative;
 }
-header #headerInformationContainer p > *:nth-child(1) {
+header #headerInformationContainer .paragraphContainer p > *:nth-child(1) {
   color: lightblue;
   text-shadow: 0px 0px 2px rgb(118, 201, 229);
 }
-header #headerInformationContainer p > *:nth-child(2) {
+header #headerInformationContainer .paragraphContainer p > *:nth-child(2) {
   color: rgb(255, 155, 171);
   text-shadow: 0px 0px 2px rgb(255, 148, 164);
 }
-header #headerInformationContainer p > *:nth-child(3) {
+header #headerInformationContainer .paragraphContainer p > *:nth-child(3) {
   color: rgb(255, 133, 62);
   text-shadow: 0px 0px 2px rgb(255, 105, 51);
 }
-header #headerInformationContainer p > *:nth-child(4) {
+header #headerInformationContainer .paragraphContainer p > *:nth-child(4) {
   color: lightgreen;
   text-shadow: 0px 0px 2px rgb(89, 238, 89);
 }
-header #headerInformationContainer p::before {
+header #headerInformationContainer .paragraphContainer p::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -271,7 +283,7 @@ header #headerImageContainer .headerImageBall {
 }
 #chapters .backgroundText {
   position: absolute;
-  margin-top: -570px;
+  margin-top: -63vh;
   margin-left: -5vw;
   font-size: 9vw;
   color: rgb(18, 18, 18);
@@ -314,7 +326,8 @@ header #headerImageContainer .headerImageBall {
   transition: 0ms;
 }
 .tooltip img {
-  border-radius: 1vh;
+  border-radius: 2.5vh 1.5vh 1.5vh 2.5vh;
+  padding-left: 0.8rem;
 }
 .tooltip .tooltipInformation {
   display: flex;
@@ -322,6 +335,15 @@ header #headerImageContainer .headerImageBall {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+.tooltip .tooltipInformation hr {
+  position: relative;
+  top: -1rem;
+  opacity: 30%;
+}
+.tooltip .tooltipInformation p {
+  position: relative;
+  top: -2rem;
 }
 
 #sla {
@@ -348,13 +370,17 @@ footer strong {
 
 @media (max-width: 1279px) {
   body {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   nav #menuIcon {
     display: block;
     cursor: pointer;
-    height: 85%;
+    height: 75%;
     width: auto;
+  }
+  nav div h1 {
+    font-size: 2.3rem;
+    bottom: -30%;
   }
   nav ul {
     display: none;
@@ -422,8 +448,7 @@ footer strong {
     flex-direction: column;
   }
   header #headerInformationContainer {
-    height: 100vh;
-    padding: 7vh 10vw 0 10vw;
+    padding: 7vh 5vw 7vh 5vw;
     width: 100%;
   }
   header #headerInformationContainer h1 {
@@ -433,6 +458,7 @@ footer strong {
   header #headerInformationContainer p {
     padding: 0;
     margin-top: 0;
+    text-align: center !important;
   }
   header #headerInformationContainer p::before {
     width: calc(100% + 6vw);
@@ -442,26 +468,29 @@ footer strong {
     margin-left: 1vw;
   }
   header #headerImageContainer {
-    height: 70vh;
-    width: 100%;
+    display: none;
   }
-  header #headerImageContainer #headerCharacterImages {
-    height: calc(90vh + 30vw);
-    top: -20vw !important;
-    right: -15vw;
+  #chapters {
+    height: 80vh;
+    padding: 0;
+    align-items: center;
   }
-  header #headerImageContainer .headerImageBall {
-    background-color: red;
-    width: 500vw;
-    height: 60vh;
-    transform: rotate(-30deg);
-    border-radius: 0;
-    position: absolute;
-    filter: blur(1.5vh);
-    opacity: 65%;
-    transition: 1s;
-    overflow-x: hidden;
-    z-index: 997;
-    inset: 0vh 0vh 0vh -125vw;
+  #chapters #chaptersTitle {
+    font-size: 1.5rem;
+  }
+  #chapters .backgroundText {
+    font-size: 3rem;
+    margin-top: -50vh;
+    margin-left: 0;
+  }
+  #chapters #chaptersContainer {
+    height: 65%;
+    padding-left: 8vw;
+  }
+  #chapters #chaptersContainer img {
+    height: 95%;
+  }
+  footer {
+    font-size: 1rem;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -3,6 +3,11 @@
 $light-pink-color: rgb(255, 223, 239);
 $text-shadow: drop-shadow(0px 0px 10px rgb(0, 0, 0));
 
+@font-face {
+  font-family: "Dialeto Ancestral";
+  src: url("font/DialetoAncestral-Regular.ttf") format("truetype");
+}
+
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
@@ -216,47 +221,56 @@ header {
       margin-bottom: 3vh;
     }
 
-    p {
-      padding: 0 5.5vw;
-      font-size: calc(1rem + 0.9vh);
-      text-align: left;
-      margin-top: 6vh;
-      position: relative;
+    .paragraphContainer {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-      > * {
-        &:nth-child(1) {
-          color: lightblue;
-          text-shadow: 0px 0px 2px rgb(118, 201, 229);
+      p {
+        padding: 0 5.5vw;
+        font-size: calc(1rem + 0.9vh);
+        text-align: left;
+        bottom: 0;
+        position: relative;
+
+        > * {
+          &:nth-child(1) {
+            color: lightblue;
+            text-shadow: 0px 0px 2px rgb(118, 201, 229);
+          }
+
+          &:nth-child(2) {
+            color: rgb(255, 155, 171);
+            text-shadow: 0px 0px 2px rgb(255, 148, 164);
+          }
+
+          &:nth-child(3) {
+            color: rgb(255, 133, 62);
+            text-shadow: 0px 0px 2px rgb(255, 105, 51);
+          }
+
+          &:nth-child(4) {
+            color: lightgreen;
+            text-shadow: 0px 0px 2px rgb(89, 238, 89);
+          }
         }
 
-        &:nth-child(2) {
-          color: rgb(255, 155, 171);
-          text-shadow: 0px 0px 2px rgb(255, 148, 164);
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: calc(100% - 9vw);
+          height: calc(100% + 3vh);
+          background-color: rgba(0, 0, 0, 0.5);
+          box-sizing: border-box;
+          border-radius: 2vh;
         }
-
-        &:nth-child(3) {
-          color: rgb(255, 133, 62);
-          text-shadow: 0px 0px 2px rgb(255, 105, 51);
-        }
-
-        &:nth-child(4) {
-          color: lightgreen;
-          text-shadow: 0px 0px 2px rgb(89, 238, 89);
-        }
-      }
-
-      &::before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: calc(100% - 9vw);
-        height: calc(100% + 3vh);
-        background-color: rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        border-radius: 2vh;
       }
     }
 
@@ -314,7 +328,7 @@ header {
 
   .backgroundText {
     position: absolute;
-    margin-top: -570px;
+    margin-top: -63vh;
     margin-left: -5vw;
     font-size: 9vw;
     color: rgb(18 18 18);
@@ -364,7 +378,8 @@ header {
   transition: 0ms;
 
   img {
-    border-radius: 1vh;
+    border-radius: 2.5vh 1.5vh 1.5vh 2.5vh;
+    padding-left: 0.8rem;
   }
 
   .tooltipInformation {
@@ -374,6 +389,17 @@ header {
     align-items: center;
     text-align: center;
     // justify-content: center;
+
+    hr {
+      position: relative;
+      top: -1rem;
+      opacity: 30%;
+    }
+
+    p {
+      position: relative;
+      top: -2rem;
+    }
   }
 }
 
@@ -406,15 +432,22 @@ footer {
 
 @media (max-width: 1279px) {
   body {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   nav {
     #menuIcon {
       display: block;
       cursor: pointer;
-      height: 85%;
+      height: 75%;
       width: auto;
+    }
+
+    div {
+      h1 {
+        font-size: 2.3rem;
+        bottom: -30%;
+      }
     }
 
     ul {
@@ -499,8 +532,7 @@ footer {
     flex-direction: column;
 
     #headerInformationContainer {
-      height: 100vh;
-      padding: 7vh 10vw 0 10vw;
+      padding: 7vh 5vw 7vh 5vw;
       width: 100%;
 
       h1 {
@@ -511,6 +543,7 @@ footer {
       p {
         padding: 0;
         margin-top: 0;
+        text-align: center !important;
 
         &::before {
           width: calc(100% - -6vw);
@@ -524,29 +557,36 @@ footer {
     }
 
     #headerImageContainer {
-      height: 70vh;
-      width: 100%;
+      display: none;
+    }
+  }
 
-      #headerCharacterImages {
-        height: calc(90vh + 30vw);
-        top: -20vw !important;
-        right: -15vw;
-      }
+  #chapters {
+    height: 80vh;
+    padding: 0;
+    align-items: center;
 
-      .headerImageBall {
-        background-color: red;
-        width: 500vw;
-        height: 60vh;
-        transform: rotate(-30deg);
-        border-radius: 0;
-        position: absolute;
-        filter: blur(1.5vh);
-        opacity: 65%;
-        transition: 1s;
-        overflow-x: hidden;
-        z-index: 997;
-        inset: 0vh 0vh 0vh -125vw;
+    #chaptersTitle {
+      font-size: 1.5rem;
+    }
+
+    .backgroundText {
+      font-size: 3rem;
+      margin-top: -50vh;
+      margin-left: 0;
+    }
+
+    #chaptersContainer {
+      height: 65%;
+      padding-left: 8vw;
+
+      img {
+        height: 95%;
       }
     }
+  }
+
+  footer {
+    font-size: 1rem;
   }
 }
