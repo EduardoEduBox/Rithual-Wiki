@@ -144,13 +144,21 @@ const headerParagraph = document.querySelector(".headerParagraph");
 const headerKnowmore = document.querySelector(".headerKnowMore");
 const headerButton = document.querySelector(".headerButton");
 
+// sets a variable to true when the entire process of changing the images complete
+let checker = false;
+console.log(checker);
+
+setTimeout(() => {
+  checker = true;
+}, 30000);
+
 setInterval(() => {
   if (changeHeaderImages[i]) {
     headerBackgroundImages.style.backgroundImage = `url('${changeHeaderImages[i].backgroundImage}')`;
     headerCharacterImages.src = changeHeaderImages[i].characterImage;
     headerBall.style.backgroundColor = changeHeaderImages[i].ballColor;
 
-    if (i === randomNumber()) {
+    if (i === randomNumber() && checker === true) {
       headerBackgroundImages.style.backgroundImage = `url('${terror.backgroundImage}')`;
       headerCharacterImages.src = terror.characterImage;
       headerBall.style.backgroundColor = terror.ballColor;
@@ -221,10 +229,9 @@ const images = document.getElementsByClassName("prePages");
 const textElement = document.getElementById("chaptersTitle");
 const backgroundTextElement = document.querySelector(".backgroundText");
 
-let currentTooltip = null; // Add this line to declare the currentTooltip variable
-
-let description = ""; // this variable is the description of those tooltips for each chapter
-let srcImages = ""; // source for the tooltip images
+let currentTooltip = null;
+let description = ""; // Declare the description variable
+let srcImages = ""; // Declare the srcImages variable
 
 for (let i = 0; i < images.length; i++) {
   images[i].addEventListener("mouseover", function () {
@@ -234,7 +241,7 @@ for (let i = 0; i < images.length; i++) {
         backgroundTextElement.textContent = "Cap - 0: Invasão";
 
         description =
-          "A carnificina assola o vilarejo enquanto um demônio mata impiedosamente. Um garoto se confronta com o assassino e uma lança revela seu verdadeiro poder.";
+          "A carnificina assola o vilarejo enquanto um demônio mata impiedosamente. Um garoto se confronta com o assassino e uma lança revela seu verdadeiro poder.";
         srcImages = "Css/assets/tooltipPages/random1.png";
         break;
       case 1:
@@ -242,7 +249,7 @@ for (let i = 0; i < images.length; i++) {
         backgroundTextElement.textContent = "Cap - 1: Padaria";
 
         description =
-          "Singer sai de casa e vai à padaria em Belgadina. Novidades sobre sua matrícula escolar deixam-no ansioso. O que o futuro reserva para ele após essa compra significativa?";
+          "Singer sai de casa e vai à padaria em Belgadina. Novidades sobre sua matrícula escolar deixam-no ansioso. O que o futuro reserva para ele após essa compra significativa?";
         srcImages = "Css/assets/tooltipPages/random2.png";
         break;
       case 2:
@@ -250,7 +257,7 @@ for (let i = 0; i < images.length; i++) {
         backgroundTextElement.textContent = "Cap - 2: Pai e irmão";
 
         description =
-          "Singer reflete sobre a matrícula escolar e suas expectativas de liberdade. Em casa, encontra seus familiares e descansa. O que o aguarda no tão esperado primeiro dia de aula?";
+          "Singer reflete sobre a matrícula escolar e suas expectativas de liberdade. Em casa, encontra seus familiares e descansa. O que o aguarda no tão esperado primeiro dia de aula?";
         srcImages = "Css/assets/tooltipPages/random3.png";
         break;
       case 3:
@@ -258,7 +265,7 @@ for (let i = 0; i < images.length; i++) {
         backgroundTextElement.textContent = "Cap - 3: Paisagem";
 
         description =
-          "Singer está ansioso para o primeiro dia de aula. Seu irmão o acompanha e novas experiências o cercam. Chegando à escola, Singer está repleto de expectativas. O que o aguarda nesse novo ambiente?";
+          "Singer está ansioso para o primeiro dia de aula. Seu irmão o acompanha e novas experiências o cercam. Chegando à escola, Singer está repleto de expectativas. O que o aguarda nesse novo ambiente?";
         srcImages = "Css/assets/tooltipPages/random4.png";
         break;
       case 4:
@@ -266,7 +273,7 @@ for (let i = 0; i < images.length; i++) {
         backgroundTextElement.textContent = "Cap - 4: Escola";
 
         description =
-          "Singer maravilhado com a escola, adentra seus corredores. Enquanto isso, seu irmão deixa a escola, encontra seus parceiros e seguem em frente. A pergunta paira: estão realmente prontos? Armas são preparadas.";
+          "Singer maravilhado com a escola, adentra seus corredores. Enquanto isso, seu irmão deixa a escola, encontra seus parceiros e seguem em frente. A pergunta paira: estão realmente prontos? Armas são preparadas.";
         srcImages = "Css/assets/tooltipPages/random5.png";
         break;
       default:
@@ -285,24 +292,31 @@ for (let i = 0; i < images.length; i++) {
 
   images[i].addEventListener("mouseout", function () {
     if (currentTooltip) {
-      currentTooltip.remove(); // Remove the tooltip element
-      currentTooltip = null; // Reset the currentTooltip variable
+      currentTooltip.remove();
+      currentTooltip = null;
     }
     textElement.textContent = "Capítulos";
     backgroundTextElement.textContent = "Capítulos";
   });
 }
 
-function changeToolTip(imageSrc, title, description) {
+function createTooltip() {
   const tooltip = document.createElement("div");
   tooltip.classList.add("tooltip");
 
+  document.body.appendChild(tooltip);
+
+  return tooltip;
+}
+
+function changeToolTip(imageSrc, title, description) {
+  const tooltip = createTooltip();
+
   const image = document.createElement("img");
   image.src = imageSrc;
-  image.style.height = "300px"; // Set the image height
   tooltip.appendChild(image);
 
-  const textContainer = document.createElement("div"); // Create a container div for the text elements
+  const textContainer = document.createElement("div");
   textContainer.classList.add("tooltipInformation");
   tooltip.appendChild(textContainer);
 
@@ -313,28 +327,32 @@ function changeToolTip(imageSrc, title, description) {
 
   const descElement = document.createElement("p");
   descElement.innerHTML += `<hr>${description}`;
-  descElement.style.wordWrap = "break-word"; // Set word-wrap property to break long words
-  descElement.style.maxWidth = "300px"; // Specify a maximum width for the element
+  descElement.style.wordWrap = "break-word";
+  descElement.style.maxWidth = "300px";
 
   textContainer.appendChild(descElement);
 
   document.body.appendChild(tooltip);
 
+  document.addEventListener("mouseover", function () {
+    tooltip.style.opacity = "0";
+    setTimeout(() => {
+      tooltip.style.opacity = "1";
+    }, 1500);
+  });
+
   document.addEventListener("mousemove", function (event) {
     const tooltipWidth = tooltip.offsetWidth;
     const tooltipHeight = tooltip.offsetHeight;
 
-    // Calculate the position based on the cursor's coordinates
-    let tooltipX = event.clientX + 100; // Add 10px offset to the right of the cursor
+    let tooltipX = event.clientX + 100;
 
-    // Check if the tooltip exceeds the right edge of the screen
     if (tooltipX + tooltipWidth > window.innerWidth - 200) {
-      tooltipX = event.clientX - tooltipWidth - 100; // Position it to the left of the cursor
+      tooltipX = event.clientX - tooltipWidth - 100;
     }
 
-    // Set the tooltip position
     tooltip.style.left = tooltipX + "px";
-    tooltip.style.top = event.clientY / 2 + tooltipHeight * 2.95 + "px";
+    tooltip.style.top = event.clientY / 2 + tooltipHeight * 3.5 + "px";
   });
 
   return tooltip;

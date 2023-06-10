@@ -317,16 +317,17 @@ header {
   height: 110vh;
   display: flex;
   flex-direction: column;
-  padding-left: 8vw;
   justify-content: center;
 
   #chaptersTitle {
     font-size: 4.8vw;
     margin-bottom: 1vh;
     color: $light-pink-color;
+    padding-left: 8vw;
   }
 
   .backgroundText {
+    padding-left: 8vw;
     position: absolute;
     margin-top: -63vh;
     margin-left: -5vw;
@@ -350,6 +351,8 @@ header {
     overflow-y: hidden;
 
     img {
+      position: relative;
+      left: 8vw;
       height: calc(60% + 12vw);
       border-radius: 1vh;
       transition: 500ms;
@@ -364,22 +367,25 @@ header {
 }
 
 .tooltip {
+  font-size: 1.2rem;
   position: absolute;
   display: flex;
-  border-radius: 1vh;
+  border-radius: 1rem;
   background-color: rgb(15, 15, 15);
   // padding: 4vw;
   gap: 3rem;
   align-items: center;
-  padding: 0 20px;
+  padding: 0.8rem 0.3rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 998;
   /* Add more styles as needed */
-  transition: 0ms;
+  opacity: 1;
+  transition: opacity 500ms;
 
   img {
-    border-radius: 2.5vh 1.5vh 1.5vh 2.5vh;
+    border-radius: 1.5rem 1rem 1rem 1.5rem;
     padding-left: 0.8rem;
+    height: 270px;
   }
 
   .tooltipInformation {
@@ -561,6 +567,8 @@ footer {
     }
   }
 
+  // chapters here vvvvvvvvvv
+
   #chapters {
     height: 80vh;
     padding: 0;
@@ -578,7 +586,6 @@ footer {
 
     #chaptersContainer {
       height: 65%;
-      padding-left: 8vw;
 
       img {
         height: 95%;
