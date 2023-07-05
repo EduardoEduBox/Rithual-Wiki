@@ -8,6 +8,12 @@ let currentTooltip = null;
 let description = ""; // Declare the description variable
 let srcImages = ""; // Declare the srcImages variable
 
+// this code is to set the scrollBar to a specific value when you load the page
+setTimeout(function () {
+  const container = document.getElementById("chaptersContainer");
+  container.scrollLeft = 88;
+}, 100);
+
 for (let i = 0; i < images.length; i++) {
   images[i].addEventListener("mouseover", function () {
     switch (i) {
