@@ -354,7 +354,71 @@ header #headerImageContainer .headerImageBall {
 
 #characters {
   width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+#characters #characterBackgroundSidewaysBar {
+  position: absolute;
+  width: 200%;
   height: 50vh;
+  transform: rotate(8deg);
+  background-color: darkgrey;
+  z-index: -1;
+  top: 45%;
+  opacity: 20%;
+}
+#characters #characterBackgroundSidewaysBar::after {
+  position: absolute;
+  content: "";
+  width: 200%;
+  height: 355px;
+  background-color: rgb(18, 18, 18);
+  bottom: 6rem;
+  transform: rotate(-9deg);
+}
+#characters #charactersTitle {
+  font-size: 4.8vw;
+  margin-bottom: 1vh;
+  margin-top: 0;
+  color: rgb(255, 223, 239);
+}
+#characters strong {
+  top: -2.5rem;
+  position: absolute;
+  font-size: 9vw;
+  color: rgb(18, 18, 18);
+  text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239), 0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239), 1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff, -1px 1px rgb(255, 223, 239);
+  opacity: 15%;
+  z-index: -1;
+}
+#characters #charactersContainer {
+  width: 100%;
+  height: calc(100% - 9vw);
+  display: flex;
+  padding: 0 5vw;
+}
+#characters #charactersContainer div {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+#characters #charactersContainer div img {
+  width: auto;
+  height: 100%;
+}
+#characters #charactersContainer div #characterAika {
+  height: 92%;
+}
+
+#close-button img {
+  height: 2rem;
+  width: 5rem;
+  opacity: 40%;
 }
 
 footer {

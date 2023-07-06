@@ -46,7 +46,7 @@ function handleResize() {
 window.addEventListener("resize", handleResize);
 
 const advice = document.querySelectorAll(
-  ".navList li:nth-child(3), .navList li:nth-child(4), .navList2 li:nth-child(3), .navList2 li:nth-child(4)"
+  ".navList li:nth-child(4), .navList2 li:nth-child(4)"
 );
 
 advice.forEach(function (li) {

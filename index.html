@@ -17,7 +17,7 @@
       <ul class="navList">
         <li><a href="#header">Home</a></li>
         <li><a href="#chapters">Capítulos</a></li>
-        <li>Personagens</li>
+        <li href="#characters">Personagens</li>
         <li>Sobre mim</li>
       </ul>
     </nav>
@@ -92,7 +92,39 @@
         </div>
       </section>
 
-      <section id="characters"></section>
+      <section id="characters">
+        <div id="characterBackgroundSidewaysBar"></div>
+        <h1 id="charactersTitle">Personagens</h1>
+        <strong class="backgroundText">Personagens</strong>
+        <div id="charactersContainer">
+          <div>
+            <img
+              src="Css/assets/charactersSection/Singer corpo completo.png"
+              alt="Imagem do Singer"
+              id="characterSinger"
+              class="character-image"
+            />
+          </div>
+          <div>
+            <img
+              src="Css/assets/charactersSection/Aika corpo completo.png"
+              alt="Imagem da Aika"
+              id="characterAika"
+              class="character-image"
+            />
+          </div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <div id="character-info">
+          <img src="" alt="" id="character-info-image" />
+        </div>
+
+        <span id="close-button"
+          ><img src="Css/assets/icons/293657_x_icon (1).png" alt=""
+        /></span>
+      </section>
     </main>
 
     <footer>
@@ -105,7 +137,8 @@
     <script type="module" src="./Js/NavBar.js"></script>
     <script type="module" src="./Js/Header.js"></script>
     <script type="module" src="./Js/ChapterSection.js"></script>
-    <script type="module" src="./Js/Characters.js"></script>
+    <!-- Dist vvv -->
+    <script type="module" src="./Js/dist/Characters.js"></script>
     <!-- common vvv -->
     <script type="module" src="./Js/common/LoadAlert.js"></script>
   </body>

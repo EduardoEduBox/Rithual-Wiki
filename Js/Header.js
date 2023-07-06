@@ -55,8 +55,8 @@ let randomNumber = () => {
   return Math.floor(Math.random() * changeHeaderImages.length);
 };
 
-console.log("printing the first value: ", randomNumber()); // they are different values so it is working :D
-console.log("printing the second value: ", randomNumber());
+// console.log("printing the first value: ", randomNumber()); // they are different values so it is working :D
+// console.log("printing the second value: ", randomNumber());
 
 let i = 1;
 
@@ -68,7 +68,7 @@ const headerButton = document.querySelector(".headerButton");
 
 // sets a variable to true when the entire process of changing the images complete
 let checker = false;
-console.log(checker);
+// console.log(checker);
 
 setTimeout(() => {
   checker = true;
