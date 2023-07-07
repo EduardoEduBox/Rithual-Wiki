@@ -68,32 +68,36 @@ const characters: Characters[] = [
   // Add more characters here...
 ];
 
+// this is the image for each character
 const characterImages = document.querySelectorAll(
   ".character-image"
 ) as NodeListOf<HTMLImageElement>;
-const characterInfo = document.getElementById("character-info") as HTMLElement;
-const characterInfoImage = document.getElementById(
-  "character-info-image"
-) as HTMLImageElement;
-const closeButton = document.getElementById("close-button") as HTMLElement;
+
+// this is the container that holds those images
+const charactersContainer = document.querySelectorAll(
+  ".singerContainer, .aikaContainer, .madgerContainer, .sanContainer"
+) as NodeListOf<HTMLDivElement>;
+
+const bigContainer = document.getElementById("characters") as HTMLDivElement;
+
+function changeElementsWhenTrue(): void {
+  bigContainer.style.height = "130vh";
+}
+
+console.log(characterImages);
 
 characterImages.forEach((image, index) => {
   image.addEventListener("click", () => {
-    const character = characters[index];
+    charactersContainer[index].classList.toggle("true");
 
-    // Display character information
-    characterInfo.innerHTML = `
-        <h2>${character.name}</h2>
-        <p>Idade: ${character.age}</p>
-        <p>Raça: ${character.race}</p>
-        <p>Status atual: ${character.currentStatus}</p>
-        <p>${character.information}</p>
-      `;
+    charactersContainer.forEach((div, i) => {
+      if (i != index) {
+        charactersContainer[i].style.display = "none";
+      }
+    });
 
-    // Display additional character image
-    characterInfoImage.src = `path/to/character-image-${character.id}.png`;
-
-    // Show the character info section
-    characterInfo.classList.add("active");
+    changeElementsWhenTrue;
   });
 });
+
+console.log(charactersContainer[1]);

@@ -30,20 +30,18 @@ const characters = [
     new Characters(2, "Aika", 22, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Demônio, CharacterStatus.Alive, "sdlkfjlsdkfj"),
 ];
 const characterImages = document.querySelectorAll(".character-image");
-const characterInfo = document.getElementById("character-info");
-const characterInfoImage = document.getElementById("character-info-image");
-const closeButton = document.getElementById("close-button");
+const charactersContainer = document.querySelectorAll(".singerContainer, .aikaContainer, .madgerContainer, .sanContainer");
+const bigContainer = document.getElementById("characters");
+console.log(characterImages);
 characterImages.forEach((image, index) => {
     image.addEventListener("click", () => {
-        const character = characters[index];
-        characterInfo.innerHTML = `
-        <h2>${character.name}</h2>
-        <p>Idade: ${character.age}</p>
-        <p>Raça: ${character.race}</p>
-        <p>Status atual: ${character.currentStatus}</p>
-        <p>${character.information}</p>
-      `;
-        characterInfoImage.src = `path/to/character-image-${character.id}.png`;
-        characterInfo.classList.add("active");
+        charactersContainer[index].classList.toggle("true");
+        charactersContainer.forEach((div, i) => {
+            if (i != index) {
+                charactersContainer[i].style.display = "none";
+            }
+        });
+        bigContainer.style.height = "130vh";
     });
 });
+console.log(charactersContainer[1]);

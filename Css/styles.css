@@ -421,6 +421,10 @@ header #headerImageContainer .headerImageBall {
   opacity: 40%;
 }
 
+.true {
+  width: 100% !important;
+}
+
 footer {
   font-size: 1.6rem;
   display: flex;
