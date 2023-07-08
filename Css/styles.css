@@ -360,24 +360,27 @@ header #headerImageContainer .headerImageBall {
   align-items: center;
   position: relative;
 }
+#characters * {
+  transition: none !important;
+}
 #characters #characterBackgroundSidewaysBar {
   position: absolute;
   width: 200%;
-  height: 50vh;
+  height: 52vh;
   transform: rotate(8deg);
   background-color: darkgrey;
   z-index: -1;
-  top: 45%;
+  top: 44%;
   opacity: 20%;
 }
 #characters #characterBackgroundSidewaysBar::after {
   position: absolute;
   content: "";
   width: 200%;
-  height: 355px;
+  height: 42vh;
   background-color: rgb(18, 18, 18);
   bottom: 6rem;
-  transform: rotate(-9deg);
+  transform: rotate(-9.5deg);
 }
 #characters #charactersTitle {
   font-size: 4.8vw;
@@ -406,23 +409,49 @@ header #headerImageContainer .headerImageBall {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  position: relative;
+}
+#characters #charactersContainer div .profilePictureDiv {
+  width: 30vh;
+  height: 30vh;
+  border-radius: 50vh;
+  position: absolute;
+  left: -1rem;
+  top: -2.5rem;
+}
+#characters #charactersContainer div .profilePictureDiv img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50vh;
+}
+#characters #charactersContainer div #characterBackgroundText {
+  position: absolute;
+  top: 10%;
+  font-size: 9vw;
+  z-index: -1;
+  white-space: nowrap;
+}
+#characters #charactersContainer div #close-button {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  cursor: pointer;
+}
+#characters #charactersContainer div #close-button img {
+  height: 2rem;
+  width: 5rem;
+  opacity: 80%;
+}
+#characters #charactersContainer div #close-button img:hover {
+  content: url("./assets/icons/pngwing.com (2).png");
 }
 #characters #charactersContainer div img {
   width: auto;
   height: 100%;
+  cursor: pointer;
 }
 #characters #charactersContainer div #characterAika {
   height: 92%;
-}
-
-#close-button img {
-  height: 2rem;
-  width: 5rem;
-  opacity: 40%;
-}
-
-.true {
-  width: 100% !important;
 }
 
 footer {

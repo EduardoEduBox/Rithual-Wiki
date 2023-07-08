@@ -1,10 +1,8 @@
-// okay, i choose TS instead of JS because Typescript has some options that should help me when building the characters information!
 const singerImg = document.getElementById(
   "characterSinger"
 ) as HTMLImageElement;
 const aikaImg = document.getElementById("characterAika") as HTMLImageElement;
 
-// just the default values to put in the currentStatus property
 enum CharacterStatus {
   Alive = "Vivo",
   Dead = "Morto",
@@ -26,6 +24,8 @@ class Characters {
   currentStatus: CharacterStatus;
   race: Race;
   profile: string;
+  withoutText: string;
+  colorTheme: string;
 
   constructor(
     id: number,
@@ -34,7 +34,9 @@ class Characters {
     information: string,
     race: Race,
     currentStatus: CharacterStatus,
-    profile: string
+    profile: string,
+    withoutText: string,
+    colorTheme: string
   ) {
     this.id = id;
     this.name = name;
@@ -43,61 +45,141 @@ class Characters {
     this.race = race;
     this.currentStatus = currentStatus;
     this.profile = profile;
+    this.withoutText = withoutText;
+    this.colorTheme = colorTheme;
   }
 }
 
 const characters: Characters[] = [
   new Characters(
     1,
-    "Singer",
-    25,
+    "Singer Faksumi",
+    17,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     Race.Human,
     CharacterStatus.Alive,
-    "sçdf"
+    "sçdf",
+    "Css/assets/charactersSection/withoutText/singer withoutText.png",
+    "lightblue"
   ),
   new Characters(
     2,
-    "Aika",
-    22,
+    "Aika'nu Zumiki",
+    19,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     Race.Demônio,
     CharacterStatus.Alive,
-    "sdlkfjlsdkfj"
+    "Css/assets/charactersSection/profile/Aika Profile.png",
+    "Css/assets/charactersSection/withoutText/aika withoutText.png",
+    "rgb(255, 223, 239)"
   ),
   // Add more characters here...
 ];
 
-// this is the image for each character
 const characterImages = document.querySelectorAll(
   ".character-image"
 ) as NodeListOf<HTMLImageElement>;
 
-// this is the container that holds those images
 const charactersContainer = document.querySelectorAll(
   ".singerContainer, .aikaContainer, .madgerContainer, .sanContainer"
 ) as NodeListOf<HTMLDivElement>;
 
 const bigContainer = document.getElementById("characters") as HTMLDivElement;
+const closeButton = document.getElementById("close-button") as HTMLSpanElement;
 
-function changeElementsWhenTrue(): void {
-  bigContainer.style.height = "130vh";
-}
-
-console.log(characterImages);
+let validation: Boolean = false;
 
 characterImages.forEach((image, index) => {
   image.addEventListener("click", () => {
-    charactersContainer[index].classList.toggle("true");
+    console.log(index);
 
-    charactersContainer.forEach((div, i) => {
-      if (i != index) {
-        charactersContainer[i].style.display = "none";
-      }
-    });
-
-    changeElementsWhenTrue;
+    if (
+      validation === true &&
+      charactersContainer[index].classList.contains("true")
+    ) {
+      changeElementsWhenFalse();
+      validation = false;
+    } else {
+      changeElementsWhenTrue();
+      validation = true;
+    }
   });
-});
 
-console.log(charactersContainer[1]);
+  function changeElementsWhenTrue(): void {
+    console.log("clicado caralho");
+
+    TweenMax.to(charactersContainer, 0.5, {
+      opacity: 0,
+      onComplete: () => {
+        charactersContainer[index].style.width = "100%";
+        bigContainer.style.height = "110vh";
+        charactersContainer.forEach((div, i) => {
+          if (i !== index) {
+            charactersContainer[i].style.display = "none";
+          }
+        });
+
+        TweenMax.to(charactersContainer[index], 1, {
+          opacity: 1,
+          onStart: () => {
+            charactersContainer[index].innerHTML = `
+              <div class="profilePictureDiv">
+                <img src="${characters[index].profile}" />
+              </div>
+              <img
+                src="${characters[index].withoutText}"
+                alt="Imagem do Singer"
+                id="characterSinger"
+                class="character-image"
+              />
+              <h1 id="characterBackgroundText" style="color:${
+                characters[index].colorTheme
+              }">${characters[index].name.toUpperCase()}</h1>
+              <span id="close-button" onclick="exitFunction()">
+                <img src="Css/assets/icons/293657_x_icon (1).png" alt=""/>
+              </span>
+            `;
+
+            // animating elements when you click in one of the characters
+            const characterBackgroundText = document.getElementById(
+              "characterBackgroundText"
+            ) as HTMLTitleElement;
+            if (characterBackgroundText) {
+              characterBackgroundText.style.transform = "translateX(-500px)";
+              characterBackgroundText.style.opacity = "0";
+
+              const tl = gsap.timeline();
+              tl.to(characterBackgroundText, {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                ease: "power1.out",
+              });
+            }
+
+            const characterImage = charactersContainer[index].querySelector(
+              ".character-image"
+            ) as HTMLImageElement;
+            if (characterImage) {
+              characterImage.style.transform = "translateX(500px)";
+              characterImage.style.opacity = "0";
+
+              const tl = gsap.timeline();
+              tl.to(characterImage, {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                ease: "power1.out",
+              });
+            }
+            /////////////////////////////////////////////////////////////////////
+          },
+        });
+      },
+    });
+  }
+
+  function changeElementsWhenFalse(): void {
+    bigContainer.style.height = "100vh";
+  }
+});
