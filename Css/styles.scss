@@ -531,9 +531,13 @@ header {
         cursor: pointer;
       }
 
-      // just a custom configuration for Aika, as she is shorter than singer and the other characters in general
+      // just a custom configuration for the characters
       #characterAika {
         height: 92%;
+      }
+
+      #characterMadger {
+        height: 96%;
       }
     }
   }

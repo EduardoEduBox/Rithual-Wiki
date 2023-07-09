@@ -453,6 +453,9 @@ header #headerImageContainer .headerImageBall {
 #characters #charactersContainer div #characterAika {
   height: 92%;
 }
+#characters #charactersContainer div #characterMadger {
+  height: 96%;
+}
 
 footer {
   font-size: 1.6rem;

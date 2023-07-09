@@ -1,8 +1,3 @@
-const singerImg = document.getElementById(
-  "characterSinger"
-) as HTMLImageElement;
-const aikaImg = document.getElementById("characterAika") as HTMLImageElement;
-
 enum CharacterStatus {
   Alive = "Vivo",
   Dead = "Morto",
@@ -11,7 +6,7 @@ enum CharacterStatus {
 
 enum Race {
   Human = "Humano",
-  Demônio = "Demônio",
+  Demon = "Demônio",
   Archangel = "Arcanjo",
   Apocalipsun = "Apocalipsun",
 }
@@ -56,7 +51,7 @@ const characters: Characters[] = [
     "Singer Faksumi",
     17,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    Race.Human,
+    Race.Demon,
     CharacterStatus.Alive,
     "sçdf",
     "Css/assets/charactersSection/withoutText/singer withoutText.png",
@@ -67,11 +62,22 @@ const characters: Characters[] = [
     "Aika'nu Zumiki",
     19,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    Race.Demônio,
+    Race.Demon,
     CharacterStatus.Alive,
     "Css/assets/charactersSection/profile/Aika Profile.png",
     "Css/assets/charactersSection/withoutText/aika withoutText.png",
     "rgb(255, 223, 239)"
+  ),
+  new Characters(
+    3,
+    "Madger Yasáshi",
+    17,
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    Race.Human,
+    CharacterStatus.Alive,
+    "lsdkfhkljs",
+    "Css/assets/charactersSection/withoutText/madger withoutText.png",
+    "rgb(186, 235, 186)"
   ),
   // Add more characters here...
 ];
@@ -106,6 +112,7 @@ characterImages.forEach((image, index) => {
   });
 
   function changeElementsWhenTrue(): void {
+    charactersContainer[index].classList.toggle("true");
     console.log("clicado caralho");
 
     TweenMax.to(charactersContainer, 0.5, {
@@ -135,7 +142,7 @@ characterImages.forEach((image, index) => {
               <h1 id="characterBackgroundText" style="color:${
                 characters[index].colorTheme
               }">${characters[index].name.toUpperCase()}</h1>
-              <span id="close-button" onclick="exitFunction()">
+              <span id="close-button">
                 <img src="Css/assets/icons/293657_x_icon (1).png" alt=""/>
               </span>
             `;
@@ -180,6 +187,14 @@ characterImages.forEach((image, index) => {
   }
 
   function changeElementsWhenFalse(): void {
-    bigContainer.style.height = "100vh";
+    closeButton.addEventListener("click", () => {
+      charactersContainer.forEach((div, i) => {
+        div.style.display = "flex";
+        div.style.width = "25%";
+        console.log("sledkfjsdjklf");
+      });
+
+      validation = false;
+    });
   }
 });

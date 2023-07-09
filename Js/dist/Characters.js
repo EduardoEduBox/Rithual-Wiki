@@ -1,6 +1,4 @@
 "use strict";
-const singerImg = document.getElementById("characterSinger");
-const aikaImg = document.getElementById("characterAika");
 var CharacterStatus;
 (function (CharacterStatus) {
     CharacterStatus["Alive"] = "Vivo";
@@ -10,7 +8,7 @@ var CharacterStatus;
 var Race;
 (function (Race) {
     Race["Human"] = "Humano";
-    Race["Dem\u00F4nio"] = "Dem\u00F4nio";
+    Race["Demon"] = "Dem\u00F4nio";
     Race["Archangel"] = "Arcanjo";
     Race["Apocalipsun"] = "Apocalipsun";
 })(Race || (Race = {}));
@@ -28,8 +26,9 @@ class Characters {
     }
 }
 const characters = [
-    new Characters(1, "Singer Faksumi", 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Human, CharacterStatus.Alive, "sçdf", "Css/assets/charactersSection/withoutText/singer withoutText.png", "lightblue"),
-    new Characters(2, "Aika'nu Zumiki", 19, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Demônio, CharacterStatus.Alive, "Css/assets/charactersSection/profile/Aika Profile.png", "Css/assets/charactersSection/withoutText/aika withoutText.png", "rgb(255, 223, 239)"),
+    new Characters(1, "Singer Faksumi", 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Demon, CharacterStatus.Alive, "sçdf", "Css/assets/charactersSection/withoutText/singer withoutText.png", "lightblue"),
+    new Characters(2, "Aika'nu Zumiki", 19, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Demon, CharacterStatus.Alive, "Css/assets/charactersSection/profile/Aika Profile.png", "Css/assets/charactersSection/withoutText/aika withoutText.png", "rgb(255, 223, 239)"),
+    new Characters(3, "Madger Yasáshi", 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Human, CharacterStatus.Alive, "lsdkfhkljs", "Css/assets/charactersSection/withoutText/madger withoutText.png", "rgb(186, 235, 186)"),
 ];
 const characterImages = document.querySelectorAll(".character-image");
 const charactersContainer = document.querySelectorAll(".singerContainer, .aikaContainer, .madgerContainer, .sanContainer");
@@ -50,6 +49,7 @@ characterImages.forEach((image, index) => {
         }
     });
     function changeElementsWhenTrue() {
+        charactersContainer[index].classList.toggle("true");
         console.log("clicado caralho");
         TweenMax.to(charactersContainer, 0.5, {
             opacity: 0,
@@ -75,7 +75,7 @@ characterImages.forEach((image, index) => {
                 class="character-image"
               />
               <h1 id="characterBackgroundText" style="color:${characters[index].colorTheme}">${characters[index].name.toUpperCase()}</h1>
-              <span id="close-button" onclick="exitFunction()">
+              <span id="close-button">
                 <img src="Css/assets/icons/293657_x_icon (1).png" alt=""/>
               </span>
             `;
@@ -109,6 +109,13 @@ characterImages.forEach((image, index) => {
         });
     }
     function changeElementsWhenFalse() {
-        bigContainer.style.height = "100vh";
+        closeButton.addEventListener("click", () => {
+            charactersContainer.forEach((div, i) => {
+                div.style.display = "flex";
+                div.style.width = "25%";
+                console.log("sledkfjsdjklf");
+            });
+            validation = false;
+        });
     }
 });
