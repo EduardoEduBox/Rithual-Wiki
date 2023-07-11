@@ -13,7 +13,7 @@ var Race;
     Race["Apocalipsun"] = "Apocalipsun";
 })(Race || (Race = {}));
 class Characters {
-    constructor(id, name, age, information, race, currentStatus, profile, withoutText, colorTheme) {
+    constructor(id, name, age, information, race, currentStatus, profile, withoutText, withText, colorTheme) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -22,15 +22,16 @@ class Characters {
         this.currentStatus = currentStatus;
         this.profile = profile;
         this.withoutText = withoutText;
+        this.withText = withText;
         this.colorTheme = colorTheme;
     }
 }
 const characters = [
-    new Characters(1, "Singer Faksumi", 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Demon, CharacterStatus.Alive, "sçdf", "Css/assets/charactersSection/withoutText/singer withoutText.png", "lightblue"),
-    new Characters(2, "Aika'nu Zumiki", 19, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Demon, CharacterStatus.Alive, "Css/assets/charactersSection/profile/Aika Profile.png", "Css/assets/charactersSection/withoutText/aika withoutText.png", "rgb(255, 223, 239)"),
-    new Characters(3, "Madger Yasáshi", 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Human, CharacterStatus.Alive, "lsdkfhkljs", "Css/assets/charactersSection/withoutText/madger withoutText.png", "rgb(186, 235, 186)"),
+    new Characters("characterSinger", "Singer Faksumi", 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Demon, CharacterStatus.Alive, "sçdf", "Css/assets/charactersSection/withoutText/singer withoutText.png", "Css/assets/charactersSection/Singer corpo completo.png", "lightblue"),
+    new Characters("characterAika", "Aika'nu Zumiki", 19, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", Race.Demon, CharacterStatus.Alive, "Css/assets/charactersSection/profile/Aika Profile.png", "Css/assets/charactersSection/withoutText/aika withoutText.png", "Css/assets/charactersSection/Aika corpo completo.png", "rgb(255, 223, 239)"),
+    new Characters("characterMadger", "Madger Yasáshi", 17, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quos, harum eaque voluptas adipisci itaque cum quae doloremque, perspiciatis omnis porro voluptatem officiis accusantium reprehenderit officia atque dolorem? Blanditiis, explicabo?", Race.Human, CharacterStatus.Alive, "lsdkfhkljs", "Css/assets/charactersSection/withoutText/madger withoutText.png", "Css/assets/charactersSection/Madger corpo completo.png", "rgb(186, 235, 186)"),
 ];
-const characterImages = document.querySelectorAll(".character-image");
+const characterImages = document.querySelectorAll("#characterSinger, #characterAika, #characterMadger");
 const charactersContainer = document.querySelectorAll(".singerContainer, .aikaContainer, .madgerContainer, .sanContainer");
 const bigContainer = document.getElementById("characters");
 const closeButton = document.getElementById("close-button");
@@ -38,18 +39,11 @@ let validation = false;
 characterImages.forEach((image, index) => {
     image.addEventListener("click", () => {
         console.log(index);
-        if (validation === true &&
-            charactersContainer[index].classList.contains("true")) {
-            changeElementsWhenFalse();
-            validation = false;
-        }
-        else {
+        if (validation !== true) {
             changeElementsWhenTrue();
-            validation = true;
         }
     });
     function changeElementsWhenTrue() {
-        charactersContainer[index].classList.toggle("true");
         console.log("clicado caralho");
         TweenMax.to(charactersContainer, 0.5, {
             opacity: 0,
@@ -64,17 +58,22 @@ characterImages.forEach((image, index) => {
                 TweenMax.to(charactersContainer[index], 1, {
                     opacity: 1,
                     onStart: () => {
+                        var _a;
                         charactersContainer[index].innerHTML = `
               <div class="profilePictureDiv">
                 <img src="${characters[index].profile}" />
               </div>
               <img
                 src="${characters[index].withoutText}"
-                alt="Imagem do Singer"
-                id="characterSinger"
+                alt=""
                 class="character-image"
               />
-              <h1 id="characterBackgroundText" style="color:${characters[index].colorTheme}">${characters[index].name.toUpperCase()}</h1>
+              <div id="informationContainer">
+                <h1 id="characterBackgroundText" style="color:${characters[index].colorTheme}">${characters[index].name.toUpperCase()}</h1>
+                <div id="informationOrganizator">
+                  <p id="characterInformation">${characters[index].information}</p>
+                </div>
+              </div>
               <span id="close-button">
                 <img src="Css/assets/icons/293657_x_icon (1).png" alt=""/>
               </span>
@@ -103,19 +102,31 @@ characterImages.forEach((image, index) => {
                                 ease: "power1.out",
                             });
                         }
+                        (_a = document
+                            .querySelector("#close-button")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
+                            console.log("kjfhksfdhjh");
+                            changeElementsWhenFalse();
+                        });
                     },
                 });
             },
         });
     }
     function changeElementsWhenFalse() {
-        closeButton.addEventListener("click", () => {
-            charactersContainer.forEach((div, i) => {
-                div.style.display = "flex";
-                div.style.width = "25%";
-                console.log("sledkfjsdjklf");
-            });
-            validation = false;
+        charactersContainer.forEach((div, i) => {
+            div.style.display = "flex";
+            div.style.opacity = "1";
         });
+        charactersContainer[index].style.width = "25%";
+        bigContainer.style.height = "100vh";
+        charactersContainer[index].innerHTML = ``;
+        charactersContainer[index].innerHTML = `
+      <img
+        src="${characters[index].withText}"
+        id="${characters[index].id}"
+        class="character-image"
+      />
+    `;
+        validation = false;
     }
 });
