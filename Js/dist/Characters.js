@@ -82,13 +82,20 @@ characterImages.forEach((image, index) => {
                         if (characterBackgroundText) {
                             characterBackgroundText.style.transform = "translateX(-500px)";
                             characterBackgroundText.style.opacity = "0";
+                            const characterInformation = document.querySelector(".characterInformation");
+                            console.log(characterInformation);
                             const tl = gsap.timeline();
                             tl.to(characterBackgroundText, {
                                 opacity: 1,
                                 x: 0,
                                 duration: 0.5,
                                 ease: "power1.out",
-                            });
+                            }).to(characterInformation, {
+                                opacity: 1,
+                                x: 0,
+                                duration: 0.5,
+                                ease: "power1.out",
+                            }, "-=0.5");
                         }
                         const characterImage = charactersContainer[index].querySelector(".character-image");
                         if (characterImage) {
@@ -104,7 +111,6 @@ characterImages.forEach((image, index) => {
                         }
                         (_a = document
                             .querySelector("#close-button")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
-                            console.log("kjfhksfdhjh");
                             changeElementsWhenFalse();
                         });
                     },

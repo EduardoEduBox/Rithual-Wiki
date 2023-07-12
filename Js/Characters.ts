@@ -159,13 +159,28 @@ characterImages.forEach((image, index) => {
               characterBackgroundText.style.transform = "translateX(-500px)";
               characterBackgroundText.style.opacity = "0";
 
+              const characterInformation = document.querySelector(
+                ".characterInformation"
+              ) as HTMLParagraphElement;
+
+              console.log(characterInformation);
+
               const tl = gsap.timeline();
               tl.to(characterBackgroundText, {
                 opacity: 1,
                 x: 0,
                 duration: 0.5,
                 ease: "power1.out",
-              });
+              }).to(
+                characterInformation,
+                {
+                  opacity: 1,
+                  x: 0,
+                  duration: 0.5,
+                  ease: "power1.out",
+                },
+                "-=0.5"
+              );
             }
 
             const characterImage = charactersContainer[index].querySelector(
@@ -184,10 +199,12 @@ characterImages.forEach((image, index) => {
               });
             }
 
+            ///////////////////////////////////////////////////////
+
+            // settin the close button event so when we click on it it executes the closing function
             document
               .querySelector("#close-button")
               ?.addEventListener("click", () => {
-                console.log("kjfhksfdhjh");
                 changeElementsWhenFalse();
               });
           },
@@ -216,6 +233,4 @@ characterImages.forEach((image, index) => {
 
     validation = false;
   }
-
-  // Event listener for the close button
 });
