@@ -402,6 +402,7 @@ header #headerImageContainer .headerImageBall {
   height: calc(100% - 9vw);
   display: flex;
   padding: 0 5vw;
+  margin-top: 3rem;
 }
 #characters #charactersContainer div {
   height: 100%;
@@ -474,6 +475,9 @@ header #headerImageContainer .headerImageBall {
 }
 #characters #charactersContainer div #characterMadger {
   height: 96%;
+}
+#characters #charactersContainer div #characterSan {
+  height: 99%;
 }
 
 footer {

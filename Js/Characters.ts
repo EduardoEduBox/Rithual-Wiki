@@ -53,7 +53,7 @@ const characters: Characters[] = [
     "characterSinger",
     "Singer Faksumi",
     17,
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "um jovem aventureiro que nasceu no vilarejo Uxclavasa e sonha em conhecer o mundo e as maravilhas do reino de Belgadina e Ázuma! Ele é muito tímido, pois só começou a interagir com outras crianças aos 10 anos de idade, mas está animado para fazer novos amigos e aprender artes marciais na escola Azumense ruxangai!",
     Race.Demon,
     CharacterStatus.Alive,
     "sçdf",
@@ -65,7 +65,7 @@ const characters: Characters[] = [
     "characterAika",
     "Aika'nu Zumiki",
     19,
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    `<span style="color:gray; font-weight:1000;">Ainda sem registros...</span>`,
     Race.Demon,
     CharacterStatus.Alive,
     "Css/assets/charactersSection/profile/Aika Profile.png",
@@ -77,7 +77,7 @@ const characters: Characters[] = [
     "characterMadger",
     "Madger Yasáshi",
     17,
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quos, harum eaque voluptas adipisci itaque cum quae doloremque, perspiciatis omnis porro voluptatem officiis accusantium reprehenderit officia atque dolorem? Blanditiis, explicabo?",
+    "Artista marcial nascido na vila Yasáshi, após uma batalha curta e sangrenta, Madger perdeu pessoas preciosas quando ainda era criança, agora, ele busca honrar aqueles que lutaram por ele em sua antiga vila!",
     Race.Human,
     CharacterStatus.Alive,
     "lsdkfhkljs",
@@ -85,11 +85,23 @@ const characters: Characters[] = [
     "Css/assets/charactersSection/Madger corpo completo.png",
     "rgb(186, 235, 186)"
   ),
+  new Characters(
+    "characterSan",
+    "San Majutsu-shi",
+    19,
+    `<span style="color:gray; font-weight:1000;">Ainda sem registros...</span>`,
+    Race.Human,
+    CharacterStatus.Alive,
+    "lsdkfhkljs",
+    "Css/assets/charactersSection/withoutText/san withoutText.png",
+    "Css/assets/charactersSection/San corpo completo.png",
+    "rgb(255, 223, 164);"
+  ),
   // Add more characters here...
 ];
 
 const characterImages = document.querySelectorAll(
-  "#characterSinger, #characterAika, #characterMadger"
+  "#characterSinger, #characterAika, #characterMadger, #characterSan"
 ) as NodeListOf<HTMLImageElement>;
 
 const charactersContainer = document.querySelectorAll(

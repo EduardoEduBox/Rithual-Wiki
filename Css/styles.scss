@@ -471,6 +471,7 @@ header {
     display: flex;
     // border: solid 1px;
     padding: 0 5vw;
+    margin-top: 3rem;
 
     div {
       height: 100%;
@@ -562,6 +563,10 @@ header {
 
       #characterMadger {
         height: 96%;
+      }
+
+      #characterSan {
+        height: 99%;
       }
     }
   }
