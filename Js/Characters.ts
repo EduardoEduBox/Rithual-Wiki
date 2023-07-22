@@ -22,6 +22,7 @@ class Characters {
   withoutText: string;
   withText: string;
   colorTheme: string;
+  appeared: boolean
 
   constructor(
     id: string,
@@ -33,7 +34,8 @@ class Characters {
     profile: string,
     withoutText: string,
     withText: string,
-    colorTheme: string
+    colorTheme: string,
+    appeared: boolean
   ) {
     this.id = id;
     this.name = name;
@@ -45,6 +47,7 @@ class Characters {
     this.withoutText = withoutText;
     this.withText = withText;
     this.colorTheme = colorTheme;
+    this.appeared = appeared;
   }
 }
 
@@ -59,19 +62,21 @@ const characters: Characters[] = [
     "sçdf",
     "Css/assets/charactersSection/withoutText/singer withoutText.png",
     "Css/assets/charactersSection/Singer corpo completo.png",
-    "lightblue"
+    "lightblue",
+    true
   ),
   new Characters(
     "characterAika",
     "Aika'nu Zumiki",
     19,
-    `<span style="color:gray; font-weight:1000;">Ainda sem registros...</span>`,
+    `Ainda sem registros...`,
     Race.Demon,
     CharacterStatus.Alive,
     "Css/assets/charactersSection/profile/Aika Profile.png",
     "Css/assets/charactersSection/withoutText/aika withoutText.png",
     "Css/assets/charactersSection/Aika corpo completo.png",
-    "rgb(255, 223, 239)"
+    "rgb(255, 223, 239)",
+    false
   ),
   new Characters(
     "characterMadger",
@@ -83,22 +88,102 @@ const characters: Characters[] = [
     "lsdkfhkljs",
     "Css/assets/charactersSection/withoutText/madger withoutText.png",
     "Css/assets/charactersSection/Madger corpo completo.png",
-    "rgb(186, 235, 186)"
+    "rgb(186, 235, 186)",
+    true
   ),
   new Characters(
     "characterSan",
     "San Majutsu-shi",
     19,
-    `<span style="color:gray; font-weight:1000;">Ainda sem registros...</span>`,
+    `Ainda sem registros...`,
     Race.Human,
     CharacterStatus.Alive,
     "lsdkfhkljs",
     "Css/assets/charactersSection/withoutText/san withoutText.png",
     "Css/assets/charactersSection/San corpo completo.png",
-    "rgb(255, 223, 164);"
+    "rgb(255, 223, 164)",
+    false
   ),
   // Add more characters here...
 ];
+
+class RenderCharacter {
+  // min selector 
+  static c = (el: string) => document.querySelector(el);
+  static charElement: HTMLDivElement;
+  static charactersEl: NodeListOf<HTMLImageElement>;
+
+  static styleInformation(el: HTMLDivElement, appeared: boolean) {
+    if(!appeared) {
+      el.style.color = 'gray';
+      el.style.fontWeight = '1000';
+    }else {
+      el.style.color = 'white';
+      el.style.fontWeight = '400';
+    }
+  }
+
+  static mountStructure(charElement: HTMLDivElement, char: Characters) {
+    this.charElement = charElement;
+
+    if(charElement) {
+      let profilePicture = this.c('.profilePictureDiv img') as HTMLImageElement;
+      let mainImage = this.c('.character-image') as HTMLImageElement;
+      let charBgText = this.c('#characterBackgroundText') as HTMLDivElement;
+      let characterInformation = this.c('#characterInformation') as HTMLDivElement;
+
+      // main application
+      profilePicture.src = char.profile;
+      mainImage.src = char.withoutText;
+      charBgText.innerText = char.name;
+      characterInformation.innerText = char.information;
+      charBgText.style.color = char.colorTheme;
+
+      // secondary application
+      this.styleInformation(characterInformation, char.appeared);
+
+      gsap.fromTo(charElement, {opacity: 0}, {opacity: 1, duration: .5});
+    }else {
+      throw new Error("Invalid classname or not empty");
+    }
+  }
+
+  static renderAnimation(charElement: HTMLDivElement, charactersEl: NodeListOf<HTMLImageElement>, char: Characters) {
+    // animating elements when you click and validate
+    const characterBackgroundText = this.c("#characterBackgroundText") as HTMLTitleElement;
+
+    if (characterBackgroundText) {
+      const characterImage = this.charElement.querySelector(".character-image") as HTMLImageElement;
+
+      let bgTextAnimation = gsap.to(characterBackgroundText, {opacity: 1, x: 0, duration: .5, ease: "power1.out"});
+      let charImageAnimation = gsap.to(characterImage, {opacity: 1, x: 0, duration: .5, ease: "power1.out"});
+    
+      document.querySelector("#close-button")?.addEventListener("click", () => {
+        gsap.to(charElement, {opacity: 0, onComplete:() => {
+          let profilePicture = this.c('.profilePictureDiv img') as HTMLImageElement;
+          let mainImage = this.c('.character-image') as HTMLImageElement;
+          let charBgText = this.c('#characterBackgroundText') as HTMLDivElement;
+          let characterInformation = this.c('#characterInformation') as HTMLDivElement;
+
+          // main application
+          profilePicture!.src = "";
+          mainImage!.src = "";
+          charBgText!.innerText = "";
+          characterInformation!.innerText = "";
+          charBgText!.style.color = "";
+
+          bigContainer.style.height = "100vh";
+          this.styleInformation(characterInformation, char.appeared);
+
+          bgTextAnimation.revert();
+          charImageAnimation.revert();
+
+          gsap.to(charactersEl, {display: 'flex', opacity: 1});
+        }});
+      });
+    }
+  }
+}
 
 const characterImages = document.querySelectorAll(
   "#characterSinger, #characterAika, #characterMadger, #characterSan"
@@ -109,140 +194,43 @@ const charactersContainer = document.querySelectorAll(
 ) as NodeListOf<HTMLDivElement>;
 
 const bigContainer = document.getElementById("characters") as HTMLDivElement;
-const closeButton = document.getElementById("close-button") as HTMLSpanElement;
 
 let validation: Boolean = false;
 
-characterImages.forEach((image, index) => {
-  image.addEventListener("click", () => {
-    console.log(index);
-
-    if (validation !== true) {
-      changeElementsWhenTrue();
+charactersContainer.forEach((el, index) => {
+  // if the character wasn't previously selected
+  el.addEventListener("click", () => {
+    if(!el.classList.contains('activated')) {
+      validation !== true && changeElementsWhenTrue();
     }
   });
 
+  // animate character
   function changeElementsWhenTrue(): void {
-    console.log("clicado caralho");
-
-    TweenMax.to(charactersContainer, 0.5, {
+    gsap.to(charactersContainer, {
+      duration: 0.5, 
       opacity: 0,
       onComplete: () => {
-        charactersContainer[index].style.width = "100%";
         bigContainer.style.height = "110vh";
         charactersContainer.forEach((div, i) => {
-          if (i !== index) {
-            charactersContainer[i].style.display = "none";
-          }
+          charactersContainer[i].style.display = "none";
         });
 
-        TweenMax.to(charactersContainer[index], 1, {
-          opacity: 1,
-          onStart: () => {
-            charactersContainer[index].innerHTML = `
-              <div class="profilePictureDiv">
-                <img src="${characters[index].profile}" />
-              </div>
-              <img
-                src="${characters[index].withoutText}"
-                alt=""
-                class="character-image"
-              />
-              <div id="informationContainer">
-                <h1 id="characterBackgroundText" style="color:${
-                  characters[index].colorTheme
-                }">${characters[index].name.toUpperCase()}</h1>
-                <div id="informationOrganizator">
-                  <p id="characterInformation">${
-                    characters[index].information
-                  }</p>
-                </div>
-              </div>
-              <span id="close-button">
-                <img src="Css/assets/icons/293657_x_icon (1).png" alt=""/>
-              </span>
-            `;
+      let charImageEl = charactersContainer[index].firstElementChild;
+      let currentChar: string = charImageEl!.id;
+      let selectedCharacter = characters.find(el => {return el.id === currentChar});
+  
+      //min selector
+      let c = (el: string) => document.querySelector(el) as HTMLDivElement;
+      
+      gsap.to(el, {
+        onStart: () => {
+          RenderCharacter.mountStructure(c('.character-info')!, selectedCharacter!);
+          RenderCharacter.renderAnimation(c('.character-info')!, document.querySelectorAll('.character'), selectedCharacter!);
+        }
+      });
 
-            // animating elements when you click on one of the characters
-            const characterBackgroundText = document.getElementById(
-              "characterBackgroundText"
-            ) as HTMLTitleElement;
-            if (characterBackgroundText) {
-              characterBackgroundText.style.transform = "translateX(-500px)";
-              characterBackgroundText.style.opacity = "0";
-
-              const characterInformation = document.querySelector(
-                ".characterInformation"
-              ) as HTMLParagraphElement;
-
-              console.log(characterInformation);
-
-              const tl = gsap.timeline();
-              tl.to(characterBackgroundText, {
-                opacity: 1,
-                x: 0,
-                duration: 0.5,
-                ease: "power1.out",
-              }).to(
-                characterInformation,
-                {
-                  opacity: 1,
-                  x: 0,
-                  duration: 0.5,
-                  ease: "power1.out",
-                },
-                "-=0.5"
-              );
-            }
-
-            const characterImage = charactersContainer[index].querySelector(
-              ".character-image"
-            ) as HTMLImageElement;
-            if (characterImage) {
-              characterImage.style.transform = "translateX(500px)";
-              characterImage.style.opacity = "0";
-
-              const tl = gsap.timeline();
-              tl.to(characterImage, {
-                opacity: 1,
-                x: 0,
-                duration: 0.5,
-                ease: "power1.out",
-              });
-            }
-
-            ///////////////////////////////////////////////////////
-
-            // settin the close button event so when we click on it it executes the closing function
-            document
-              .querySelector("#close-button")
-              ?.addEventListener("click", () => {
-                changeElementsWhenFalse();
-              });
-          },
-        });
-      },
+      }
     });
-  }
-
-  function changeElementsWhenFalse(): void {
-    charactersContainer.forEach((div, i) => {
-      div.style.display = "flex";
-      div.style.opacity = "1";
-    });
-
-    charactersContainer[index].style.width = "25%";
-    bigContainer.style.height = "100vh";
-
-    charactersContainer[index].innerHTML = ``;
-    charactersContainer[index].innerHTML = `
-      <img
-        src="${characters[index].withText}"
-        id="${characters[index].id}"
-        class="character-image"
-      />
-    `;
-
-    validation = false;
   }
 });
