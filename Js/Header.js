@@ -70,10 +70,10 @@ const headerButton = document.querySelector(".headerButton");
 let checker = false;
 // console.log(checker);
 
-setTimeout(() => {
-  checker = true;
-  console.log(checker);
-}, 30000);
+// setTimeout(() => {
+//   checker = true;
+//   console.log(checker);
+// }, 30000);
 
 setInterval(() => {
   if (changeHeaderImages[i]) {
@@ -92,7 +92,7 @@ setInterval(() => {
       headerCharacterImages.style.transition = "0ms";
       headerBall.style.transition = "0ms";
 
-      console.log(randomNumber());
+      // console.log(randomNumber());
 
       // setting the custom font and message
       headerTitle.innerHTML = "Eu vejo você";
