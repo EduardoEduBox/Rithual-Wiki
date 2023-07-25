@@ -22,7 +22,7 @@ class Characters {
   withoutText: string;
   withText: string;
   colorTheme: string;
-  appeared: boolean
+  appeared: boolean;
 
   constructor(
     id: string,
@@ -56,7 +56,7 @@ const characters: Characters[] = [
     "characterSinger",
     "Singer Faksumi",
     17,
-    "um jovem aventureiro que nasceu no vilarejo Uxclavasa e sonha em conhecer o mundo e as maravilhas do reino de Belgadina e Ázuma! Ele é muito tímido, pois só começou a interagir com outras crianças aos 10 anos de idade, mas está animado para fazer novos amigos e aprender artes marciais na escola Azumense ruxangai!",
+    "um jovem aventureiro que nasceu no vilarejo Uxclavasa e sonha em conhecer o mundo e as maravilhas do reino de Belgadina e Ázuma!",
     Race.Demon,
     CharacterStatus.Alive,
     "sçdf",
@@ -108,29 +108,31 @@ const characters: Characters[] = [
 ];
 
 class RenderCharacter {
-  // min selector 
+  // min selector
   static c = (el: string) => document.querySelector(el);
   static charElement: HTMLDivElement;
   static charactersEl: NodeListOf<HTMLImageElement>;
 
   static styleInformation(el: HTMLDivElement, appeared: boolean) {
-    if(!appeared) {
-      el.style.color = 'gray';
-      el.style.fontWeight = '1000';
-    }else {
-      el.style.color = 'white';
-      el.style.fontWeight = '400';
+    if (!appeared) {
+      el.style.color = "gray";
+      el.style.fontWeight = "1000";
+    } else {
+      el.style.color = "white";
+      el.style.fontWeight = "400";
     }
   }
 
   static mountStructure(charElement: HTMLDivElement, char: Characters) {
     this.charElement = charElement;
 
-    if(charElement) {
-      let profilePicture = this.c('.profilePictureDiv img') as HTMLImageElement;
-      let mainImage = this.c('.character-image') as HTMLImageElement;
-      let charBgText = this.c('#characterBackgroundText') as HTMLDivElement;
-      let characterInformation = this.c('#characterInformation') as HTMLDivElement;
+    if (charElement) {
+      let profilePicture = this.c(".profilePictureDiv img") as HTMLImageElement;
+      let mainImage = this.c(".character-image") as HTMLImageElement;
+      let charBgText = this.c("#characterBackgroundText") as HTMLDivElement;
+      let characterInformation = this.c(
+        "#characterInformation"
+      ) as HTMLDivElement;
 
       // main application
       profilePicture.src = char.profile;
@@ -142,44 +144,71 @@ class RenderCharacter {
       // secondary application
       this.styleInformation(characterInformation, char.appeared);
 
-      gsap.fromTo(charElement, {opacity: 0}, {opacity: 1, duration: .5});
-    }else {
+      gsap.fromTo(charElement, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+    } else {
       throw new Error("Invalid classname or not empty");
     }
   }
 
-  static renderAnimation(charElement: HTMLDivElement, charactersEl: NodeListOf<HTMLImageElement>, char: Characters) {
+  static renderAnimation(
+    charElement: HTMLDivElement,
+    charactersEl: NodeListOf<HTMLImageElement>,
+    char: Characters
+  ) {
     // animating elements when you click and validate
-    const characterBackgroundText = this.c("#characterBackgroundText") as HTMLTitleElement;
+    const characterBackgroundText = this.c(
+      "#characterBackgroundText"
+    ) as HTMLTitleElement;
 
     if (characterBackgroundText) {
-      const characterImage = this.charElement.querySelector(".character-image") as HTMLImageElement;
+      const characterImage = this.charElement.querySelector(
+        ".character-image"
+      ) as HTMLImageElement;
 
-      let bgTextAnimation = gsap.to(characterBackgroundText, {opacity: 1, x: 0, duration: .5, ease: "power1.out"});
-      let charImageAnimation = gsap.to(characterImage, {opacity: 1, x: 0, duration: .5, ease: "power1.out"});
-    
+      let bgTextAnimation = gsap.to(characterBackgroundText, {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        ease: "power1.out",
+      });
+      let charImageAnimation = gsap.to(characterImage, {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        ease: "power1.out",
+      });
+
       document.querySelector("#close-button")?.addEventListener("click", () => {
-        gsap.to(charElement, {opacity: 0, onComplete:() => {
-          let profilePicture = this.c('.profilePictureDiv img') as HTMLImageElement;
-          let mainImage = this.c('.character-image') as HTMLImageElement;
-          let charBgText = this.c('#characterBackgroundText') as HTMLDivElement;
-          let characterInformation = this.c('#characterInformation') as HTMLDivElement;
+        gsap.to(charElement, {
+          opacity: 0,
+          onComplete: () => {
+            let profilePicture = this.c(
+              ".profilePictureDiv img"
+            ) as HTMLImageElement;
+            let mainImage = this.c(".character-image") as HTMLImageElement;
+            let charBgText = this.c(
+              "#characterBackgroundText"
+            ) as HTMLDivElement;
+            let characterInformation = this.c(
+              "#characterInformation"
+            ) as HTMLDivElement;
 
-          // main application
-          profilePicture!.src = "";
-          mainImage!.src = "";
-          charBgText!.innerText = "";
-          characterInformation!.innerText = "";
-          charBgText!.style.color = "";
+            // main application
+            profilePicture!.src = "";
+            mainImage!.src = "";
+            charBgText!.innerText = "";
+            characterInformation!.innerText = "";
+            charBgText!.style.color = "";
 
-          bigContainer.style.height = "100vh";
-          this.styleInformation(characterInformation, char.appeared);
+            bigContainer.style.height = "100vh";
+            this.styleInformation(characterInformation, char.appeared);
 
-          bgTextAnimation.revert();
-          charImageAnimation.revert();
+            bgTextAnimation.revert();
+            charImageAnimation.revert();
 
-          gsap.to(charactersEl, {display: 'flex', opacity: 1});
-        }});
+            gsap.to(charactersEl, { display: "flex", opacity: 1 });
+          },
+        });
       });
     }
   }
@@ -200,7 +229,7 @@ let validation: Boolean = false;
 charactersContainer.forEach((el, index) => {
   // if the character wasn't previously selected
   el.addEventListener("click", () => {
-    if(!el.classList.contains('activated')) {
+    if (!el.classList.contains("activated")) {
       validation !== true && changeElementsWhenTrue();
     }
   });
@@ -208,7 +237,7 @@ charactersContainer.forEach((el, index) => {
   // animate character
   function changeElementsWhenTrue(): void {
     gsap.to(charactersContainer, {
-      duration: 0.5, 
+      duration: 0.5,
       opacity: 0,
       onComplete: () => {
         bigContainer.style.height = "110vh";
@@ -216,21 +245,29 @@ charactersContainer.forEach((el, index) => {
           charactersContainer[i].style.display = "none";
         });
 
-      let charImageEl = charactersContainer[index].firstElementChild;
-      let currentChar: string = charImageEl!.id;
-      let selectedCharacter = characters.find(el => {return el.id === currentChar});
-  
-      //min selector
-      let c = (el: string) => document.querySelector(el) as HTMLDivElement;
-      
-      gsap.to(el, {
-        onStart: () => {
-          RenderCharacter.mountStructure(c('.character-info')!, selectedCharacter!);
-          RenderCharacter.renderAnimation(c('.character-info')!, document.querySelectorAll('.character'), selectedCharacter!);
-        }
-      });
+        let charImageEl = charactersContainer[index].firstElementChild;
+        let currentChar: string = charImageEl!.id;
+        let selectedCharacter = characters.find((el) => {
+          return el.id === currentChar;
+        });
 
-      }
+        //min selector
+        let c = (el: string) => document.querySelector(el) as HTMLDivElement;
+
+        gsap.to(el, {
+          onStart: () => {
+            RenderCharacter.mountStructure(
+              c(".character-info")!,
+              selectedCharacter!
+            );
+            RenderCharacter.renderAnimation(
+              c(".character-info")!,
+              document.querySelectorAll(".character"),
+              selectedCharacter!
+            );
+          },
+        });
+      },
     });
   }
 });

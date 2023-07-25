@@ -413,13 +413,6 @@ header #headerImageContainer .headerImageBall {
   position: relative;
 }
 #characters #charactersContainer div .profilePictureDiv {
-  /* width: 30vh;
-  height: 30vh;
-  border-radius: 50vh;
-  position: absolute;
-  /* left: -1rem; */
-  /* top: 5rem; */
-
   width: 30vh;
   height: 30vh;
   border-radius: 50vh;
@@ -427,24 +420,18 @@ header #headerImageContainer .headerImageBall {
   left: -1rem;
   top: -2.5rem;
 }
-.mainImageContainer {
-  height: 100%; 
-  display: flex; 
-  justify-content: center;
-}
-
 #characters #charactersContainer div .profilePictureDiv img {
   height: 100%;
   width: 100%;
   border-radius: 50vh;
-  translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px); height: 100%;
+  translate: none;
+  rotate: none;
+  scale: none;
+  opacity: 1;
+  transform: translate(0px, 0px);
+  height: 100%;
 }
 #characters #charactersContainer div #informationContainer {
-  /* width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0; */
-
   width: 100%;
   height: 100%;
   position: absolute;
@@ -458,17 +445,13 @@ header #headerImageContainer .headerImageBall {
   font-size: 9vw;
   z-index: -1;
   white-space: nowrap;
-  translate: none; 
-  rotate: none; 
-  scale: none; 
-  opacity: 1; 
+  translate: none;
+  rotate: none;
+  scale: none;
+  opacity: 1;
   transform: translate(-150px, 0px);
 }
 #characters #charactersContainer div #informationContainer #informationOrganizator {
-  /* width: 90%;
-  position: absolute;
-  height: 100%; */
-
   width: 100%;
   position: absolute;
   height: 50%;
@@ -477,18 +460,10 @@ header #headerImageContainer .headerImageBall {
   justify-content: center;
 }
 #characters #charactersContainer div #informationContainer #informationOrganizator #characterInformation {
-  /* position: absolute;
-  bottom: 10%;
-  left: 55%;
-  padding: 0 8vw 0 2vw;
-  z-index: -1;
-  text-align: center;
-  margin-top: 0; */
-  
   position: absolute;
   top: 0;
   left: 55%;
-  padding: 0 8vw 0 2vw;
+  padding: 0 15vw 0 2vw;
   z-index: -1;
   text-align: center;
   margin-top: 0;
@@ -522,6 +497,21 @@ header #headerImageContainer .headerImageBall {
   height: 99%;
 }
 
+.mainImageContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.character-info {
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
 .character-info .character-image {
   transform: translate(150px, 0px);
 }
@@ -541,20 +531,6 @@ footer {
 }
 footer strong {
   color: pink;
-}
-
-.character-info {
-  /* width: 100%;
-  height: 100%;
-  opacity: 0; */
-
-  opacity: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  position: relative;
 }
 
 @media (max-width: 1279px) {

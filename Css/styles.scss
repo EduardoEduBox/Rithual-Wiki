@@ -414,16 +414,13 @@ header {
 #characters {
   width: 100%;
   height: 100vh;
-  // border: solid 1px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-
   * {
     transition: none !important;
   }
-
   #characterBackgroundSidewaysBar {
     position: absolute;
     width: 200%;
@@ -433,7 +430,6 @@ header {
     z-index: -1;
     top: 44%;
     opacity: 20%;
-
     &::after {
       position: absolute;
       content: "";
@@ -444,19 +440,17 @@ header {
       transform: rotate(-9.5deg);
     }
   }
-
   #charactersTitle {
     font-size: 4.8vw;
     margin-bottom: 1vh;
     margin-top: 0;
-    color: $light-pink-color;
+    color: rgb(255, 223, 239);
   }
-
   strong {
     top: -2.5rem;
     position: absolute;
     font-size: 9vw;
-    color: rgb(18 18 18);
+    color: rgb(18, 18, 18);
     text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239),
       0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239),
       1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff,
@@ -464,25 +458,21 @@ header {
     opacity: 15%;
     z-index: -1;
   }
-
   #charactersContainer {
     width: 100%;
     height: calc(100% - 9vw);
     display: flex;
-    // border: solid 1px;
     padding: 0 5vw;
     margin-top: 3rem;
-
-    div {
+    .character {
       height: 100%;
       width: 25%;
-      // border: solid 1px green;
       display: flex;
       align-items: flex-end;
       justify-content: center;
       position: relative;
-
-      /////////// from TS
+    }
+    div {
       .profilePictureDiv {
         width: 30vh;
         height: 30vh;
@@ -490,85 +480,101 @@ header {
         position: absolute;
         left: -1rem;
         top: -2.5rem;
-
         img {
           height: 100%;
           width: 100%;
           border-radius: 50vh;
+          translate: none;
+          rotate: none;
+          scale: none;
+          opacity: 1;
+          transform: translate(0px, 0px);
+          height: 100%;
         }
       }
-
       #informationContainer {
         width: 100%;
         height: 100%;
         position: absolute;
-        // border: solid 1px;
-
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
         #characterBackgroundText {
           position: absolute;
           top: 10%;
-          // left: 50%;
-          // transform: translate(-50%);
           font-size: 9vw;
           z-index: -1;
           white-space: nowrap;
+          translate: none;
+          rotate: none;
+          scale: none;
+          opacity: 1;
+          transform: translate(-150px, 0px);
         }
-
         #informationOrganizator {
           width: 100%;
           position: absolute;
-          // border: solid 1px green;
           height: 50%;
-
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
           #characterInformation {
             position: absolute;
             top: 0;
             left: 55%;
-            padding: 0 8vw 0 2vw;
+            padding: 0 15vw 0 2vw;
             z-index: -1;
             text-align: center;
             margin-top: 0;
           }
         }
       }
-
       #close-button {
         position: absolute;
-        right: 0;
+        right: 5%;
         top: 10%;
         cursor: pointer;
-
         img {
           height: 2rem;
           width: 5rem;
           opacity: 80%;
-
           &:hover {
-            content: url("./assets/icons/pngwing.com\ \(2\).png");
+            content: url("./assets/icons/pngwing.com (2).png");
           }
         }
       }
-      ////////////////////////
-
       img {
         width: auto;
         height: 100%;
         cursor: pointer;
       }
-
-      // just a custom configuration for the characters
       #characterAika {
         height: 92%;
       }
-
       #characterMadger {
         height: 96%;
       }
-
       #characterSan {
         height: 99%;
       }
     }
+  }
+}
+.mainImageContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.character-info {
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  .character-image {
+    transform: translate(150px, 0px);
   }
 }
 
