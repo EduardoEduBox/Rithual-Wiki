@@ -51,11 +51,56 @@ class RenderCharacter {
             let mainImage = this.c(".character-image");
             let charBgText = this.c("#characterBackgroundText");
             let characterInformation = this.c("#characterInformation");
+            let characterAge = this.c("#characterAge");
+            let characterStatus = this.c("#characterStatus");
+            let characterRace = this.c("#characterRace");
+            const changeSpanColor = () => {
+                let ageColor = this.c(".ageColor");
+                let statusColor = this.c(".statusColor");
+                let raceColor = this.c(".raceColor");
+                ageColor.innerHTML = `${char.age}`;
+                ageColor.style.color = char.colorTheme;
+                statusColor.innerHTML = char.currentStatus;
+                switch (char.currentStatus) {
+                    case "Desaparecido":
+                        statusColor.style.color = "yellow";
+                        break;
+                    case "Morto":
+                        statusColor.style.color = "red";
+                        break;
+                    case "Vivo":
+                        statusColor.style.color = "lightgreen";
+                        break;
+                    default:
+                        throw new Error("Invalid status value");
+                }
+                raceColor.innerHTML = char.race;
+                switch (char.race) {
+                    case "Humano":
+                        raceColor.style.color = "lightgreen";
+                        break;
+                    case "Demônio":
+                        raceColor.style.color = "#ff79ff";
+                        break;
+                    case "Apocalipsun":
+                        raceColor.style.color = "red";
+                        break;
+                    case "Arcanjo":
+                        raceColor.style.color = "yellow";
+                        break;
+                    default:
+                        throw new Error("Invalid race value");
+                }
+            };
             profilePicture.src = char.profile;
             mainImage.src = char.withoutText;
             charBgText.innerText = char.name;
             characterInformation.innerText = char.information;
             charBgText.style.color = char.colorTheme;
+            characterAge.innerHTML += `Idade:`;
+            characterStatus.innerHTML += `Status:`;
+            characterRace.innerHTML += `Raça:`;
+            changeSpanColor();
             this.styleInformation(characterInformation, char.appeared);
             gsap.fromTo(charElement, { opacity: 0 }, { opacity: 1, duration: 0.5 });
         }
@@ -88,11 +133,23 @@ class RenderCharacter {
                         let mainImage = this.c(".character-image");
                         let charBgText = this.c("#characterBackgroundText");
                         let characterInformation = this.c("#characterInformation");
+                        let characterAge = this.c("#characterAge");
+                        let characterStatus = this.c("#characterStatus");
+                        let characterRace = this.c("#characterRace");
+                        let ageColor = this.c(".ageColor");
+                        let statusColor = this.c(".statusColor");
+                        let raceColor = this.c(".raceColor");
                         profilePicture.src = "";
                         mainImage.src = "";
                         charBgText.innerText = "";
                         characterInformation.innerText = "";
                         charBgText.style.color = "";
+                        characterAge.textContent = "";
+                        characterStatus.textContent = "";
+                        characterRace.textContent = "";
+                        ageColor.textContent = "";
+                        statusColor.textContent = "";
+                        raceColor.textContent = "";
                         bigContainer.style.height = "100vh";
                         this.styleInformation(characterInformation, char.appeared);
                         bgTextAnimation.revert();

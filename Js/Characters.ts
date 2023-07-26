@@ -133,6 +133,65 @@ class RenderCharacter {
       let characterInformation = this.c(
         "#characterInformation"
       ) as HTMLDivElement;
+      let characterAge = this.c("#characterAge") as HTMLHeadingElement;
+      let characterStatus = this.c("#characterStatus") as HTMLHeadingElement;
+      let characterRace = this.c("#characterRace") as HTMLHeadingElement;
+
+      const changeSpanColor = () => {
+        let ageColor = this.c(".ageColor") as HTMLSpanElement;
+        let statusColor = this.c(".statusColor") as HTMLSpanElement;
+        let raceColor = this.c(".raceColor") as HTMLSpanElement;
+
+        // setting the color span value
+        ageColor.innerHTML = `${char.age}`;
+        ageColor.style.color = char.colorTheme;
+
+        // this condition sets the color of the status
+
+        statusColor.innerHTML = char.currentStatus;
+
+        switch (char.currentStatus) {
+          case "Desaparecido":
+            statusColor.style.color = "yellow";
+            break;
+
+          case "Morto":
+            statusColor.style.color = "red";
+            break;
+
+          case "Vivo":
+            statusColor.style.color = "lightgreen";
+            break;
+
+          default:
+            throw new Error("Invalid status value");
+        }
+
+        // this condition sets the color of the race
+
+        raceColor.innerHTML = char.race;
+
+        switch (char.race) {
+          case "Humano":
+            raceColor.style.color = "lightgreen";
+            break;
+
+          case "Demônio":
+            raceColor.style.color = "#ff79ff";
+            break;
+
+          case "Apocalipsun":
+            raceColor.style.color = "red";
+            break;
+
+          case "Arcanjo":
+            raceColor.style.color = "yellow";
+            break;
+
+          default:
+            throw new Error("Invalid race value");
+        }
+      };
 
       // main application
       profilePicture.src = char.profile;
@@ -140,6 +199,11 @@ class RenderCharacter {
       charBgText.innerText = char.name;
       characterInformation.innerText = char.information;
       charBgText.style.color = char.colorTheme;
+      characterAge.innerHTML += `Idade:`;
+      characterStatus.innerHTML += `Status:`;
+      characterRace.innerHTML += `Raça:`;
+
+      changeSpanColor();
 
       // secondary application
       this.styleInformation(characterInformation, char.appeared);
@@ -192,6 +256,14 @@ class RenderCharacter {
             let characterInformation = this.c(
               "#characterInformation"
             ) as HTMLDivElement;
+            let characterAge = this.c("#characterAge") as HTMLHeadingElement;
+            let characterStatus = this.c(
+              "#characterStatus"
+            ) as HTMLHeadingElement;
+            let characterRace = this.c("#characterRace") as HTMLHeadingElement;
+            let ageColor = this.c(".ageColor") as HTMLSpanElement;
+            let statusColor = this.c(".statusColor") as HTMLSpanElement;
+            let raceColor = this.c(".raceColor") as HTMLSpanElement;
 
             // main application
             profilePicture!.src = "";
@@ -199,6 +271,12 @@ class RenderCharacter {
             charBgText!.innerText = "";
             characterInformation!.innerText = "";
             charBgText!.style.color = "";
+            characterAge!.textContent = "";
+            characterStatus!.textContent = "";
+            characterRace!.textContent = "";
+            ageColor.textContent = "";
+            statusColor.textContent = "";
+            raceColor.textContent = "";
 
             bigContainer.style.height = "100vh";
             this.styleInformation(characterInformation, char.appeared);
