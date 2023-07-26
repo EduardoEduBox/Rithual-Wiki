@@ -654,6 +654,24 @@ footer strong {
   #chapters #chaptersContainer img {
     height: 95%;
   }
+  #characters ::-webkit-scrollbar {
+    width: 0vh;
+    height: 0.7vh;
+  }
+  #characters #characterBackgroundSidewaysBar {
+    top: 31%;
+  }
+  #characters #characterBackgroundSidewaysBar::after {
+    height: 15vh;
+    bottom: 2rem;
+    transform: rotate(-13.5deg);
+  }
+  #characters #charactersContainer {
+    overflow-x: auto;
+  }
+  #characters #charactersContainer .character {
+    width: 100%;
+  }
   footer {
     font-size: 1rem;
   }
