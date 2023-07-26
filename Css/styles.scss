@@ -418,9 +418,11 @@ header {
   flex-direction: column;
   align-items: center;
   position: relative;
+
   * {
     transition: none !important;
   }
+
   #characterBackgroundSidewaysBar {
     position: absolute;
     width: 200%;
@@ -440,12 +442,14 @@ header {
       transform: rotate(-9.5deg);
     }
   }
+
   #charactersTitle {
     font-size: 4.8vw;
     margin-bottom: 1vh;
     margin-top: 0;
     color: rgb(255, 223, 239);
   }
+
   strong {
     top: -2.5rem;
     position: absolute;
@@ -458,12 +462,14 @@ header {
     opacity: 15%;
     z-index: -1;
   }
+
   #charactersContainer {
     width: 100%;
     height: calc(100% - 9vw);
     display: flex;
     padding: 0 5vw;
     margin-top: 3rem;
+
     .character {
       height: 100%;
       width: 25%;
@@ -472,6 +478,7 @@ header {
       justify-content: center;
       position: relative;
     }
+
     div {
       .profilePictureDiv {
         width: 30vh;
@@ -480,6 +487,7 @@ header {
         position: absolute;
         left: -1rem;
         top: -2.5rem;
+
         img {
           height: 100%;
           width: 100%;
@@ -499,6 +507,7 @@ header {
         display: flex;
         align-items: flex-end;
         justify-content: center;
+
         #characterBackgroundText {
           position: absolute;
           top: 10%;
@@ -511,6 +520,7 @@ header {
           opacity: 1;
           transform: translate(-150px, 0px);
         }
+
         #informationOrganizator {
           width: 100%;
           position: absolute;
@@ -518,6 +528,7 @@ header {
           display: flex;
           align-items: flex-end;
           justify-content: center;
+
           #characterInformation {
             position: absolute;
             top: 0;
@@ -529,11 +540,13 @@ header {
           }
         }
       }
+
       #close-button {
         position: absolute;
         right: 5%;
         top: 10%;
         cursor: pointer;
+
         img {
           height: 2rem;
           width: 5rem;
@@ -543,28 +556,34 @@ header {
           }
         }
       }
+
       img {
         width: auto;
         height: 100%;
         cursor: pointer;
       }
+
       #characterAika {
         height: 92%;
       }
+
       #characterMadger {
         height: 96%;
       }
+
       #characterSan {
         height: 99%;
       }
     }
   }
 }
+
 .mainImageContainer {
   height: 100%;
   display: flex;
   justify-content: center;
 }
+
 .character-info {
   opacity: 0;
   height: 100%;
@@ -573,6 +592,7 @@ header {
   align-items: flex-end;
   justify-content: center;
   position: relative;
+
   .character-image {
     transform: translate(150px, 0px);
   }
@@ -604,6 +624,12 @@ footer {
   }
 
   nav {
+    padding: 0 3vw 0 3vw;
+
+    #navLogo {
+      height: 70%;
+    }
+
     #menuIcon {
       display: block;
       cursor: pointer;
@@ -613,8 +639,9 @@ footer {
 
     div {
       h1 {
-        font-size: 2.3rem;
-        bottom: -30%;
+        font-size: 2rem;
+        bottom: auto;
+        top: -20px;
       }
     }
 
@@ -696,29 +723,35 @@ footer {
   // header here vvvvvvvvvv
 
   header {
-    height: fit-content;
+    height: 100vh;
     flex-direction: column;
 
     #headerInformationContainer {
       padding: 7vh 5vw 7vh 5vw;
       width: 100%;
 
-      h1 {
-        font-size: calc(2rem + 4vw);
-        margin: 6vh 0 5vh 0;
+      .headerTitle {
+        font-size: 2.5rem;
+        margin-top: 6vh;
       }
 
-      p {
-        padding: 0;
-        margin-top: 0;
-        text-align: center !important;
+      .paragraphContainer {
+        margin: 0;
 
-        &::before {
-          width: calc(100% - -6vw);
+        .headerParagraph {
+          padding: 0 7.5vw !important;
+          font-size: 1.2rem;
+          margin-top: 0;
+          text-align: center !important;
+
+          &::before {
+            width: calc(100% - 1rem);
+          }
         }
       }
 
-      h4 {
+      .headerKnowMore {
+        font-size: 1.5rem;
         margin-top: 0;
         margin-left: 1vw;
       }
@@ -773,11 +806,71 @@ footer {
       }
     }
 
+    #charactersTitle {
+    }
+
+    strong {
+    }
+
     #charactersContainer {
       overflow-x: auto;
 
       .character {
         width: 100%;
+      }
+
+      div {
+        .profilePictureDiv {
+          display: none;
+
+          img {
+          }
+        }
+
+        #informationContainer {
+          padding: 0;
+
+          #characterBackgroundText {
+            writing-mode: vertical-rl;
+            left: 0;
+            position: absolute;
+            font-size: 11vh;
+            transform: translate(-75px, 0px) !important;
+          }
+
+          #informationOrganizator {
+            height: 100%;
+
+            #characterInformation {
+              display: none;
+            }
+          }
+        }
+
+        #close-button {
+          img {
+            height: 1.3rem;
+            width: 3rem;
+          }
+        }
+
+        #characterSinger {
+          width: auto;
+          height: 100%;
+          cursor: pointer;
+        }
+
+        #characterAika {
+          height: 92%;
+        }
+
+        #characterMadger {
+          height: 96%;
+        }
+
+        #characterSan {
+          height: 99%;
+        }
       }
     }
   }

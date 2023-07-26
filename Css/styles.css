@@ -537,6 +537,12 @@ footer strong {
   body {
     font-size: 1rem;
   }
+  nav {
+    padding: 0 3vw 0 3vw;
+  }
+  nav #navLogo {
+    height: 70%;
+  }
   nav #menuIcon {
     display: block;
     cursor: pointer;
@@ -544,8 +550,9 @@ footer strong {
     width: auto;
   }
   nav div h1 {
-    font-size: 2.3rem;
-    bottom: -30%;
+    font-size: 2rem;
+    bottom: auto;
+    top: -20px;
   }
   nav ul {
     display: none;
@@ -608,27 +615,31 @@ footer strong {
     background-color: white;
   }
   header {
-    height: -moz-fit-content;
-    height: fit-content;
+    height: 100vh;
     flex-direction: column;
   }
   header #headerInformationContainer {
     padding: 7vh 5vw 7vh 5vw;
     width: 100%;
   }
-  header #headerInformationContainer h1 {
-    font-size: calc(2rem + 4vw);
-    margin: 6vh 0 5vh 0;
+  header #headerInformationContainer .headerTitle {
+    font-size: 2.5rem;
+    margin-top: 6vh;
   }
-  header #headerInformationContainer p {
-    padding: 0;
+  header #headerInformationContainer .paragraphContainer {
+    margin: 0;
+  }
+  header #headerInformationContainer .paragraphContainer .headerParagraph {
+    padding: 0 7.5vw !important;
+    font-size: 1.2rem;
     margin-top: 0;
     text-align: center !important;
   }
-  header #headerInformationContainer p::before {
-    width: calc(100% + 6vw);
+  header #headerInformationContainer .paragraphContainer .headerParagraph::before {
+    width: calc(100% - 1rem);
   }
-  header #headerInformationContainer h4 {
+  header #headerInformationContainer .headerKnowMore {
+    font-size: 1.5rem;
     margin-top: 0;
     margin-left: 1vw;
   }
@@ -671,6 +682,43 @@ footer strong {
   }
   #characters #charactersContainer .character {
     width: 100%;
+  }
+  #characters #charactersContainer div .profilePictureDiv {
+    display: none;
+  }
+  #characters #charactersContainer div #informationContainer {
+    padding: 0;
+  }
+  #characters #charactersContainer div #informationContainer #characterBackgroundText {
+    writing-mode: vertical-rl;
+    left: 0;
+    position: absolute;
+    font-size: 11vh;
+    transform: translate(-75px, 0px) !important;
+  }
+  #characters #charactersContainer div #informationContainer #informationOrganizator {
+    height: 100%;
+  }
+  #characters #charactersContainer div #informationContainer #informationOrganizator #characterInformation {
+    display: none;
+  }
+  #characters #charactersContainer div #close-button img {
+    height: 1.3rem;
+    width: 3rem;
+  }
+  #characters #charactersContainer div #characterSinger {
+    width: auto;
+    height: 100%;
+    cursor: pointer;
+  }
+  #characters #charactersContainer div #characterAika {
+    height: 92%;
+  }
+  #characters #charactersContainer div #characterMadger {
+    height: 96%;
+  }
+  #characters #charactersContainer div #characterSan {
+    height: 99%;
   }
   footer {
     font-size: 1rem;

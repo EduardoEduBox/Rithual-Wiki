@@ -240,7 +240,10 @@ charactersContainer.forEach((el, index) => {
       duration: 0.5,
       opacity: 0,
       onComplete: () => {
-        bigContainer.style.height = "110vh";
+        if (window.innerWidth > 1279) {
+          bigContainer.style.height = "110vh";
+        }
+
         charactersContainer.forEach((div, i) => {
           charactersContainer[i].style.display = "none";
         });
