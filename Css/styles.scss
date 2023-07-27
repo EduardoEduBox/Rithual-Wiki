@@ -533,7 +533,7 @@ header {
             position: absolute;
             top: 0;
             left: 55%;
-            padding: 2vw;
+            padding-left: 3vw;
             z-index: -1;
             text-align: center;
             margin-top: 0;
@@ -548,13 +548,13 @@ header {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            padding: 3vh 0;
+            padding: 1vh 0;
 
             div {
               display: flex;
               flex-direction: row;
               justify-content: flex-start;
-              gap: 1rem;
+              gap: 0.8rem;
               align-items: center;
 
               span {

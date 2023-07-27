@@ -57,7 +57,7 @@ const characters: Characters[] = [
     "Singer Faksumi",
     17,
     "um jovem aventureiro que nasceu no vilarejo Uxclavasa e sonha em conhecer o mundo e as maravilhas do reino de Belgadina e Ázuma!",
-    Race.Demon,
+    Race.Human,
     CharacterStatus.Alive,
     "sçdf",
     "Css/assets/charactersSection/withoutText/singer withoutText.png",
@@ -114,6 +114,8 @@ class RenderCharacter {
   static charactersEl: NodeListOf<HTMLImageElement>;
 
   static styleInformation(el: HTMLDivElement, appeared: boolean) {
+    // this condition here checks if the character selected appeared, if false, change the color to gray
+
     if (!appeared) {
       el.style.color = "gray";
       el.style.fontWeight = "1000";
@@ -142,54 +144,63 @@ class RenderCharacter {
         let statusColor = this.c(".statusColor") as HTMLSpanElement;
         let raceColor = this.c(".raceColor") as HTMLSpanElement;
 
-        // setting the color span value
-        ageColor.innerHTML = `${char.age}`;
-        ageColor.style.color = char.colorTheme;
+        if (char.appeared) {
+          // setting the color and content to the span's value
+          ageColor.innerHTML = `${char.age}`;
+          ageColor.style.color = char.colorTheme;
 
-        // this condition sets the color of the status
+          // this condition sets the color and the content of the status
 
-        statusColor.innerHTML = char.currentStatus;
+          statusColor.innerHTML = char.currentStatus;
 
-        switch (char.currentStatus) {
-          case "Desaparecido":
-            statusColor.style.color = "yellow";
-            break;
+          switch (char.currentStatus) {
+            case "Desaparecido":
+              statusColor.style.color = "yellow";
+              break;
 
-          case "Morto":
-            statusColor.style.color = "red";
-            break;
+            case "Morto":
+              statusColor.style.color = "red";
+              break;
 
-          case "Vivo":
-            statusColor.style.color = "lightgreen";
-            break;
+            case "Vivo":
+              statusColor.style.color = "lightgreen";
+              break;
 
-          default:
-            throw new Error("Invalid status value");
-        }
+            default:
+              throw new Error("Invalid status value");
+          }
 
-        // this condition sets the color of the race
+          // this condition sets the color of the race
 
-        raceColor.innerHTML = char.race;
+          raceColor.innerHTML = char.race;
 
-        switch (char.race) {
-          case "Humano":
-            raceColor.style.color = "lightgreen";
-            break;
+          switch (char.race) {
+            case "Humano":
+              raceColor.style.color = "lightgreen";
+              break;
 
-          case "Demônio":
-            raceColor.style.color = "#ff79ff";
-            break;
+            case "Demônio":
+              raceColor.style.color = "#ff79ff";
+              break;
 
-          case "Apocalipsun":
-            raceColor.style.color = "red";
-            break;
+            case "Apocalipsun":
+              raceColor.style.color = "red";
+              break;
 
-          case "Arcanjo":
-            raceColor.style.color = "yellow";
-            break;
+            case "Arcanjo":
+              raceColor.style.color = "yellow";
+              break;
 
-          default:
-            throw new Error("Invalid race value");
+            default:
+              throw new Error("Invalid race value");
+          }
+        } else {
+          ageColor.innerHTML = "?";
+          statusColor.innerHTML = "?";
+          raceColor.innerHTML = "?";
+          ageColor.style.color = "gray";
+          raceColor.style.color = "gray";
+          statusColor.style.color = "gray";
         }
       };
 

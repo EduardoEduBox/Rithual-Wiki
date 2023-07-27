@@ -28,7 +28,7 @@ class Characters {
     }
 }
 const characters = [
-    new Characters("characterSinger", "Singer Faksumi", 17, "um jovem aventureiro que nasceu no vilarejo Uxclavasa e sonha em conhecer o mundo e as maravilhas do reino de Belgadina e Ázuma!", Race.Demon, CharacterStatus.Alive, "sçdf", "Css/assets/charactersSection/withoutText/singer withoutText.png", "Css/assets/charactersSection/Singer corpo completo.png", "lightblue", true),
+    new Characters("characterSinger", "Singer Faksumi", 17, "um jovem aventureiro que nasceu no vilarejo Uxclavasa e sonha em conhecer o mundo e as maravilhas do reino de Belgadina e Ázuma!", Race.Human, CharacterStatus.Alive, "sçdf", "Css/assets/charactersSection/withoutText/singer withoutText.png", "Css/assets/charactersSection/Singer corpo completo.png", "lightblue", true),
     new Characters("characterAika", "Aika'nu Zumiki", 19, `Ainda sem registros...`, Race.Demon, CharacterStatus.Alive, "Css/assets/charactersSection/profile/Aika Profile.png", "Css/assets/charactersSection/withoutText/aika withoutText.png", "Css/assets/charactersSection/Aika corpo completo.png", "rgb(255, 223, 239)", false),
     new Characters("characterMadger", "Madger Yasáshi", 17, "Artista marcial nascido na vila Yasáshi, após uma batalha curta e sangrenta, Madger perdeu pessoas preciosas quando ainda era criança, agora, ele busca honrar aqueles que lutaram por ele em sua antiga vila!", Race.Human, CharacterStatus.Alive, "lsdkfhkljs", "Css/assets/charactersSection/withoutText/madger withoutText.png", "Css/assets/charactersSection/Madger corpo completo.png", "rgb(186, 235, 186)", true),
     new Characters("characterSan", "San Majutsu-shi", 19, `Ainda sem registros...`, Race.Human, CharacterStatus.Alive, "lsdkfhkljs", "Css/assets/charactersSection/withoutText/san withoutText.png", "Css/assets/charactersSection/San corpo completo.png", "rgb(255, 223, 164)", false),
@@ -58,38 +58,48 @@ class RenderCharacter {
                 let ageColor = this.c(".ageColor");
                 let statusColor = this.c(".statusColor");
                 let raceColor = this.c(".raceColor");
-                ageColor.innerHTML = `${char.age}`;
-                ageColor.style.color = char.colorTheme;
-                statusColor.innerHTML = char.currentStatus;
-                switch (char.currentStatus) {
-                    case "Desaparecido":
-                        statusColor.style.color = "yellow";
-                        break;
-                    case "Morto":
-                        statusColor.style.color = "red";
-                        break;
-                    case "Vivo":
-                        statusColor.style.color = "lightgreen";
-                        break;
-                    default:
-                        throw new Error("Invalid status value");
+                if (char.appeared) {
+                    ageColor.innerHTML = `${char.age}`;
+                    ageColor.style.color = char.colorTheme;
+                    statusColor.innerHTML = char.currentStatus;
+                    switch (char.currentStatus) {
+                        case "Desaparecido":
+                            statusColor.style.color = "yellow";
+                            break;
+                        case "Morto":
+                            statusColor.style.color = "red";
+                            break;
+                        case "Vivo":
+                            statusColor.style.color = "lightgreen";
+                            break;
+                        default:
+                            throw new Error("Invalid status value");
+                    }
+                    raceColor.innerHTML = char.race;
+                    switch (char.race) {
+                        case "Humano":
+                            raceColor.style.color = "lightgreen";
+                            break;
+                        case "Demônio":
+                            raceColor.style.color = "#ff79ff";
+                            break;
+                        case "Apocalipsun":
+                            raceColor.style.color = "red";
+                            break;
+                        case "Arcanjo":
+                            raceColor.style.color = "yellow";
+                            break;
+                        default:
+                            throw new Error("Invalid race value");
+                    }
                 }
-                raceColor.innerHTML = char.race;
-                switch (char.race) {
-                    case "Humano":
-                        raceColor.style.color = "lightgreen";
-                        break;
-                    case "Demônio":
-                        raceColor.style.color = "#ff79ff";
-                        break;
-                    case "Apocalipsun":
-                        raceColor.style.color = "red";
-                        break;
-                    case "Arcanjo":
-                        raceColor.style.color = "yellow";
-                        break;
-                    default:
-                        throw new Error("Invalid race value");
+                else {
+                    ageColor.innerHTML = "?";
+                    statusColor.innerHTML = "?";
+                    raceColor.innerHTML = "?";
+                    ageColor.style.color = "gray";
+                    raceColor.style.color = "gray";
+                    statusColor.style.color = "gray";
                 }
             };
             profilePicture.src = char.profile;
