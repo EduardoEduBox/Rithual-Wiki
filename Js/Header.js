@@ -70,10 +70,10 @@ const headerButton = document.querySelector(".headerButton");
 let checker = false;
 // console.log(checker);
 
-// setTimeout(() => {
-//   checker = true;
-//   console.log(checker);
-// }, 30000);
+setTimeout(() => {
+  checker = true;
+  console.log(checker);
+}, 30000);
 
 setInterval(() => {
   if (changeHeaderImages[i]) {
