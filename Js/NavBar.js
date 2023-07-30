@@ -25,14 +25,10 @@ hamburguerIcon.addEventListener("click", function () {
     setTimeout(() => {
       navElements.style.right = "0";
     }, 0);
-
-    console.log("if");
   } else {
     hamburguerIcon.src = "Css/assets/icon.png";
 
     navElements.style.right = `calc(-${navElements.offsetWidth}px - 1.5rem)`;
-
-    console.log("else");
   }
 });
 

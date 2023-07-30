@@ -72,7 +72,6 @@ let checker = false;
 
 setTimeout(() => {
   checker = true;
-  console.log(checker);
 }, 30000);
 
 setInterval(() => {

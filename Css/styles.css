@@ -511,10 +511,10 @@ header #headerImageContainer .headerImageBall {
   cursor: pointer;
 }
 #characters #charactersContainer div #characterAika {
-  height: 92%;
+  height: 95%;
 }
 #characters #charactersContainer div #characterMadger {
-  height: 96%;
+  height: 95%;
 }
 #characters #charactersContainer div #characterSan {
   height: 99%;
@@ -560,6 +560,10 @@ footer strong {
   body {
     font-size: 1rem;
   }
+  body button {
+    height: 45px;
+    width: 140px;
+  }
   nav {
     padding: 0 3vw 0 3vw;
   }
@@ -598,6 +602,7 @@ footer strong {
     flex-direction: column;
     gap: 5vh;
     margin-top: 5vh;
+    font-size: 1.2rem;
   }
   .navMediaQuery .navList2::before {
     content: "";
@@ -647,24 +652,23 @@ footer strong {
   }
   header #headerInformationContainer .headerTitle {
     font-size: 2.5rem;
+    margin: 0;
     margin-top: 6vh;
   }
   header #headerInformationContainer .paragraphContainer {
     margin: 0;
   }
   header #headerInformationContainer .paragraphContainer .headerParagraph {
-    padding: 0 7.5vw !important;
-    font-size: 1.2rem;
-    margin-top: 0;
+    font-size: 1.15rem;
+    margin: 0;
     text-align: center !important;
   }
   header #headerInformationContainer .paragraphContainer .headerParagraph::before {
     width: calc(100% - 1rem);
   }
   header #headerInformationContainer .headerKnowMore {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     margin-top: 0;
-    margin-left: 1vw;
   }
   header #headerImageContainer {
     display: none;
@@ -673,20 +677,89 @@ footer strong {
     height: 80vh;
     padding: 0;
     align-items: center;
+    margin-bottom: -10vh;
+  }
+  #chapters ::-webkit-scrollbar {
+    width: 0vh;
+    height: 1vh;
   }
   #chapters #chaptersTitle {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    padding: 0;
   }
   #chapters .backgroundText {
-    font-size: 3rem;
-    margin-top: -50vh;
-    margin-left: 0;
+    font-size: 4rem;
+    margin-top: -48vh;
+    padding: 0;
+    text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239), 0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239), 1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff, -1px 1px rgb(255, 223, 239);
+    right: auto;
+    left: auto;
   }
   #chapters #chaptersContainer {
-    height: 65%;
+    height: 60%;
+    padding: 0 20vw 0 10vw;
+    position: relative;
+    gap: 1.5rem;
   }
   #chapters #chaptersContainer img {
-    height: 95%;
+    height: 94%;
+  }
+  .triggered {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    height: 38vh;
+    width: 100%;
+  }
+  .triggered hr {
+    opacity: 50%;
+  }
+  .triggered .toolTipMobileContainer {
+    display: flex;
+    height: 100%;
+    position: relative;
+  }
+  .triggered .toolTipMobileContainer .toolTipMobileImageContainer {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .triggered .toolTipMobileContainer .toolTipMobileImageContainer .ToolTipMobileChapterImage {
+    width: 90%;
+    height: auto;
+    border-radius: 5px;
+  }
+  .triggered .toolTipMobileContainer .toolTipMobileInformationContainer {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+  }
+  .triggered .toolTipMobileContainer .toolTipMobileInformationContainer .xMark {
+    position: absolute;
+    margin-left: auto;
+    font-weight: 600;
+    font-size: 1.7rem;
+    top: 0;
+    right: 5vw;
+    opacity: 50%;
+  }
+  .triggered .toolTipMobileContainer .toolTipMobileInformationContainer .toolTipTitle {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: rgb(255, 223, 239);
+  }
+  .triggered .toolTipMobileContainer .toolTipMobileInformationContainer .toolTipDescription {
+    padding: 0 2vw;
+  }
+  #characters {
+    border: solid red;
+    transition: none;
   }
   #characters ::-webkit-scrollbar {
     width: 0vh;
@@ -736,7 +809,7 @@ footer strong {
     cursor: pointer;
   }
   #characters #charactersContainer div #characterAika {
-    height: 92%;
+    height: 94%;
   }
   #characters #charactersContainer div #characterMadger {
     height: 96%;
@@ -745,6 +818,6 @@ footer strong {
     height: 99%;
   }
   footer {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }/*# sourceMappingURL=styles.css.map */

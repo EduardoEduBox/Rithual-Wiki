@@ -592,11 +592,11 @@ header {
       }
 
       #characterAika {
-        height: 92%;
+        height: 95%;
       }
 
       #characterMadger {
-        height: 96%;
+        height: 95%;
       }
 
       #characterSan {
@@ -649,6 +649,11 @@ footer {
 @media (max-width: 1279px) {
   body {
     font-size: 1rem;
+
+    button {
+      height: 45px;
+      width: 140px;
+    }
   }
 
   nav {
@@ -696,6 +701,7 @@ footer {
       flex-direction: column;
       gap: 5vh;
       margin-top: 5vh;
+      font-size: 1.2rem;
 
       &::before {
         content: "";
@@ -760,6 +766,7 @@ footer {
 
       .headerTitle {
         font-size: 2.5rem;
+        margin: 0;
         margin-top: 6vh;
       }
 
@@ -767,9 +774,9 @@ footer {
         margin: 0;
 
         .headerParagraph {
-          padding: 0 7.5vw !important;
-          font-size: 1.2rem;
-          margin-top: 0;
+          // padding: 0 7.5vw !important;
+          font-size: 1.15rem;
+          margin: 0;
           text-align: center !important;
 
           &::before {
@@ -779,9 +786,8 @@ footer {
       }
 
       .headerKnowMore {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         margin-top: 0;
-        margin-left: 1vw;
       }
     }
 
@@ -796,22 +802,103 @@ footer {
     height: 80vh;
     padding: 0;
     align-items: center;
+    margin-bottom: -10vh;
+
+    ::-webkit-scrollbar {
+      width: 0vh;
+      height: 1vh;
+    }
 
     #chaptersTitle {
-      font-size: 1.5rem;
+      font-size: 2rem;
+      padding: 0;
     }
 
     .backgroundText {
-      font-size: 3rem;
-      margin-top: -50vh;
-      margin-left: 0;
+      font-size: 4rem;
+      margin-top: -48vh;
+      padding: 0;
+      text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239),
+        0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239),
+        1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff,
+        -1px 1px rgb(255, 223, 239);
+      right: auto;
+      left: auto;
     }
 
     #chaptersContainer {
-      height: 65%;
+      height: 60%;
+      padding: 0 20vw 0 10vw;
+      position: relative;
+      gap: 1.5rem;
+      // margin-left: 20vw;
 
       img {
-        height: 95%;
+        height: 94%;
+      }
+    }
+  }
+
+  .triggered {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 38vh;
+    width: 100%;
+
+    hr {
+      opacity: 50%;
+    }
+
+    .toolTipMobileContainer {
+      display: flex;
+      height: 100%;
+      position: relative;
+
+      .toolTipMobileImageContainer {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .ToolTipMobileChapterImage {
+          width: 90%;
+          height: auto;
+          border-radius: 5px;
+        }
+      }
+
+      .toolTipMobileInformationContainer {
+        width: 60%;
+        // border: solid 1px pink;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        position: relative;
+
+        .xMark {
+          position: absolute;
+          margin-left: auto;
+          font-weight: 600;
+          font-size: 1.7rem;
+          top: 0;
+          right: 5vw;
+          opacity: 50%;
+        }
+
+        .toolTipTitle {
+          font-size: 1.3rem;
+          margin-bottom: 0;
+          color: $light-pink-color;
+        }
+
+        .toolTipDescription {
+          padding: 0 2vw;
+        }
       }
     }
   }
@@ -819,6 +906,9 @@ footer {
   // characters here vvvvvvvvvvvv
 
   #characters {
+    border: solid red;
+    transition: none;
+
     ::-webkit-scrollbar {
       width: 0vh;
       height: 0.7vh;
@@ -893,7 +983,7 @@ footer {
         }
 
         #characterAika {
-          height: 92%;
+          height: 94%;
         }
 
         #characterMadger {
@@ -910,6 +1000,6 @@ footer {
   // footer here vvvvvvvvvv
 
   footer {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
