@@ -674,7 +674,7 @@ footer {
       h1 {
         font-size: 2rem;
         bottom: auto;
-        top: -20px;
+        // top: -20px;
       }
     }
 
@@ -761,7 +761,7 @@ footer {
     flex-direction: column;
 
     #headerInformationContainer {
-      padding: 7vh 5vw 7vh 5vw;
+      padding: 7vh 5vw 10vh 5vw;
       width: 100%;
 
       .headerTitle {
@@ -788,6 +788,7 @@ footer {
       .headerKnowMore {
         font-size: 1.35rem;
         margin-top: 0;
+        margin-bottom: 15px;
       }
     }
 
