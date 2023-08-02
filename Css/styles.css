@@ -413,11 +413,11 @@ header #headerImageContainer .headerImageBall {
   position: relative;
 }
 #characters #charactersContainer div .profilePictureDiv {
-  width: 30vh;
-  height: 30vh;
+  width: 35vh;
+  height: 35vh;
   border-radius: 50vh;
   position: absolute;
-  left: -1rem;
+  left: -3rem;
   top: -2.5rem;
 }
 #characters #charactersContainer div .profilePictureDiv img {
@@ -708,7 +708,7 @@ footer strong {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
-    height: 38vh;
+    height: 80vw;
     width: 100%;
   }
   .triggered hr {
@@ -756,66 +756,7 @@ footer strong {
   }
   .triggered .toolTipMobileContainer .toolTipMobileInformationContainer .toolTipDescription {
     padding: 0 2vw;
-  }
-  #characters {
-    border: solid red;
-    transition: none;
-  }
-  #characters ::-webkit-scrollbar {
-    width: 0vh;
-    height: 0.7vh;
-  }
-  #characters #characterBackgroundSidewaysBar {
-    top: 31%;
-  }
-  #characters #characterBackgroundSidewaysBar::after {
-    height: 15vh;
-    bottom: 2rem;
-    transform: rotate(-13.5deg);
-  }
-  #characters #charactersContainer {
-    overflow-x: auto;
-  }
-  #characters #charactersContainer .character {
-    width: 100%;
-  }
-  #characters #charactersContainer div .profilePictureDiv {
-    display: none;
-  }
-  #characters #charactersContainer div #informationContainer {
-    padding: 0;
-  }
-  #characters #charactersContainer div #informationContainer #characterBackgroundText {
-    writing-mode: vertical-rl;
-    left: 0;
-    position: absolute;
-    font-size: 11vh;
-    transform: translate(-75px, 0px) !important;
-  }
-  #characters #charactersContainer div #informationContainer #informationOrganizator {
-    height: 100%;
-    display: flex;
-  }
-  #characters #charactersContainer div #informationContainer #informationOrganizator #characterInformation {
-    display: none;
-  }
-  #characters #charactersContainer div #close-button img {
-    height: 1.3rem;
-    width: 3rem;
-  }
-  #characters #charactersContainer div #characterSinger {
-    width: auto;
-    height: 100%;
-    cursor: pointer;
-  }
-  #characters #charactersContainer div #characterAika {
-    height: 94%;
-  }
-  #characters #charactersContainer div #characterMadger {
-    height: 96%;
-  }
-  #characters #charactersContainer div #characterSan {
-    height: 99%;
+    margin-top: 0;
   }
   footer {
     font-size: 1.2rem;

@@ -481,11 +481,11 @@ header {
 
     div {
       .profilePictureDiv {
-        width: 30vh;
-        height: 30vh;
+        width: 35vh;
+        height: 35vh;
         border-radius: 50vh;
         position: absolute;
-        left: -1rem;
+        left: -3rem;
         top: -2.5rem;
 
         img {
@@ -844,7 +844,7 @@ footer {
     flex-direction: column;
     justify-content: center;
 
-    height: 38vh;
+    height: 80vw;
     width: 100%;
 
     hr {
@@ -898,6 +898,7 @@ footer {
 
         .toolTipDescription {
           padding: 0 2vw;
+          margin-top: 0;
         }
       }
     }
@@ -905,97 +906,127 @@ footer {
 
   // characters here vvvvvvvvvvvv
 
-  #characters {
-    border: solid red;
-    transition: none;
+  // #characters {
+  //   border: solid red;
+  //   transition: none;
+  //   padding-top: 1.5rem;
+  //   height: fit-content;
+  //   // width: fit-content;
 
-    ::-webkit-scrollbar {
-      width: 0vh;
-      height: 0.7vh;
-    }
+  //   * {
+  //     border: solid 1px;
+  //   }
 
-    #characterBackgroundSidewaysBar {
-      top: 31%;
+  //   ::-webkit-scrollbar {
+  //     width: 0vh;
+  //     height: 0.7vh;
+  //   }
 
-      &::after {
-        height: 15vh;
-        bottom: 2rem;
-        transform: rotate(-13.5deg);
-      }
-    }
+  //   #characterBackgroundSidewaysBar {
+  //     top: 31%;
 
-    // #charactersTitle {
-    // }
+  //     &::after {
+  //       height: 15vh;
+  //       bottom: 2rem;
+  //       transform: rotate(-13.5deg);
+  //     }
+  //   }
 
-    // strong {
-    // }
+  //   #charactersTitle {
+  //     margin: 0;
+  //     font-size: 2rem;
+  //   }
 
-    #charactersContainer {
-      overflow-x: auto;
+  //   strong {
+  //     top: 0;
+  //     font-size: 3.8rem;
+  //     text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239),
+  //       0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239),
+  //       1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff,
+  //       -1px 1px rgb(255, 223, 239);
+  //   }
 
-      .character {
-        width: 100%;
-      }
+  //   #charactersContainer {
+  //     overflow-x: visible;
+  //     display: flex;
+  //     // gap: 10vw;
+  //     padding: 0;
+  //     width: 100vw;
 
-      div {
-        .profilePictureDiv {
-          display: none;
+  //     .character-info {
+  //       display: none;
+  //     }
 
-          // img {
-          // }
-        }
+  //       .character {
+  //         display: block;
+  //         width: fit-content;
 
-        #informationContainer {
-          padding: 0;
+  //         #characterSinger {
+  //           height: auto;
+  //           width: 95vw;
+  //           background-color: rgba($color: blue, $alpha: 0.2);
+  //         }
 
-          #characterBackgroundText {
-            writing-mode: vertical-rl;
-            left: 0;
-            position: absolute;
-            font-size: 11vh;
-            transform: translate(-75px, 0px) !important;
-          }
+  //         #characterAika {
+  //           height: auto;
+  //           width: calc(95vw - 6%);
+  //           background-color: rgba($color: pink, $alpha: 0.2);
+  //         }
 
-          #informationOrganizator {
-            height: 100%;
-            display: flex;
+  //         #characterMadger {
+  //           height: auto;
+  //           width: calc(95vw - 4%);
+  //           background-color: rgba($color: green, $alpha: 0.2);
+  //         }
 
-            #characterInformation {
-              display: none;
-            }
+  //         #characterSan {
+  //           height: auto;
+  //           width: calc(95vw - 1%);
+  //           background-color: rgba($color: orange, $alpha: 0.2);
+  //         }
+  //       }
 
-            // #ageAndStatus {
-            // }
-          }
-        }
+  //     div {
+  //       .profilePictureDiv {
+  //         display: none;
 
-        #close-button {
-          img {
-            height: 1.3rem;
-            width: 3rem;
-          }
-        }
+  //         // img {
+  //         // }
+  //       }
 
-        #characterSinger {
-          width: auto;
-          height: 100%;
-          cursor: pointer;
-        }
+  //       #informationContainer {
+  //         padding: 0;
 
-        #characterAika {
-          height: 94%;
-        }
+  //         #characterBackgroundText {
+  //           writing-mode: vertical-rl;
+  //           left: 0;
+  //           position: absolute;
+  //           font-size: 11vh;
+  //           transform: translate(-75px, 0px) !important;
+  //         }
 
-        #characterMadger {
-          height: 96%;
-        }
+  //         #informationOrganizator {
+  //           height: 100%;
+  //           display: flex;
 
-        #characterSan {
-          height: 99%;
-        }
-      }
-    }
-  }
+  //           #characterInformation {
+  //             display: none;
+  //           }
+
+  //           // #ageAndStatus {
+  //           // }
+  //         }
+  //       }
+
+  //       #close-button {
+  //         img {
+  //           height: 1.3rem;
+  //           width: 3rem;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   // footer here vvvvvvvvvv
 

@@ -59,7 +59,7 @@ const characters: Characters[] = [
     "um jovem aventureiro que nasceu no vilarejo Uxclavasa e sonha em conhecer o mundo e as maravilhas do reino de Belgadina e Ázuma!",
     Race.Human,
     CharacterStatus.Alive,
-    "sçdf",
+    "Css/assets/charactersSection/profile/Singer Profile.png",
     "Css/assets/charactersSection/withoutText/singer withoutText.png",
     "Css/assets/charactersSection/Singer corpo completo.png",
     "lightblue",

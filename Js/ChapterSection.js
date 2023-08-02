@@ -209,7 +209,7 @@ if (window.innerWidth >= 1279) {
             characterSection,
             { y: 0 },
             {
-              y: "38vh",
+              y: "80vw",
               duration: 0.8,
               onComplete: () => {
                 changeMobileTooltip(index);
@@ -229,6 +229,7 @@ if (window.innerWidth >= 1279) {
   let mobileChapterImage = document.querySelector(".ToolTipMobileChapterImage");
   let toolTipTitle = document.querySelector(".toolTipTitle");
   let toolTipDescription = document.querySelector(".toolTipDescription");
+  let dblClickInformation = document.querySelector(".dblclickInformation");
 
   function changeMobileTooltip(index) {
     [...horizontalLines].forEach((el) => {
@@ -241,6 +242,7 @@ if (window.innerWidth >= 1279) {
     toolTipTitle.innerHTML = chapter.chapterTitle;
     toolTipDescription.innerHTML = chapter.chapterDescription;
     mobileChapterImage.src = chapter.chapterImage;
+    dblClickInformation.innerHTML = "clique duas vezes pra acessar o capítulo";
 
     // Set the initial opacity of the tooltip to 0
     mobileTemplate.style.opacity = "0";
@@ -269,6 +271,7 @@ if (window.innerWidth >= 1279) {
         toolTipTitle.innerHTML = "";
         toolTipDescription.innerHTML = "";
         mobileChapterImage.src = "";
+        dblClickInformation.innerHTML = "";
 
         [...horizontalLines].forEach((el) => {
           el.style.display = "none";
@@ -290,3 +293,21 @@ if (window.innerWidth >= 1279) {
     });
   });
 }
+
+class MathUtils {
+  // Static method to add two numbers
+  static add(a, b) {
+    return a + b;
+  }
+
+  // Static method to multiply two numbers
+  static multiply(a, b) {
+    return a * b;
+  }
+}
+
+let number = 13;
+
+// Calling the static methods directly on the class
+console.log(MathUtils.add(5, 3)); // Output: 8
+console.log(MathUtils.multiply(2, 4)); // Output: 8
