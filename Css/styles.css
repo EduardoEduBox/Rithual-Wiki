@@ -579,7 +579,6 @@ footer strong {
   nav div h1 {
     font-size: 2rem;
     bottom: auto;
-    top: -20px;
   }
   nav ul {
     display: none;
@@ -647,7 +646,7 @@ footer strong {
     flex-direction: column;
   }
   header #headerInformationContainer {
-    padding: 7vh 5vw 7vh 5vw;
+    padding: 7vh 5vw 10vh 5vw;
     width: 100%;
   }
   header #headerInformationContainer .headerTitle {
@@ -669,6 +668,7 @@ footer strong {
   header #headerInformationContainer .headerKnowMore {
     font-size: 1.35rem;
     margin-top: 0;
+    margin-bottom: 15px;
   }
   header #headerImageContainer {
     display: none;
