@@ -1,4 +1,4 @@
-// when you load the page throws this beautiful alert
+// // when you load the page throws this beautiful alert
 
 window.addEventListener("load", () => {
   Swal.fire({

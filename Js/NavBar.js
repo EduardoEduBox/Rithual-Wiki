@@ -15,7 +15,7 @@ hamburguerIcon.addEventListener("click", function () {
       <ul class="navList2">
         <li><a href="#header">Home</a></li>
         <li><a href="#chapters">Capítulos</a></li>
-        <li class="charactersMedia"><a href="">Personagens</a></li>
+        <li class="charactersMedia"><a href="#characters">Personagens</a></li>
         <li class="aboutMedia"><a href="">Sobre mim</a></li>
         <li><hr></li> 
       </ul>`;
@@ -25,14 +25,10 @@ hamburguerIcon.addEventListener("click", function () {
     setTimeout(() => {
       navElements.style.right = "0";
     }, 0);
-
-    console.log("if");
   } else {
     hamburguerIcon.src = "Css/assets/icon.png";
 
     navElements.style.right = `calc(-${navElements.offsetWidth}px - 1.5rem)`;
-
-    console.log("else");
   }
 });
 
@@ -46,7 +42,7 @@ function handleResize() {
 window.addEventListener("resize", handleResize);
 
 const advice = document.querySelectorAll(
-  ".navList li:nth-child(3), .navList li:nth-child(4), .navList2 li:nth-child(3), .navList2 li:nth-child(4)"
+  ".navList li:nth-child(4), .navList2 li:nth-child(4)"
 );
 
 advice.forEach(function (li) {

@@ -1,140 +1,313 @@
-// Chapters section part
-
 const images = document.getElementsByClassName("prePages");
 const textElement = document.getElementById("chaptersTitle");
 const backgroundTextElement = document.querySelector(".backgroundText");
+const container = document.getElementById("chaptersContainer");
 
-let currentTooltip = null;
-let description = ""; // Declare the description variable
-let srcImages = ""; // Declare the srcImages variable
+class Information {
+  constructor(chapterTitle, chapterDescription, chapterImage, url, shortName) {
+    this.chapterTitle = chapterTitle;
+    this.chapterDescription = chapterDescription;
+    this.chapterImage = chapterImage;
+    this.url = url;
+    this.shortName = shortName;
+  }
 
-// this code is to set the scrollBar to a specific value when you load the page
-setTimeout(function () {
-  const container = document.getElementById("chaptersContainer");
-  container.scrollLeft = 88;
-}, 100);
+  setInformationDesktop(textElement, backgroundTextElement) {
+    textElement.textContent = this.chapterTitle;
+    backgroundTextElement.textContent = this.chapterTitle;
+  }
+}
 
-for (let i = 0; i < images.length; i++) {
-  images[i].addEventListener("mouseover", function () {
-    switch (i) {
-      case 0:
-        textElement.textContent = "Cap - 0: Invasão";
-        backgroundTextElement.textContent = "Cap - 0: Invasão";
+const chaptersData = [
+  new Information(
+    "Cap - 0: Invasão",
+    "A carnificina assola o vilarejo enquanto um demônio mata impiedosamente. Um garoto se confronta com o assassino e uma lança revela seu verdadeiro poder.",
+    "Css/assets/tooltipPages/random1.png",
+    "https://tapas.io/episode/2307820",
+    "Invasão"
+  ),
+  new Information(
+    "Cap - 1: Padaria",
+    "Singer sai de casa e vai à padaria em Belgadina. Novidades sobre sua matrícula escolar deixam-no ansioso. O que o futuro reserva para ele após essa compra significativa?",
+    "Css/assets/tooltipPages/random2.png",
+    "https://tapas.io/episode/2478257",
+    "Padaria"
+  ),
+  new Information(
+    "Cap - 2: Pai e irmão",
+    "Singer reflete sobre a matrícula escolar e suas expectativas de liberdade. Em casa, encontra seus familiares e descansa. O que o aguarda no tão esperado primeiro dia de aula?",
+    "Css/assets/tooltipPages/random3.png",
+    "https://tapas.io/episode/2571907",
+    "Pai e irmão"
+  ),
+  new Information(
+    "Cap - 3: Paisagem",
+    "Singer está ansioso para o primeiro dia de aula. Seu irmão o acompanha e novas experiências o cercam. Chegando à escola, Singer está repleto de expectativas. O que o aguarda nesse novo ambiente?",
+    "Css/assets/tooltipPages/random4.png",
+    "https://tapas.io/episode/2689791",
+    "Paisagem"
+  ),
+  new Information(
+    "Cap - 4: Escola",
+    "Singer maravilhado com a escola, adentra seus corredores. Enquanto isso, seu irmão deixa a escola, encontra seus parceiros e seguem em frente. A pergunta paira: estão realmente prontos? Armas são preparadas.",
+    "Css/assets/tooltipPages/random5.png",
+    "https://tapas.io/episode/2846137",
+    "Escola"
+  ),
+];
 
-        description =
-          "A carnificina assola o vilarejo enquanto um demônio mata impiedosamente. Um garoto se confronta com o assassino e uma lança revela seu verdadeiro poder.";
-        srcImages = "Css/assets/tooltipPages/random1.png";
-        break;
-      case 1:
-        textElement.textContent = "Cap - 1: Padaria";
-        backgroundTextElement.textContent = "Cap - 1: Padaria";
+if (window.innerWidth >= 1279) {
+  let currentTooltip = null;
 
-        description =
-          "Singer sai de casa e vai à padaria em Belgadina. Novidades sobre sua matrícula escolar deixam-no ansioso. O que o futuro reserva para ele após essa compra significativa?";
-        srcImages = "Css/assets/tooltipPages/random2.png";
-        break;
-      case 2:
-        textElement.textContent = "Cap - 2: Pai e irmão";
-        backgroundTextElement.textContent = "Cap - 2: Pai e irmão";
+  // this code is to set the scrollBar to a specific value when you load the page
+  setTimeout(function () {
+    container.scrollLeft = 88;
+  }, 100);
 
-        description =
-          "Singer reflete sobre a matrícula escolar e suas expectativas de liberdade. Em casa, encontra seus familiares e descansa. O que o aguarda no tão esperado primeiro dia de aula?";
-        srcImages = "Css/assets/tooltipPages/random3.png";
-        break;
-      case 3:
-        textElement.textContent = "Cap - 3: Paisagem";
-        backgroundTextElement.textContent = "Cap - 3: Paisagem";
+  [...images].forEach((image, i) => {
+    image.addEventListener("mouseover", function () {
+      const chapter = chaptersData[i];
+      chapter.setInformationDesktop(textElement, backgroundTextElement);
+      currentTooltip = changeToolTip(
+        chapter.chapterImage,
+        chapter.chapterTitle,
+        chapter.chapterDescription
+      );
+    });
 
-        description =
-          "Singer está ansioso para o primeiro dia de aula. Seu irmão o acompanha e novas experiências o cercam. Chegando à escola, Singer está repleto de expectativas. O que o aguarda nesse novo ambiente?";
-        srcImages = "Css/assets/tooltipPages/random4.png";
-        break;
-      case 4:
-        textElement.textContent = "Cap - 4: Escola";
-        backgroundTextElement.textContent = "Cap - 4: Escola";
+    image.addEventListener("mouseout", function () {
+      if (currentTooltip) {
+        currentTooltip.remove();
+        currentTooltip = null;
+      }
+      textElement.textContent = "Capítulos";
+      backgroundTextElement.textContent = "Capítulos";
+    });
+  });
+  //
 
-        description =
-          "Singer maravilhado com a escola, adentra seus corredores. Enquanto isso, seu irmão deixa a escola, encontra seus parceiros e seguem em frente. A pergunta paira: estão realmente prontos? Armas são preparadas.";
-        srcImages = "Css/assets/tooltipPages/random5.png";
-        break;
-      default:
-        textElement.textContent = "Capítulos";
-        backgroundTextElement.textContent = "Capítulos";
+  function createTooltip() {
+    const tooltip = document.createElement("div");
+    tooltip.classList.add("tooltip");
 
-        description = "Description for Cap - 2";
-    }
+    document.body.appendChild(tooltip);
 
-    currentTooltip = changeToolTip(
-      srcImages,
-      textElement.textContent,
-      description
-    );
+    return tooltip;
+  }
+
+  function changeToolTip(imageSrc, title, description) {
+    const tooltip = createTooltip();
+
+    const image = document.createElement("img");
+    image.src = imageSrc;
+    tooltip.appendChild(image);
+
+    const textContainer = document.createElement("div");
+    textContainer.classList.add("tooltipInformation");
+    tooltip.appendChild(textContainer);
+
+    const titleElement = document.createElement("h3");
+    titleElement.textContent = title;
+    titleElement.style.color = "pink";
+    textContainer.appendChild(titleElement);
+
+    const descElement = document.createElement("p");
+    descElement.innerHTML += `<hr>${description}`;
+    descElement.style.maxWidth = "300px";
+
+    textContainer.appendChild(descElement);
+
+    document.body.appendChild(tooltip);
+
+    document.addEventListener("mouseover", function () {
+      tooltip.style.opacity = "0";
+      setTimeout(() => {
+        tooltip.style.opacity = "1";
+      }, 1500);
+    });
+
+    document.addEventListener("mousemove", function (event) {
+      const tooltipWidth = tooltip.offsetWidth;
+      const tooltipHeight = tooltip.offsetHeight;
+
+      let tooltipX = event.clientX + 100;
+
+      if (tooltipX + tooltipWidth > window.innerWidth - 200) {
+        tooltipX = event.clientX - tooltipWidth - 100;
+      }
+
+      tooltip.style.left = tooltipX + "px";
+      tooltip.style.top = event.clientY / 2 + tooltipHeight * 3.5 + "px";
+    });
+
+    return tooltip;
+  }
+} else {
+  const characterSection = document.querySelector("#characters");
+
+  setTimeout(function () {
+    container.scrollLeft = 55;
+  }, 100);
+
+  // removing the "a" tag from the container
+  container.innerHTML = `<img
+    src="Css/assets/chapters/rithual pré pagina cap 0.png"
+    alt="Imagem do capítulo zero"
+    class="prePages"
+  />
+  <img
+    src="Css/assets/chapters/ritual pré pagina cap 1.png"
+    alt="Imagem do capítulo zero"
+    class="prePages"
+  />
+  <img
+    src="Css/assets/chapters/ritual pré pagina cap 2.png"
+    alt="Imagem do capítulo zero"
+    class="prePages"
+  />
+  <img
+    src="Css/assets/chapters/ritual pré pagina cap 3.png"
+    alt="Imagem do capítulo zero"
+    class="prePages"
+  />
+  <img
+    src="Css/assets/chapters/ritual pré pagina cap 4.png"
+    alt="Imagem do capítulo zero"
+    class="prePages"
+  />`;
+
+  // if the user clicks one time, the tooltip triggers, if two, he goes to Tapas.io to see the chapter
+  let lastClickTime = 0;
+  let lastClickedImageIndex = -1; // Initialize with an invalid index
+  const doubleClickDelay = 300;
+
+  let horizontalLines = document.getElementsByTagName("hr");
+
+  [...images].forEach((element, index) => {
+    element.addEventListener("click", () => {
+      const currentTime = new Date().getTime();
+      const timeSinceLastClick = currentTime - lastClickTime;
+
+      // setting the floating text to the title
+      textElement.innerHTML = chaptersData[index].chapterTitle;
+      backgroundTextElement.innerHTML = chaptersData[index].shortName;
+
+      if (
+        timeSinceLastClick <= doubleClickDelay &&
+        lastClickedImageIndex === index
+      ) {
+        // Double-click action (redirect to the Tapas.io URL)
+        const tapasURL = chaptersData[index].url;
+        window.location.href = tapasURL;
+      } else {
+        // Single-click action (toggle tooltip or other behavior)
+        if (mobileTemplate.classList.contains("triggered")) {
+          changeMobileTooltip(index);
+          mobileTemplate.style.opacity = 1;
+        } else {
+          gsap.fromTo(
+            characterSection,
+            { y: 0 },
+            {
+              y: "80vw",
+              duration: 0.8,
+              onComplete: () => {
+                changeMobileTooltip(index);
+                gsap.set(characterSection, { y: 0 });
+              },
+            }
+          );
+        }
+      }
+
+      lastClickTime = currentTime;
+      lastClickedImageIndex = index;
+    });
   });
 
-  images[i].addEventListener("mouseout", function () {
-    if (currentTooltip) {
-      currentTooltip.remove();
-      currentTooltip = null;
-    }
-    textElement.textContent = "Capítulos";
-    backgroundTextElement.textContent = "Capítulos";
+  let mobileTemplate = document.getElementById("toolTipMobileTemplate");
+  let mobileChapterImage = document.querySelector(".ToolTipMobileChapterImage");
+  let toolTipTitle = document.querySelector(".toolTipTitle");
+  let toolTipDescription = document.querySelector(".toolTipDescription");
+  let dblClickInformation = document.querySelector(".dblclickInformation");
+
+  function changeMobileTooltip(index) {
+    [...horizontalLines].forEach((el) => {
+      el.style.display = "block";
+    });
+
+    xMark.style.display = "block";
+
+    const chapter = chaptersData[index];
+    toolTipTitle.innerHTML = chapter.chapterTitle;
+    toolTipDescription.innerHTML = chapter.chapterDescription;
+    mobileChapterImage.src = chapter.chapterImage;
+    dblClickInformation.innerHTML = "clique duas vezes pra acessar o capítulo";
+
+    // Set the initial opacity of the tooltip to 0
+    mobileTemplate.style.opacity = "0";
+
+    mobileTemplate.classList.add("triggered");
+
+    // Animate the opacity of the tooltip to 1 (fade-in effect)
+    gsap.to(mobileTemplate, {
+      opacity: 1,
+      duration: 0.3, // Adjust the duration as needed
+    });
+  }
+
+  let xMark = document.querySelector(".xMark");
+
+  xMark.addEventListener("click", () => {
+    // setting the floating text to normal
+    textElement.innerHTML = "Capítulos";
+    backgroundTextElement.innerHTML = "Capítulos";
+
+    gsap.to(mobileTemplate, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "back.out(1.7)",
+      onComplete: () => {
+        toolTipTitle.innerHTML = "";
+        toolTipDescription.innerHTML = "";
+        mobileChapterImage.src = "";
+        dblClickInformation.innerHTML = "";
+
+        [...horizontalLines].forEach((el) => {
+          el.style.display = "none";
+        });
+
+        xMark.style.display = "none";
+
+        gsap.set(mobileTemplate, { opacity: 1 }); // Reset the opacity back to 1
+
+        gsap.to(characterSection, {
+          y: "-38vh",
+          duration: 1,
+          onComplete: () => {
+            mobileTemplate.classList.remove("triggered");
+            gsap.set(characterSection, { y: 0 });
+          },
+        }); // Reset characterSection to its initial position
+      },
+    });
   });
 }
 
-function createTooltip() {
-  const tooltip = document.createElement("div");
-  tooltip.classList.add("tooltip");
+class MathUtils {
+  // Static method to add two numbers
+  static add(a, b) {
+    return a + b;
+  }
 
-  document.body.appendChild(tooltip);
-
-  return tooltip;
+  // Static method to multiply two numbers
+  static multiply(a, b) {
+    return a * b;
+  }
 }
 
-function changeToolTip(imageSrc, title, description) {
-  const tooltip = createTooltip();
+let number = 13;
 
-  const image = document.createElement("img");
-  image.src = imageSrc;
-  tooltip.appendChild(image);
-
-  const textContainer = document.createElement("div");
-  textContainer.classList.add("tooltipInformation");
-  tooltip.appendChild(textContainer);
-
-  const titleElement = document.createElement("h3");
-  titleElement.textContent = title;
-  titleElement.style.color = "pink";
-  textContainer.appendChild(titleElement);
-
-  const descElement = document.createElement("p");
-  descElement.innerHTML += `<hr>${description}`;
-  descElement.style.wordWrap = "break-word";
-  descElement.style.maxWidth = "300px";
-
-  textContainer.appendChild(descElement);
-
-  document.body.appendChild(tooltip);
-
-  document.addEventListener("mouseover", function () {
-    tooltip.style.opacity = "0";
-    setTimeout(() => {
-      tooltip.style.opacity = "1";
-    }, 1500);
-  });
-
-  document.addEventListener("mousemove", function (event) {
-    const tooltipWidth = tooltip.offsetWidth;
-    const tooltipHeight = tooltip.offsetHeight;
-
-    let tooltipX = event.clientX + 100;
-
-    if (tooltipX + tooltipWidth > window.innerWidth - 200) {
-      tooltipX = event.clientX - tooltipWidth - 100;
-    }
-
-    tooltip.style.left = tooltipX + "px";
-    tooltip.style.top = event.clientY / 2 + tooltipHeight * 3.5 + "px";
-  });
-
-  return tooltip;
-}
+// Calling the static methods directly on the class
+console.log(MathUtils.add(5, 3)); // Output: 8
+console.log(MathUtils.multiply(2, 4)); // Output: 8
