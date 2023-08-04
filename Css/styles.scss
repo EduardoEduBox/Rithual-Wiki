@@ -349,6 +349,7 @@ header {
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    padding-right: 10vw;
 
     img {
       position: relative;
@@ -450,14 +451,14 @@ header {
     color: rgb(255, 223, 239);
   }
 
-  strong {
+  .backgroundText {
     top: -2.5rem;
     position: absolute;
     font-size: 9vw;
     color: rgb(18, 18, 18);
     text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239),
       0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239),
-      1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff,
+      1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px,
       -1px 1px rgb(255, 223, 239);
     opacity: 15%;
     z-index: -1;
@@ -500,6 +501,7 @@ header {
           height: 100%;
         }
       }
+
       #informationContainer {
         width: 100%;
         height: 100%;
@@ -906,6 +908,200 @@ footer {
   }
 
   // characters here vvvvvvvvvvvv
+
+  #characters {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    ::-webkit-scrollbar {
+      width: 0vh;
+      height: 0.8vh;
+    }
+
+    // * {
+    //   border: solid 1px;
+    // }
+
+    // #mobileSidewaysBar {
+    //   width: 100vw;
+    //   position: absolute;
+    //   height: 50vh;
+    //   background-color: darkgray;
+    //   z-index: -1;
+    //   top: 30%;
+    //   opacity: 20%;
+    //   overflow-x: hidden;
+
+    //   &::after {
+    //     overflow-x: hidden;
+    //     position: absolute;
+    //     content: "";
+    //     width: 300vw;
+    //     height: 42vh;
+    //     background-color: rgb(18, 18, 18);
+    //     bottom: 9rem;
+    //     transform: rotate(13.5deg);
+    //   }
+    // }
+
+    .mobileTitleContainer {
+      height: 20vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      #charactersTitle {
+        font-size: 2rem;
+      }
+
+      .backgroundText {
+        font-size: 3.8rem;
+        top: 2.5rem;
+        text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239),
+          0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239),
+          1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff,
+          -1px 1px rgb(255, 223, 239);
+      }
+    }
+
+    #charactersContainer {
+      padding: 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      margin-top: 0;
+      align-items: flex-end;
+      overflow-y: hidden;
+
+      .character-info {
+        display: none;
+
+        .character-image {
+          width: 100vw;
+        }
+
+        #informationContainer {
+          #characterBackgroundText {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            left: 0;
+            font-size: 4.5rem;
+            margin: 0;
+          }
+
+          #informationOrganizator {
+            right: 0;
+            height: 100%;
+
+            #ageAndStatus {
+              display: flex;
+              flex-direction: column-reverse;
+              padding: 30vw 3vw 0 0;
+              width: 100%;
+              align-items: end;
+              justify-content: start;
+
+              div {
+                right: 0;
+                font-size: 0.8rem;
+
+                #characterAge {
+                }
+
+                .ageColor {
+                }
+
+                #characterStatus {
+                }
+
+                .statusColor {
+                }
+
+                #characterRace {
+                }
+
+                .raceColor {
+                }
+              }
+            }
+          }
+        }
+
+        #close-button {
+          img {
+            height: 1.5rem;
+            width: 3.5rem;
+          }
+        }
+      }
+
+      .character {
+        justify-content: space-between;
+        align-items: end;
+
+        #characterSinger {
+          width: 100vw;
+          height: auto;
+        }
+
+        #characterAika {
+          width: 95vw;
+          height: auto;
+          // margin-right: 100vw;
+        }
+
+        #characterMadger {
+          width: 95vw;
+          height: auto;
+        }
+
+        #characterSan {
+          width: 100vw;
+          height: auto;
+        }
+      }
+    }
+
+    .imageAndInformation {
+      display: flex;
+      align-items: center;
+
+      .profilePictureDiv {
+        img {
+          width: 40vw;
+          height: auto;
+          border-radius: 50vh;
+        }
+      }
+
+      #characterInformation {
+        padding-right: 5vw;
+        text-align: center;
+      }
+    }
+  }
+
+  // listen here, if you are reading this code, i am so sorry, that was the ONLY thing that fixed my problem, why? i don't know, but for now, lets keep like this.
+  .singerContainer {
+    width: 100vw !important;
+  }
+
+  .aikaContainer {
+    width: 100vw !important;
+    // margin-right: 94vw;
+  }
+
+  .madgerContainer {
+    width: 100vw !important;
+    // margin-right: 100vw;
+  }
+
+  .sanContainer {
+    width: 100vw !important;
+  }
 
   // #characters {
   //   border: solid red;

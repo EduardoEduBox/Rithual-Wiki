@@ -33,6 +33,90 @@ const characters = [
     new Characters("characterMadger", "Madger Yasáshi", 17, "Artista marcial nascido na vila Yasáshi, após uma batalha curta e sangrenta, Madger perdeu pessoas preciosas quando ainda era criança, agora, ele busca honrar aqueles que lutaram por ele em sua antiga vila!", Race.Human, CharacterStatus.Alive, "lsdkfhkljs", "Css/assets/charactersSection/withoutText/madger withoutText.png", "Css/assets/charactersSection/Madger corpo completo.png", "rgb(186, 235, 186)", true),
     new Characters("characterSan", "San Majutsu-shi", 19, `Ainda sem registros...`, Race.Human, CharacterStatus.Alive, "lsdkfhkljs", "Css/assets/charactersSection/withoutText/san withoutText.png", "Css/assets/charactersSection/San corpo completo.png", "rgb(255, 223, 164)", false),
 ];
+const bigContainer = document.getElementById("characters");
+const contentRemover = document.querySelector(".contentRemover");
+const body = document.querySelector("body");
+if (body.clientWidth <= 1279) {
+    contentRemover.innerHTML = "";
+    console.log(`body widht: ${body.clientWidth}`);
+    contentRemover.innerHTML = `
+     <section id="characters">
+        <div id="mobileSidewaysBar"></div>
+        <div class="mobileTitleContainer">
+          <h1 id="charactersTitle">Personagens</h1>
+          <strong class="backgroundText">Personagens</strong>
+        </div>
+
+        <div id="charactersContainer">
+          <div class="character-info">
+            <img src="" alt="" class="character-image" />
+            <div id="informationContainer">
+              <h1 id="characterBackgroundText"></h1>
+              <div id="informationOrganizator">
+                <div id="ageAndStatus">
+                  <div>
+                    <h3 id="characterAge"></h3>
+                    <span class="ageColor"></span>
+                  </div>
+                  <div>
+                    <h3 id="characterStatus"></h3>
+                    <span class="statusColor"></span>
+                  </div>
+                  <div>
+                    <h3 id="characterRace"></h3>
+                    <span class="raceColor"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span id="close-button">
+              <img src="Css/assets/icons/293657_x_icon (1).png" alt="" />
+            </span>
+          </div>
+
+          <div class="singerContainer character">
+            <img
+              src="Css/assets/charactersSection/Singer corpo completo.png"
+              alt="Imagem do Singer"
+              id="characterSinger"
+              class="character-image"
+            />
+          </div>
+          <div class="aikaContainer character">
+            <img
+              src="Css/assets/charactersSection/Aika corpo completo.png"
+              alt="Imagem da Aika"
+              id="characterAika"
+              class="character-image"
+            />
+          </div>
+          <div class="madgerContainer character">
+            <img
+              src="Css/assets/charactersSection/Madger corpo completo.png"
+              alt="Imagem do Madger"
+              id="characterMadger"
+              class="character-image"
+            />
+          </div>
+          <div class="sanContainer character">
+            <img
+              src="Css/assets/charactersSection/San corpo completo.png"
+              alt="Imagem do San Majutsu-shi"
+              id="characterSan"
+              class="character-image"
+            />
+          </div>
+        </div>
+
+        <div class="imageAndInformation">
+          <div class="profilePictureDiv">
+            <img src="" />
+          </div>
+          <p id="characterInformation"></p>
+        </div>
+      </section>
+  `;
+}
 class RenderCharacter {
     static styleInformation(el, appeared) {
         if (!appeared) {
@@ -149,6 +233,7 @@ class RenderCharacter {
                         let ageColor = this.c(".ageColor");
                         let statusColor = this.c(".statusColor");
                         let raceColor = this.c(".raceColor");
+                        let characterInfo = this.c(".character-info");
                         profilePicture.src = "";
                         mainImage.src = "";
                         charBgText.innerText = "";
@@ -162,6 +247,9 @@ class RenderCharacter {
                         raceColor.textContent = "";
                         bigContainer.style.height = "100vh";
                         this.styleInformation(characterInformation, char.appeared);
+                        if (body.clientWidth <= 1279) {
+                            characterInfo.style.display = "none";
+                        }
                         bgTextAnimation.revert();
                         charImageAnimation.revert();
                         gsap.to(charactersEl, { display: "flex", opacity: 1 });
@@ -174,7 +262,6 @@ class RenderCharacter {
 RenderCharacter.c = (el) => document.querySelector(el);
 const characterImages = document.querySelectorAll("#characterSinger, #characterAika, #characterMadger, #characterSan");
 const charactersContainer = document.querySelectorAll(".singerContainer, .aikaContainer, .madgerContainer, .sanContainer");
-const bigContainer = document.getElementById("characters");
 let validation = false;
 charactersContainer.forEach((el, index) => {
     el.addEventListener("click", () => {
@@ -187,8 +274,12 @@ charactersContainer.forEach((el, index) => {
             duration: 0.5,
             opacity: 0,
             onComplete: () => {
+                let characterInfo = document.querySelector(".character-info");
                 if (window.innerWidth > 1279) {
                     bigContainer.style.height = "110vh";
+                }
+                else if (body.clientWidth <= 1279) {
+                    characterInfo.style.display = "flex";
                 }
                 charactersContainer.forEach((div, i) => {
                     charactersContainer[i].style.display = "none";
@@ -201,7 +292,7 @@ charactersContainer.forEach((el, index) => {
                 let c = (el) => document.querySelector(el);
                 gsap.to(el, {
                     onStart: () => {
-                        RenderCharacter.mountStructure(c(".character-info"), selectedCharacter);
+                        RenderCharacter.mountStructure(characterInfo, selectedCharacter);
                         RenderCharacter.renderAnimation(c(".character-info"), document.querySelectorAll(".character"), selectedCharacter);
                     },
                 });

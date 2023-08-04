@@ -107,6 +107,100 @@ const characters: Characters[] = [
   // Add more characters here...
 ];
 
+const bigContainer = document.getElementById("characters") as HTMLDivElement;
+const contentRemover = document.querySelector(
+  ".contentRemover"
+) as HTMLDivElement;
+
+// this part here is to load for mobile application
+
+const body = document.querySelector("body") as HTMLBodyElement;
+
+if (body.clientWidth <= 1279) {
+  contentRemover.innerHTML = "";
+  console.log(`body widht: ${body.clientWidth}`);
+
+  // so lets reassign the values to get the right template for mobile!
+
+  contentRemover.innerHTML = `
+     <section id="characters">
+        <div id="mobileSidewaysBar"></div>
+        <div class="mobileTitleContainer">
+          <h1 id="charactersTitle">Personagens</h1>
+          <strong class="backgroundText">Personagens</strong>
+        </div>
+
+        <div id="charactersContainer">
+          <div class="character-info">
+            <img src="" alt="" class="character-image" />
+            <div id="informationContainer">
+              <h1 id="characterBackgroundText"></h1>
+              <div id="informationOrganizator">
+                <div id="ageAndStatus">
+                  <div>
+                    <h3 id="characterAge"></h3>
+                    <span class="ageColor"></span>
+                  </div>
+                  <div>
+                    <h3 id="characterStatus"></h3>
+                    <span class="statusColor"></span>
+                  </div>
+                  <div>
+                    <h3 id="characterRace"></h3>
+                    <span class="raceColor"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span id="close-button">
+              <img src="Css/assets/icons/293657_x_icon (1).png" alt="" />
+            </span>
+          </div>
+
+          <div class="singerContainer character">
+            <img
+              src="Css/assets/charactersSection/Singer corpo completo.png"
+              alt="Imagem do Singer"
+              id="characterSinger"
+              class="character-image"
+            />
+          </div>
+          <div class="aikaContainer character">
+            <img
+              src="Css/assets/charactersSection/Aika corpo completo.png"
+              alt="Imagem da Aika"
+              id="characterAika"
+              class="character-image"
+            />
+          </div>
+          <div class="madgerContainer character">
+            <img
+              src="Css/assets/charactersSection/Madger corpo completo.png"
+              alt="Imagem do Madger"
+              id="characterMadger"
+              class="character-image"
+            />
+          </div>
+          <div class="sanContainer character">
+            <img
+              src="Css/assets/charactersSection/San corpo completo.png"
+              alt="Imagem do San Majutsu-shi"
+              id="characterSan"
+              class="character-image"
+            />
+          </div>
+        </div>
+
+        <div class="imageAndInformation">
+          <div class="profilePictureDiv">
+            <img src="" />
+          </div>
+          <p id="characterInformation"></p>
+        </div>
+      </section>
+  `;
+}
+
 class RenderCharacter {
   // min selector
   static c = (el: string) => document.querySelector(el);
@@ -275,6 +369,7 @@ class RenderCharacter {
             let ageColor = this.c(".ageColor") as HTMLSpanElement;
             let statusColor = this.c(".statusColor") as HTMLSpanElement;
             let raceColor = this.c(".raceColor") as HTMLSpanElement;
+            let characterInfo = this.c(".character-info") as HTMLDivElement;
 
             // main application
             profilePicture!.src = "";
@@ -291,6 +386,10 @@ class RenderCharacter {
 
             bigContainer.style.height = "100vh";
             this.styleInformation(characterInformation, char.appeared);
+
+            if (body.clientWidth <= 1279) {
+              characterInfo.style.display = "none";
+            }
 
             bgTextAnimation.revert();
             charImageAnimation.revert();
@@ -311,8 +410,6 @@ const charactersContainer = document.querySelectorAll(
   ".singerContainer, .aikaContainer, .madgerContainer, .sanContainer"
 ) as NodeListOf<HTMLDivElement>;
 
-const bigContainer = document.getElementById("characters") as HTMLDivElement;
-
 let validation: Boolean = false;
 
 charactersContainer.forEach((el, index) => {
@@ -329,8 +426,14 @@ charactersContainer.forEach((el, index) => {
       duration: 0.5,
       opacity: 0,
       onComplete: () => {
+        let characterInfo = document.querySelector(
+          ".character-info"
+        ) as HTMLDivElement;
+
         if (window.innerWidth > 1279) {
           bigContainer.style.height = "110vh";
+        } else if (body.clientWidth <= 1279) {
+          characterInfo.style.display = "flex";
         }
 
         charactersContainer.forEach((div, i) => {
@@ -348,10 +451,7 @@ charactersContainer.forEach((el, index) => {
 
         gsap.to(el, {
           onStart: () => {
-            RenderCharacter.mountStructure(
-              c(".character-info")!,
-              selectedCharacter!
-            );
+            RenderCharacter.mountStructure(characterInfo!, selectedCharacter!);
             RenderCharacter.renderAnimation(
               c(".character-info")!,
               document.querySelectorAll(".character"),

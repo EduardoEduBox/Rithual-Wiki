@@ -301,6 +301,7 @@ header #headerImageContainer .headerImageBall {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+  padding-right: 10vw;
 }
 #chapters #chaptersContainer img {
   position: relative;
@@ -388,12 +389,12 @@ header #headerImageContainer .headerImageBall {
   margin-top: 0;
   color: rgb(255, 223, 239);
 }
-#characters strong {
+#characters .backgroundText {
   top: -2.5rem;
   position: absolute;
   font-size: 9vw;
   color: rgb(18, 18, 18);
-  text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239), 0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239), 1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff, -1px 1px rgb(255, 223, 239);
+  text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239), 0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239), 1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px, -1px 1px rgb(255, 223, 239);
   opacity: 15%;
   z-index: -1;
 }
@@ -757,6 +758,119 @@ footer strong {
   .triggered .toolTipMobileContainer .toolTipMobileInformationContainer .toolTipDescription {
     padding: 0 2vw;
     margin-top: 0;
+  }
+  #characters {
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  #characters ::-webkit-scrollbar {
+    width: 0vh;
+    height: 0.8vh;
+  }
+  #characters .mobileTitleContainer {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #characters .mobileTitleContainer #charactersTitle {
+    font-size: 2rem;
+  }
+  #characters .mobileTitleContainer .backgroundText {
+    font-size: 3.8rem;
+    top: 2.5rem;
+    text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239), 0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239), 1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff, -1px 1px rgb(255, 223, 239);
+  }
+  #characters #charactersContainer {
+    padding: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-top: 0;
+    align-items: flex-end;
+    overflow-y: hidden;
+  }
+  #characters #charactersContainer .character-info {
+    display: none;
+  }
+  #characters #charactersContainer .character-info .character-image {
+    width: 100vw;
+  }
+  #characters #charactersContainer .character-info #informationContainer #characterBackgroundText {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    left: 0;
+    font-size: 4.5rem;
+    margin: 0;
+  }
+  #characters #charactersContainer .character-info #informationContainer #informationOrganizator {
+    right: 0;
+    height: 100%;
+  }
+  #characters #charactersContainer .character-info #informationContainer #informationOrganizator #ageAndStatus {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 30vw 3vw 0 0;
+    width: 100%;
+    align-items: end;
+    justify-content: start;
+  }
+  #characters #charactersContainer .character-info #informationContainer #informationOrganizator #ageAndStatus div {
+    right: 0;
+    font-size: 0.8rem;
+  }
+  #characters #charactersContainer .character-info #close-button img {
+    height: 1.5rem;
+    width: 3.5rem;
+  }
+  #characters #charactersContainer .character {
+    justify-content: space-between;
+    align-items: end;
+  }
+  #characters #charactersContainer .character #characterSinger {
+    width: 100vw;
+    height: auto;
+  }
+  #characters #charactersContainer .character #characterAika {
+    width: 95vw;
+    height: auto;
+  }
+  #characters #charactersContainer .character #characterMadger {
+    width: 95vw;
+    height: auto;
+  }
+  #characters #charactersContainer .character #characterSan {
+    width: 100vw;
+    height: auto;
+  }
+  #characters .imageAndInformation {
+    display: flex;
+    align-items: center;
+  }
+  #characters .imageAndInformation .profilePictureDiv img {
+    width: 40vw;
+    height: auto;
+    border-radius: 50vh;
+  }
+  #characters .imageAndInformation #characterInformation {
+    padding-right: 5vw;
+    text-align: center;
+  }
+  .singerContainer {
+    width: 100vw !important;
+  }
+  .aikaContainer {
+    width: 100vw !important;
+  }
+  .madgerContainer {
+    width: 100vw !important;
+  }
+  .sanContainer {
+    width: 100vw !important;
   }
   footer {
     font-size: 1.2rem;

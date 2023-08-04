@@ -3,6 +3,9 @@ const textElement = document.getElementById("chaptersTitle");
 const backgroundTextElement = document.querySelector(".backgroundText");
 const container = document.getElementById("chaptersContainer");
 
+const bodyWidth = document.body.offsetWidth;
+const htmlWidth = document.documentElement.offsetWidth;
+
 class Information {
   constructor(chapterTitle, chapterDescription, chapterImage, url, shortName) {
     this.chapterTitle = chapterTitle;
@@ -15,6 +18,35 @@ class Information {
   setInformationDesktop(textElement, backgroundTextElement) {
     textElement.textContent = this.chapterTitle;
     backgroundTextElement.textContent = this.chapterTitle;
+  }
+
+  static setInformationMobile() {
+    // removing the "a" tag from the container
+    container.innerHTML = `<img
+        src="Css/assets/chapters/rithual pré pagina cap 0.png"
+        alt="Imagem do capítulo zero"
+        class="prePages"
+        />
+        <img
+        src="Css/assets/chapters/ritual pré pagina cap 1.png"
+        alt="Imagem do capítulo zero"
+        class="prePages"
+        />
+        <img
+        src="Css/assets/chapters/ritual pré pagina cap 2.png"
+        alt="Imagem do capítulo zero"
+        class="prePages"
+        />
+        <img
+        src="Css/assets/chapters/ritual pré pagina cap 3.png"
+        alt="Imagem do capítulo zero"
+        class="prePages"
+        />
+        <img
+        src="Css/assets/chapters/ritual pré pagina cap 4.png"
+        alt="Imagem do capítulo zero"
+        class="prePages"
+      />`;
   }
 }
 
@@ -56,7 +88,7 @@ const chaptersData = [
   ),
 ];
 
-if (window.innerWidth >= 1279) {
+if (bodyWidth >= 1279 || htmlWidth >= 1279) {
   let currentTooltip = null;
 
   // this code is to set the scrollBar to a specific value when you load the page
@@ -84,7 +116,6 @@ if (window.innerWidth >= 1279) {
       backgroundTextElement.textContent = "Capítulos";
     });
   });
-  //
 
   function createTooltip() {
     const tooltip = document.createElement("div");
@@ -126,55 +157,34 @@ if (window.innerWidth >= 1279) {
       }, 1500);
     });
 
-    document.addEventListener("mousemove", function (event) {
-      const tooltipWidth = tooltip.offsetWidth;
-      const tooltipHeight = tooltip.offsetHeight;
+    [...images].forEach((element) => {
+      element.addEventListener("mousemove", function (event) {
+        const tooltipWidth = tooltip.offsetWidth;
+        const tooltipHeight = tooltip.offsetHeight;
+        console.log("moved");
 
-      let tooltipX = event.clientX + 100;
+        let tooltipX = event.clientX + 100;
 
-      if (tooltipX + tooltipWidth > window.innerWidth - 200) {
-        tooltipX = event.clientX - tooltipWidth - 100;
-      }
+        if (tooltipX + tooltipWidth > window.innerWidth - 200) {
+          tooltipX = event.clientX - tooltipWidth - 100;
+        }
 
-      tooltip.style.left = tooltipX + "px";
-      tooltip.style.top = event.clientY / 2 + tooltipHeight * 3.5 + "px";
+        tooltip.style.left = tooltipX + "px";
+        tooltip.style.top = event.clientY / 2 + tooltipHeight * 3.5 + "px";
+      });
     });
 
     return tooltip;
   }
 } else {
-  const characterSection = document.querySelector("#characters");
+  const contentRemover = document.querySelector(".contentRemover");
 
   setTimeout(function () {
     container.scrollLeft = 55;
   }, 100);
 
-  // removing the "a" tag from the container
-  container.innerHTML = `<img
-    src="Css/assets/chapters/rithual pré pagina cap 0.png"
-    alt="Imagem do capítulo zero"
-    class="prePages"
-  />
-  <img
-    src="Css/assets/chapters/ritual pré pagina cap 1.png"
-    alt="Imagem do capítulo zero"
-    class="prePages"
-  />
-  <img
-    src="Css/assets/chapters/ritual pré pagina cap 2.png"
-    alt="Imagem do capítulo zero"
-    class="prePages"
-  />
-  <img
-    src="Css/assets/chapters/ritual pré pagina cap 3.png"
-    alt="Imagem do capítulo zero"
-    class="prePages"
-  />
-  <img
-    src="Css/assets/chapters/ritual pré pagina cap 4.png"
-    alt="Imagem do capítulo zero"
-    class="prePages"
-  />`;
+  // resets the pages so we can remove the 'a' tag
+  Information.setInformationMobile();
 
   // if the user clicks one time, the tooltip triggers, if two, he goes to Tapas.io to see the chapter
   let lastClickTime = 0;
@@ -200,20 +210,21 @@ if (window.innerWidth >= 1279) {
         const tapasURL = chaptersData[index].url;
         window.location.href = tapasURL;
       } else {
-        // Single-click action (toggle tooltip or other behavior)
+        // Single-click action (toggle tooltip)
         if (mobileTemplate.classList.contains("triggered")) {
           changeMobileTooltip(index);
           mobileTemplate.style.opacity = 1;
         } else {
           gsap.fromTo(
-            characterSection,
+            contentRemover,
             { y: 0 },
             {
               y: "80vw",
               duration: 0.8,
               onComplete: () => {
+                gsap.set(contentRemover, { y: 0 });
+                // Move this function call here to ensure the tooltip appears after the animation is completed
                 changeMobileTooltip(index);
-                gsap.set(characterSection, { y: 0 });
               },
             }
           );
@@ -281,33 +292,15 @@ if (window.innerWidth >= 1279) {
 
         gsap.set(mobileTemplate, { opacity: 1 }); // Reset the opacity back to 1
 
-        gsap.to(characterSection, {
-          y: "-38vh",
+        gsap.to(contentRemover, {
+          y: "-80vw",
           duration: 1,
           onComplete: () => {
+            gsap.set(contentRemover, { y: 0 });
             mobileTemplate.classList.remove("triggered");
-            gsap.set(characterSection, { y: 0 });
           },
         }); // Reset characterSection to its initial position
       },
     });
   });
 }
-
-class MathUtils {
-  // Static method to add two numbers
-  static add(a, b) {
-    return a + b;
-  }
-
-  // Static method to multiply two numbers
-  static multiply(a, b) {
-    return a * b;
-  }
-}
-
-let number = 13;
-
-// Calling the static methods directly on the class
-console.log(MathUtils.add(5, 3)); // Output: 8
-console.log(MathUtils.multiply(2, 4)); // Output: 8
