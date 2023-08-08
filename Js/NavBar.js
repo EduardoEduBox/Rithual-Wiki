@@ -1,7 +1,6 @@
-// Nav bar part
-
 const hamburguerIcon = document.querySelector("#menuIcon");
 const navElements = document.createElement("div");
+let advice = null;
 
 hamburguerIcon.addEventListener("click", function () {
   hamburguerIcon.classList.toggle("hamburguerToggled");
@@ -15,8 +14,8 @@ hamburguerIcon.addEventListener("click", function () {
       <ul class="navList2">
         <li><a href="#header">Home</a></li>
         <li><a href="#chapters">Capítulos</a></li>
-        <li class="charactersMedia"><a href="#characters">Personagens</a></li>
-        <li class="aboutMedia"><a href="">Sobre mim</a></li>
+        <li><a href="#characters">Personagens</a></li>
+        <li><a href="#">Sobre mim</a></li>
         <li><hr></li> 
       </ul>`;
 
@@ -33,28 +32,20 @@ hamburguerIcon.addEventListener("click", function () {
 });
 
 function handleResize() {
-  if (window.innerWidth > 1279) {
+  if (body.clientWidth > 1279) {
     // Remove navElements from the document.body
     navElements.remove();
   }
+
+  // Remove the previous event listener to avoid duplicates
+  if (advice) {
+    advice.removeEventListener("click", adviceClickHandler);
+  }
+
+  // Add the event listener back to the advice element
+  advice.addEventListener("click", adviceClickHandler);
 }
 
+// Function to handle the click event on the advice element
+
 window.addEventListener("resize", handleResize);
-
-const advice = document.querySelectorAll(
-  ".navList li:nth-child(4), .navList2 li:nth-child(4)"
-);
-
-advice.forEach(function (li) {
-  li.addEventListener("click", function () {
-    Swal.fire({
-      title: "DEU RUIM!",
-      text: "Tá em beta o site, sendo assim existem coisas aqui que só estão por aqui por questão de organização, essas sessões irão aparecer no futuro, CONFIA!",
-      imageUrl:
-        "https://cdn.discordapp.com/attachments/421344962303623189/1113987029550764052/image.png",
-      imageWidth: 400,
-      imageHeight: 200,
-      imageAlt: "eeee agua eeeee agua",
-    });
-  });
-});

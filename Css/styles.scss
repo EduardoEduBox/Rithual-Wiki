@@ -319,6 +319,10 @@ header {
   flex-direction: column;
   justify-content: center;
 
+  * {
+    transition: 200ms;
+  }
+
   #chaptersTitle {
     font-size: 4.8vw;
     margin-bottom: 1vh;
@@ -349,6 +353,7 @@ header {
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    padding-right: 10vw;
 
     img {
       position: relative;
@@ -450,14 +455,14 @@ header {
     color: rgb(255, 223, 239);
   }
 
-  strong {
+  .backgroundText {
     top: -2.5rem;
     position: absolute;
     font-size: 9vw;
     color: rgb(18, 18, 18);
     text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239),
       0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239),
-      1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff,
+      1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px,
       -1px 1px rgb(255, 223, 239);
     opacity: 15%;
     z-index: -1;
@@ -500,6 +505,7 @@ header {
           height: 100%;
         }
       }
+
       #informationContainer {
         width: 100%;
         height: 100%;
@@ -518,7 +524,8 @@ header {
           rotate: none;
           scale: none;
           opacity: 1;
-          transform: translate(-150px, 0px);
+          // transform: translate(-150px, 0px);
+          transform: translate(0px, 0px);
         }
 
         #informationOrganizator {
@@ -650,6 +657,10 @@ footer {
   body {
     font-size: 1rem;
 
+    * {
+      transition: none;
+    }
+
     button {
       height: 45px;
       width: 140px;
@@ -658,6 +669,10 @@ footer {
 
   nav {
     padding: 0 3vw 0 3vw;
+
+    * {
+      transition: 500ms;
+    }
 
     #navLogo {
       height: 70%;
@@ -760,6 +775,10 @@ footer {
     height: 100vh;
     flex-direction: column;
 
+    * {
+      transition: 500ms;
+    }
+
     #headerInformationContainer {
       padding: 7vh 5vw 10vh 5vw;
       width: 100%;
@@ -805,6 +824,10 @@ footer {
     align-items: center;
     margin-bottom: -10vh;
 
+    * {
+      transition: 500ms;
+    }
+
     ::-webkit-scrollbar {
       width: 0vh;
       height: 1vh;
@@ -845,7 +868,7 @@ footer {
     flex-direction: column;
     justify-content: center;
 
-    height: 80vw;
+    height: 75vw;
     width: 100%;
 
     hr {
@@ -856,6 +879,7 @@ footer {
       display: flex;
       height: 100%;
       position: relative;
+      top: 2rem;
 
       .toolTipMobileImageContainer {
         width: 40%;
@@ -886,7 +910,7 @@ footer {
           margin-left: auto;
           font-weight: 600;
           font-size: 1.7rem;
-          top: 0;
+          top: -2rem;
           right: 5vw;
           opacity: 50%;
         }
@@ -907,131 +931,207 @@ footer {
 
   // characters here vvvvvvvvvvvv
 
-  // #characters {
-  //   border: solid red;
-  //   transition: none;
-  //   padding-top: 1.5rem;
-  //   height: fit-content;
-  //   // width: fit-content;
+  #characters {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 
-  //   * {
-  //     border: solid 1px;
-  //   }
+    ::-webkit-scrollbar {
+      width: 0vh;
+      height: 0.8vh;
+      display: none;
+    }
 
-  //   ::-webkit-scrollbar {
-  //     width: 0vh;
-  //     height: 0.7vh;
-  //   }
+    // ::-webkit-scrollbar-thumb {
+    //   background-color: rgba(
+    //     $color: #888,
+    //     $alpha: 0.3
+    //   ); /* Color of the thumb */
+    // }
 
-  //   #characterBackgroundSidewaysBar {
-  //     top: 31%;
+    // * {
+    //   border: solid 1px;
+    // }
 
-  //     &::after {
-  //       height: 15vh;
-  //       bottom: 2rem;
-  //       transform: rotate(-13.5deg);
-  //     }
-  //   }
+    // #mobileSidewaysBar {
+    //   width: 100vw;
+    //   position: absolute;
+    //   height: 50vh;
+    //   background-color: darkgray;
+    //   z-index: -1;
+    //   top: 30%;
+    //   opacity: 20%;
+    //   overflow-x: hidden;
 
-  //   #charactersTitle {
-  //     margin: 0;
-  //     font-size: 2rem;
-  //   }
+    //   &::after {
+    //     overflow-x: hidden;
+    //     position: absolute;
+    //     content: "";
+    //     width: 300vw;
+    //     height: 42vh;
+    //     background-color: rgb(18, 18, 18);
+    //     bottom: 9rem;
+    //     transform: rotate(13.5deg);
+    //   }
+    // }
 
-  //   strong {
-  //     top: 0;
-  //     font-size: 3.8rem;
-  //     text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239),
-  //       0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239),
-  //       1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff,
-  //       -1px 1px rgb(255, 223, 239);
-  //   }
+    .mobileTitleContainer {
+      height: 20vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-  //   #charactersContainer {
-  //     overflow-x: visible;
-  //     display: flex;
-  //     // gap: 10vw;
-  //     padding: 0;
-  //     width: 100vw;
+      #charactersTitle {
+        font-size: 2rem;
+      }
 
-  //     .character-info {
-  //       display: none;
-  //     }
+      .backgroundText {
+        font-size: 3.8rem;
+        top: 2.5rem;
+        text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239),
+          0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239),
+          1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff,
+          -1px 1px rgb(255, 223, 239);
+      }
+    }
 
-  //       .character {
-  //         display: block;
-  //         width: fit-content;
+    #charactersContainer {
+      padding: 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      margin-top: 0;
+      align-items: flex-end;
+      // overflow-y: hidden;
 
-  //         #characterSinger {
-  //           height: auto;
-  //           width: 95vw;
-  //           background-color: rgba($color: blue, $alpha: 0.2);
-  //         }
+      .character-info {
+        display: none;
 
-  //         #characterAika {
-  //           height: auto;
-  //           width: calc(95vw - 6%);
-  //           background-color: rgba($color: pink, $alpha: 0.2);
-  //         }
+        .character-image {
+          width: 100vw;
+          max-width: 450px;
+        }
 
-  //         #characterMadger {
-  //           height: auto;
-  //           width: calc(95vw - 4%);
-  //           background-color: rgba($color: green, $alpha: 0.2);
-  //         }
+        #informationContainer {
+          #characterBackgroundText {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            left: 0;
+            font-size: 4.5rem;
+            margin: 0;
+          }
 
-  //         #characterSan {
-  //           height: auto;
-  //           width: calc(95vw - 1%);
-  //           background-color: rgba($color: orange, $alpha: 0.2);
-  //         }
-  //       }
+          #informationOrganizator {
+            right: 0;
+            height: 100%;
 
-  //     div {
-  //       .profilePictureDiv {
-  //         display: none;
+            #ageAndStatus {
+              display: flex;
+              flex-direction: column-reverse;
+              padding: 30vw 3vw 0 0;
+              width: 100%;
+              align-items: end;
+              justify-content: start;
 
-  //         // img {
-  //         // }
-  //       }
+              div {
+                right: 0;
+                font-size: 0.8rem;
+                gap: 0.4rem;
+              }
+            }
+          }
+        }
 
-  //       #informationContainer {
-  //         padding: 0;
+        #close-button {
+          img {
+            height: 1.5rem;
+            width: 3.5rem;
+          }
+        }
+      }
 
-  //         #characterBackgroundText {
-  //           writing-mode: vertical-rl;
-  //           left: 0;
-  //           position: absolute;
-  //           font-size: 11vh;
-  //           transform: translate(-75px, 0px) !important;
-  //         }
+      .character {
+        justify-content: space-between;
+        align-items: end;
+        scroll-snap-align: start;
 
-  //         #informationOrganizator {
-  //           height: 100%;
-  //           display: flex;
+        #characterSinger {
+          width: 100vw;
+          height: auto;
+          max-width: 33rem;
+        }
 
-  //           #characterInformation {
-  //             display: none;
-  //           }
+        #characterAika {
+          width: 95vw;
+          margin-left: 2.5vw;
+          height: auto;
+          // margin-right: 100vw;
+          max-width: 33rem;
+        }
 
-  //           // #ageAndStatus {
-  //           // }
-  //         }
-  //       }
+        #characterMadger {
+          width: 95vw;
+          margin-left: 2.5vw;
+          height: auto;
+          max-width: 33rem;
+        }
 
-  //       #close-button {
-  //         img {
-  //           height: 1.3rem;
-  //           width: 3rem;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+        #characterSan {
+          width: 100vw;
+          height: auto;
+          max-width: 33rem;
+        }
+      }
+    }
+
+    .imageAndInformation {
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      .profilePictureDiv {
+        img {
+          width: 40vw;
+          height: auto;
+          border-radius: 50vh;
+        }
+      }
+
+      #characterInformation {
+        padding-right: 2vw;
+        text-align: center;
+      }
+    }
+  }
+
+  // listen here, if you are reading this code, i am so sorry, that was the ONLY thing that fixed my problem, why? i don't know, but for now, lets keep like this.
+  .singerContainer {
+    width: 100vw !important;
+  }
+
+  .aikaContainer {
+    width: 100vw !important;
+    // margin-right: 94vw;
+  }
+
+  .madgerContainer {
+    width: 100vw !important;
+    // margin-right: 100vw;
+  }
+
+  .sanContainer {
+    width: 100vw !important;
+  }
 
   // footer here vvvvvvvvvv
 
   footer {
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 }
