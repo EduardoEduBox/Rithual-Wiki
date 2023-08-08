@@ -161,7 +161,6 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
       element.addEventListener("mousemove", function (event) {
         const tooltipWidth = tooltip.offsetWidth;
         const tooltipHeight = tooltip.offsetHeight;
-        console.log("moved");
 
         let tooltipX = event.clientX + 100;
 
@@ -219,7 +218,7 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
             contentRemover,
             { y: 0 },
             {
-              y: "80vw",
+              y: "75vw",
               duration: 0.8,
               onComplete: () => {
                 gsap.set(contentRemover, { y: 0 });
@@ -293,7 +292,7 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
         gsap.set(mobileTemplate, { opacity: 1 }); // Reset the opacity back to 1
 
         gsap.to(contentRemover, {
-          y: "-80vw",
+          y: "-75vw",
           duration: 1,
           onComplete: () => {
             gsap.set(contentRemover, { y: 0 });

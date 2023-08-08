@@ -319,6 +319,10 @@ header {
   flex-direction: column;
   justify-content: center;
 
+  * {
+    transition: 200ms;
+  }
+
   #chaptersTitle {
     font-size: 4.8vw;
     margin-bottom: 1vh;
@@ -520,7 +524,8 @@ header {
           rotate: none;
           scale: none;
           opacity: 1;
-          transform: translate(-150px, 0px);
+          // transform: translate(-150px, 0px);
+          transform: translate(0px, 0px);
         }
 
         #informationOrganizator {
@@ -652,6 +657,10 @@ footer {
   body {
     font-size: 1rem;
 
+    * {
+      transition: none;
+    }
+
     button {
       height: 45px;
       width: 140px;
@@ -660,6 +669,10 @@ footer {
 
   nav {
     padding: 0 3vw 0 3vw;
+
+    * {
+      transition: 500ms;
+    }
 
     #navLogo {
       height: 70%;
@@ -762,6 +775,10 @@ footer {
     height: 100vh;
     flex-direction: column;
 
+    * {
+      transition: 500ms;
+    }
+
     #headerInformationContainer {
       padding: 7vh 5vw 10vh 5vw;
       width: 100%;
@@ -807,6 +824,10 @@ footer {
     align-items: center;
     margin-bottom: -10vh;
 
+    * {
+      transition: 500ms;
+    }
+
     ::-webkit-scrollbar {
       width: 0vh;
       height: 1vh;
@@ -847,7 +868,7 @@ footer {
     flex-direction: column;
     justify-content: center;
 
-    height: 80vw;
+    height: 75vw;
     width: 100%;
 
     hr {
@@ -858,6 +879,7 @@ footer {
       display: flex;
       height: 100%;
       position: relative;
+      top: 2rem;
 
       .toolTipMobileImageContainer {
         width: 40%;
@@ -888,7 +910,7 @@ footer {
           margin-left: auto;
           font-weight: 600;
           font-size: 1.7rem;
-          top: 0;
+          top: -2rem;
           right: 5vw;
           opacity: 50%;
         }
@@ -919,7 +941,15 @@ footer {
     ::-webkit-scrollbar {
       width: 0vh;
       height: 0.8vh;
+      display: none;
     }
+
+    // ::-webkit-scrollbar-thumb {
+    //   background-color: rgba(
+    //     $color: #888,
+    //     $alpha: 0.3
+    //   ); /* Color of the thumb */
+    // }
 
     // * {
     //   border: solid 1px;
@@ -974,13 +1004,14 @@ footer {
       scroll-snap-type: x mandatory;
       margin-top: 0;
       align-items: flex-end;
-      overflow-y: hidden;
+      // overflow-y: hidden;
 
       .character-info {
         display: none;
 
         .character-image {
           width: 100vw;
+          max-width: 450px;
         }
 
         #informationContainer {
@@ -1007,24 +1038,7 @@ footer {
               div {
                 right: 0;
                 font-size: 0.8rem;
-
-                #characterAge {
-                }
-
-                .ageColor {
-                }
-
-                #characterStatus {
-                }
-
-                .statusColor {
-                }
-
-                #characterRace {
-                }
-
-                .raceColor {
-                }
+                gap: 0.4rem;
               }
             }
           }
@@ -1041,26 +1055,33 @@ footer {
       .character {
         justify-content: space-between;
         align-items: end;
+        scroll-snap-align: start;
 
         #characterSinger {
           width: 100vw;
           height: auto;
+          max-width: 33rem;
         }
 
         #characterAika {
           width: 95vw;
+          margin-left: 2.5vw;
           height: auto;
           // margin-right: 100vw;
+          max-width: 33rem;
         }
 
         #characterMadger {
           width: 95vw;
+          margin-left: 2.5vw;
           height: auto;
+          max-width: 33rem;
         }
 
         #characterSan {
           width: 100vw;
           height: auto;
+          max-width: 33rem;
         }
       }
     }
@@ -1068,6 +1089,7 @@ footer {
     .imageAndInformation {
       display: flex;
       align-items: center;
+      width: 100%;
 
       .profilePictureDiv {
         img {
@@ -1078,7 +1100,7 @@ footer {
       }
 
       #characterInformation {
-        padding-right: 5vw;
+        padding-right: 2vw;
         text-align: center;
       }
     }
@@ -1103,131 +1125,13 @@ footer {
     width: 100vw !important;
   }
 
-  // #characters {
-  //   border: solid red;
-  //   transition: none;
-  //   padding-top: 1.5rem;
-  //   height: fit-content;
-  //   // width: fit-content;
-
-  //   * {
-  //     border: solid 1px;
-  //   }
-
-  //   ::-webkit-scrollbar {
-  //     width: 0vh;
-  //     height: 0.7vh;
-  //   }
-
-  //   #characterBackgroundSidewaysBar {
-  //     top: 31%;
-
-  //     &::after {
-  //       height: 15vh;
-  //       bottom: 2rem;
-  //       transform: rotate(-13.5deg);
-  //     }
-  //   }
-
-  //   #charactersTitle {
-  //     margin: 0;
-  //     font-size: 2rem;
-  //   }
-
-  //   strong {
-  //     top: 0;
-  //     font-size: 3.8rem;
-  //     text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239),
-  //       0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239),
-  //       1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff,
-  //       -1px 1px rgb(255, 223, 239);
-  //   }
-
-  //   #charactersContainer {
-  //     overflow-x: visible;
-  //     display: flex;
-  //     // gap: 10vw;
-  //     padding: 0;
-  //     width: 100vw;
-
-  //     .character-info {
-  //       display: none;
-  //     }
-
-  //       .character {
-  //         display: block;
-  //         width: fit-content;
-
-  //         #characterSinger {
-  //           height: auto;
-  //           width: 95vw;
-  //           background-color: rgba($color: blue, $alpha: 0.2);
-  //         }
-
-  //         #characterAika {
-  //           height: auto;
-  //           width: calc(95vw - 6%);
-  //           background-color: rgba($color: pink, $alpha: 0.2);
-  //         }
-
-  //         #characterMadger {
-  //           height: auto;
-  //           width: calc(95vw - 4%);
-  //           background-color: rgba($color: green, $alpha: 0.2);
-  //         }
-
-  //         #characterSan {
-  //           height: auto;
-  //           width: calc(95vw - 1%);
-  //           background-color: rgba($color: orange, $alpha: 0.2);
-  //         }
-  //       }
-
-  //     div {
-  //       .profilePictureDiv {
-  //         display: none;
-
-  //         // img {
-  //         // }
-  //       }
-
-  //       #informationContainer {
-  //         padding: 0;
-
-  //         #characterBackgroundText {
-  //           writing-mode: vertical-rl;
-  //           left: 0;
-  //           position: absolute;
-  //           font-size: 11vh;
-  //           transform: translate(-75px, 0px) !important;
-  //         }
-
-  //         #informationOrganizator {
-  //           height: 100%;
-  //           display: flex;
-
-  //           #characterInformation {
-  //             display: none;
-  //           }
-
-  //           // #ageAndStatus {
-  //           // }
-  //         }
-  //       }
-
-  //       #close-button {
-  //         img {
-  //           height: 1.3rem;
-  //           width: 3rem;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
   // footer here vvvvvvvvvv
 
   footer {
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 }

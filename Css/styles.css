@@ -275,6 +275,9 @@ header #headerImageContainer .headerImageBall {
   flex-direction: column;
   justify-content: center;
 }
+#chapters * {
+  transition: 200ms;
+}
 #chapters #chaptersTitle {
   font-size: 4.8vw;
   margin-bottom: 1vh;
@@ -450,7 +453,7 @@ header #headerImageContainer .headerImageBall {
   rotate: none;
   scale: none;
   opacity: 1;
-  transform: translate(-150px, 0px);
+  transform: translate(0px, 0px);
 }
 #characters #charactersContainer div #informationContainer #informationOrganizator {
   width: 66%;
@@ -561,12 +564,18 @@ footer strong {
   body {
     font-size: 1rem;
   }
+  body * {
+    transition: none;
+  }
   body button {
     height: 45px;
     width: 140px;
   }
   nav {
     padding: 0 3vw 0 3vw;
+  }
+  nav * {
+    transition: 500ms;
   }
   nav #navLogo {
     height: 70%;
@@ -646,6 +655,9 @@ footer strong {
     height: 100vh;
     flex-direction: column;
   }
+  header * {
+    transition: 500ms;
+  }
   header #headerInformationContainer {
     padding: 7vh 5vw 10vh 5vw;
     width: 100%;
@@ -680,6 +692,9 @@ footer strong {
     align-items: center;
     margin-bottom: -10vh;
   }
+  #chapters * {
+    transition: 500ms;
+  }
   #chapters ::-webkit-scrollbar {
     width: 0vh;
     height: 1vh;
@@ -709,7 +724,7 @@ footer strong {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
-    height: 80vw;
+    height: 75vw;
     width: 100%;
   }
   .triggered hr {
@@ -719,6 +734,7 @@ footer strong {
     display: flex;
     height: 100%;
     position: relative;
+    top: 2rem;
   }
   .triggered .toolTipMobileContainer .toolTipMobileImageContainer {
     width: 40%;
@@ -746,7 +762,7 @@ footer strong {
     margin-left: auto;
     font-weight: 600;
     font-size: 1.7rem;
-    top: 0;
+    top: -2rem;
     right: 5vw;
     opacity: 50%;
   }
@@ -770,6 +786,7 @@ footer strong {
   #characters ::-webkit-scrollbar {
     width: 0vh;
     height: 0.8vh;
+    display: none;
   }
   #characters .mobileTitleContainer {
     height: 20vh;
@@ -792,13 +809,13 @@ footer strong {
     scroll-snap-type: x mandatory;
     margin-top: 0;
     align-items: flex-end;
-    overflow-y: hidden;
   }
   #characters #charactersContainer .character-info {
     display: none;
   }
   #characters #charactersContainer .character-info .character-image {
     width: 100vw;
+    max-width: 450px;
   }
   #characters #charactersContainer .character-info #informationContainer #characterBackgroundText {
     writing-mode: vertical-rl;
@@ -822,6 +839,7 @@ footer strong {
   #characters #charactersContainer .character-info #informationContainer #informationOrganizator #ageAndStatus div {
     right: 0;
     font-size: 0.8rem;
+    gap: 0.4rem;
   }
   #characters #charactersContainer .character-info #close-button img {
     height: 1.5rem;
@@ -830,26 +848,34 @@ footer strong {
   #characters #charactersContainer .character {
     justify-content: space-between;
     align-items: end;
+    scroll-snap-align: start;
   }
   #characters #charactersContainer .character #characterSinger {
     width: 100vw;
     height: auto;
+    max-width: 33rem;
   }
   #characters #charactersContainer .character #characterAika {
     width: 95vw;
+    margin-left: 2.5vw;
     height: auto;
+    max-width: 33rem;
   }
   #characters #charactersContainer .character #characterMadger {
     width: 95vw;
+    margin-left: 2.5vw;
     height: auto;
+    max-width: 33rem;
   }
   #characters #charactersContainer .character #characterSan {
     width: 100vw;
     height: auto;
+    max-width: 33rem;
   }
   #characters .imageAndInformation {
     display: flex;
     align-items: center;
+    width: 100%;
   }
   #characters .imageAndInformation .profilePictureDiv img {
     width: 40vw;
@@ -857,7 +883,7 @@ footer strong {
     border-radius: 50vh;
   }
   #characters .imageAndInformation #characterInformation {
-    padding-right: 5vw;
+    padding-right: 2vw;
     text-align: center;
   }
   .singerContainer {
@@ -874,5 +900,9 @@ footer strong {
   }
   footer {
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 }/*# sourceMappingURL=styles.css.map */
