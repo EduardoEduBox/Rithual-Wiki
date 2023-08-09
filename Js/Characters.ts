@@ -1,3 +1,6 @@
+// min selector
+const c = (el: string) => document.querySelector(el);
+
 enum CharacterStatus {
   Alive = "Vivo",
   Dead = "Morto",
@@ -106,9 +109,6 @@ const characters: Characters[] = [
   ),
   // Add more characters here...
 ];
-
-// min selector
-const c = (el: string) => document.querySelector(el);
 
 const bigContainer = document.getElementById("characters") as HTMLDivElement;
 const contentRemover = c(".contentRemover") as HTMLDivElement;

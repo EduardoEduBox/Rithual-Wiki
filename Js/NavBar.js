@@ -1,4 +1,7 @@
-const hamburguerIcon = document.querySelector("#menuIcon");
+// min selector
+const c = (el) => document.querySelector(el);
+
+const hamburguerIcon = c("#menuIcon");
 const navElements = document.createElement("div");
 let advice = null;
 

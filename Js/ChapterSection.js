@@ -1,7 +1,10 @@
+// min selector
+const c = (el) => document.querySelector(el);
+
 const images = document.getElementsByClassName("prePages");
-const textElement = document.getElementById("chaptersTitle");
-const backgroundTextElement = document.querySelector(".backgroundText");
-const container = document.getElementById("chaptersContainer");
+const textElement = c("#chaptersTitle");
+const backgroundTextElement = c(".backgroundText");
+const container = c("#chaptersContainer");
 
 const bodyWidth = document.body.offsetWidth;
 const htmlWidth = document.documentElement.offsetWidth;
@@ -176,7 +179,7 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
     return tooltip;
   }
 } else {
-  const contentRemover = document.querySelector(".contentRemover");
+  const contentRemover = c(".contentRemover");
 
   setTimeout(function () {
     container.scrollLeft = 55;
@@ -190,56 +193,61 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
   let lastClickedImageIndex = -1; // Initialize with an invalid index
   const doubleClickDelay = 300;
 
+  // variable to prevent the user to click on the xMark and then brake the application by clicking on a page fast.
+  let checkTime = 0;
+
   let horizontalLines = document.getElementsByTagName("hr");
 
   [...images].forEach((element, index) => {
     element.addEventListener("click", () => {
-      const currentTime = new Date().getTime();
-      const timeSinceLastClick = currentTime - lastClickTime;
+      if (checkTime === 0) {
+        const currentTime = new Date().getTime();
+        const timeSinceLastClick = currentTime - lastClickTime;
 
-      // setting the floating text to the title
-      textElement.innerHTML = chaptersData[index].chapterTitle;
-      backgroundTextElement.innerHTML = chaptersData[index].shortName;
+        // setting the floating text to the title
+        textElement.innerHTML = chaptersData[index].chapterTitle;
+        backgroundTextElement.innerHTML = chaptersData[index].shortName;
 
-      if (
-        timeSinceLastClick <= doubleClickDelay &&
-        lastClickedImageIndex === index
-      ) {
-        // Double-click action (redirect to the Tapas.io URL)
-        const tapasURL = chaptersData[index].url;
-        window.location.href = tapasURL;
-      } else {
-        // Single-click action (toggle tooltip)
-        if (mobileTemplate.classList.contains("triggered")) {
-          changeMobileTooltip(index);
-          mobileTemplate.style.opacity = 1;
+        if (
+          timeSinceLastClick <= doubleClickDelay &&
+          lastClickedImageIndex === index
+        ) {
+          // Double-click action (redirect to the Tapas.io URL)
+          const tapasURL = chaptersData[index].url;
+          window.location.href = tapasURL;
         } else {
-          gsap.fromTo(
-            contentRemover,
-            { y: 0 },
-            {
-              y: "75vw",
-              duration: 0.8,
-              onComplete: () => {
-                gsap.set(contentRemover, { y: 0 });
-                // Move this function call here to ensure the tooltip appears after the animation is completed
-                changeMobileTooltip(index);
-              },
-            }
-          );
+          // Single-click action (toggle tooltip)
+          if (mobileTemplate.classList.contains("triggered")) {
+            changeMobileTooltip(index);
+            mobileTemplate.style.opacity = 1;
+          } else {
+            gsap.fromTo(
+              contentRemover,
+              { y: 0 },
+              {
+                y: "75vw",
+                duration: 0.8,
+                onComplete: () => {
+                  gsap.set(contentRemover, { y: 0 });
+                  // Move this function call here to ensure the tooltip appears after the animation is completed
+                  changeMobileTooltip(index);
+                },
+              }
+            );
+          }
         }
-      }
 
-      lastClickTime = currentTime;
-      lastClickedImageIndex = index;
+        lastClickTime = currentTime;
+        lastClickedImageIndex = index;
+      }
     });
   });
 
-  let mobileTemplate = document.getElementById("toolTipMobileTemplate");
-  let mobileChapterImage = document.querySelector(".ToolTipMobileChapterImage");
-  let toolTipTitle = document.querySelector(".toolTipTitle");
-  let toolTipDescription = document.querySelector(".toolTipDescription");
-  let dblClickInformation = document.querySelector(".dblclickInformation");
+  let mobileTemplate = c("#toolTipMobileTemplate");
+  let mobileChapterImage = c(".ToolTipMobileChapterImage");
+  let toolTipTitle = c(".toolTipTitle");
+  let toolTipDescription = c(".toolTipDescription");
+  let dblClickInformation = c(".dblclickInformation");
 
   function changeMobileTooltip(index) {
     [...horizontalLines].forEach((el) => {
@@ -266,9 +274,11 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
     });
   }
 
-  let xMark = document.querySelector(".xMark");
+  let xMark = c(".xMark");
 
   xMark.addEventListener("click", () => {
+    checkTime = 1;
+
     // setting the floating text to normal
     textElement.innerHTML = "Capítulos";
     backgroundTextElement.innerHTML = "Capítulos";
@@ -297,6 +307,8 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
           onComplete: () => {
             gsap.set(contentRemover, { y: 0 });
             mobileTemplate.classList.remove("triggered");
+
+            checkTime = 0;
           },
         }); // Reset characterSection to its initial position
       },

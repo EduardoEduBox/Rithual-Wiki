@@ -1,4 +1,5 @@
 "use strict";
+const c = (el) => document.querySelector(el);
 var CharacterStatus;
 (function (CharacterStatus) {
     CharacterStatus["Alive"] = "Vivo";
@@ -33,7 +34,6 @@ const characters = [
     new Characters("characterMadger", "Madger Yasáshi", 17, "Artista marcial nascido na vila Yasáshi, após uma batalha curta e sangrenta, Madger perdeu pessoas preciosas quando ainda era criança, agora, ele busca honrar aqueles que lutaram por ele em sua antiga vila!", Race.Human, CharacterStatus.Alive, "Css/assets/charactersSection/profile/Madger Profile.png", "Css/assets/charactersSection/withoutText/madger withoutText.png", "Css/assets/charactersSection/Madger corpo completo.png", "rgb(186, 235, 186)", true),
     new Characters("characterSan", "San Majutsu-shi", 19, `Ainda sem registros...`, Race.Human, CharacterStatus.Alive, "Css/assets/charactersSection/profile/San Profile.png", "Css/assets/charactersSection/withoutText/san withoutText.png", "Css/assets/charactersSection/San corpo completo.png", "rgb(255, 223, 164)", false),
 ];
-const c = (el) => document.querySelector(el);
 const bigContainer = document.getElementById("characters");
 const contentRemover = c(".contentRemover");
 let validation = false;
