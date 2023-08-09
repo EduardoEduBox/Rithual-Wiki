@@ -1,10 +1,13 @@
+// min selector
+const c = (el) => document.querySelector(el) 
+
 // Header part
 
-const headerBackgroundImages = document.querySelector(
+const headerBackgroundImages = c(
   "#headerBackgroundImages"
 );
-const headerCharacterImages = document.querySelector("#headerCharacterImages");
-const headerBall = document.querySelector(".headerImageBall");
+const headerCharacterImages = c("#headerCharacterImages");
+const headerBall = c(".headerImageBall");
 
 class Images {
   constructor(id, backgroundImage, characterImage, ballColor) {
@@ -61,10 +64,10 @@ let randomNumber = () => {
 let i = 1;
 
 // the variable to link the dom to the header text elements
-const headerTitle = document.querySelector(".headerTitle");
-const headerParagraph = document.querySelector(".headerParagraph");
-const headerKnowmore = document.querySelector(".headerKnowMore");
-const headerButton = document.querySelector(".headerButton");
+const headerTitle = c(".headerTitle");
+const headerParagraph = c(".headerParagraph");
+const headerKnowmore = c(".headerKnowMore");
+const headerButton = c(".headerButton");
 
 // sets a variable to true when the entire process of changing the images complete
 let checker = false;
