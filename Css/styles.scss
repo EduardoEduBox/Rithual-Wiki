@@ -312,110 +312,6 @@ header {
 
 //////////////////////////////////////////////////////////////////////////////
 
-#chapters {
-  width: 100%;
-  height: 110vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  * {
-    transition: 200ms;
-  }
-
-  #chaptersTitle {
-    font-size: 4.8vw;
-    margin-bottom: 1vh;
-    color: $light-pink-color;
-    padding-left: 8vw;
-  }
-
-  .backgroundText {
-    padding-left: 8vw;
-    position: absolute;
-    margin-top: -63vh;
-    margin-left: -5vw;
-    font-size: 9vw;
-    color: rgb(18 18 18);
-    text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239),
-      0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239),
-      1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff,
-      -1px 1px rgb(255, 223, 239);
-    opacity: 15%;
-    z-index: -1;
-  }
-
-  #chaptersContainer {
-    display: flex;
-    gap: 5vh;
-    width: fit-content;
-    height: 65%;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-right: 10vw;
-
-    img {
-      position: relative;
-      left: 8vw;
-      height: calc(60% + 12vw);
-      border-radius: 1vh;
-      transition: 500ms;
-      margin-top: 2vh;
-      justify-content: flex-end;
-
-      &:hover {
-        transform: translateY(-2vh);
-      }
-    }
-  }
-}
-
-.tooltip {
-  font-size: 1.2rem;
-  position: absolute;
-  display: flex;
-  border-radius: 1rem;
-  background-color: rgb(15, 15, 15);
-  // padding: 4vw;
-  gap: 3rem;
-  align-items: center;
-  padding: 0.8rem 0.3rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 998;
-  /* Add more styles as needed */
-  opacity: 1;
-  transition: opacity 500ms;
-
-  img {
-    border-radius: 1.5rem 1rem 1rem 1.5rem;
-    padding-left: 0.8rem;
-    height: 270px;
-  }
-
-  .tooltipInformation {
-    display: flex;
-    padding-right: 3rem;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    // justify-content: center;
-
-    hr {
-      position: relative;
-      top: -1rem;
-      opacity: 30%;
-    }
-
-    p {
-      position: relative;
-      top: -2rem;
-    }
-  }
-}
-
-//////////////////////////////////////////////////////////////////////////////
-
 #characters {
   width: 100%;
   height: 100vh;
@@ -423,6 +319,7 @@ header {
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin-top: 10vh;
 
   * {
     transition: none !important;
@@ -635,6 +532,108 @@ header {
 
 //////////////////////////////////////////////////////////////////////////////
 
+#chapters {
+  width: 100%;
+  height: 110vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  * {
+    transition: 200ms;
+  }
+
+  #chaptersTitle {
+    font-size: 4.8vw;
+    margin-bottom: 1vh;
+    color: $light-pink-color;
+    padding-left: 8vw;
+  }
+
+  .backgroundText {
+    padding-left: 8vw;
+    position: absolute;
+    margin-top: -63vh;
+    margin-left: -5vw;
+    font-size: 9vw;
+    color: rgb(18 18 18);
+    text-shadow: 2px 0 rgb(255, 223, 239), -2px 0 rgb(255, 223, 239),
+      0 2px rgb(255, 223, 239), 0 -2px rgb(255, 223, 239),
+      1px 1px rgb(255, 223, 239), -1px -1px rgb(255, 223, 239), 1px -1px #fff,
+      -1px 1px rgb(255, 223, 239);
+    opacity: 15%;
+    z-index: -1;
+  }
+
+  #chaptersContainer {
+    display: flex;
+    gap: 5vh;
+    width: fit-content;
+    height: 65%;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-right: 10vw;
+
+    img {
+      position: relative;
+      left: 8vw;
+      height: calc(60% + 12vw);
+      border-radius: 1vh;
+      transition: 500ms;
+      margin-top: 2vh;
+      justify-content: flex-end;
+
+      &:hover {
+        transform: translateY(-2vh);
+      }
+    }
+  }
+}
+
+.tooltip {
+  font-size: 1.2rem;
+  position: absolute;
+  display: flex;
+  border-radius: 1rem;
+  background-color: rgb(15, 15, 15);
+  // padding: 4vw;
+  gap: 3rem;
+  align-items: center;
+  padding: 0.8rem 0.3rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 998;
+  /* Add more styles as needed */
+  opacity: 1;
+  transition: opacity 500ms;
+
+  img {
+    border-radius: 1.5rem 1rem 1rem 1.5rem;
+    padding-left: 0.8rem;
+    height: 270px;
+  }
+
+  .tooltipInformation {
+    display: flex;
+    padding-right: 3rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    // justify-content: center;
+
+    hr {
+      position: relative;
+      top: -1rem;
+      opacity: 30%;
+    }
+
+    p {
+      position: relative;
+      top: -2rem;
+    }
+  }
+}
+
 footer {
   font-size: 1.6rem;
   display: flex;
@@ -816,127 +815,16 @@ footer {
     }
   }
 
-  // chapters here vvvvvvvvvv
-
-  #chapters {
-    height: 80vh;
-    padding: 0;
-    align-items: center;
-    margin-bottom: -10vh;
-
-    * {
-      transition: 500ms;
-    }
-
-    ::-webkit-scrollbar {
-      width: 0vh;
-      height: 1vh;
-    }
-
-    #chaptersTitle {
-      font-size: 2rem;
-      padding: 0;
-    }
-
-    .backgroundText {
-      font-size: 4rem;
-      margin-top: -48vh;
-      padding: 0;
-      text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239),
-        0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239),
-        1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff,
-        -1px 1px rgb(255, 223, 239);
-      right: auto;
-      left: auto;
-    }
-
-    #chaptersContainer {
-      height: 60%;
-      padding: 0 20vw 0 10vw;
-      position: relative;
-      gap: 1.5rem;
-      // margin-left: 20vw;
-
-      img {
-        height: 94%;
-      }
-    }
-  }
-
-  .triggered {
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
-
-    height: 75vw;
-    width: 100%;
-
-    hr {
-      opacity: 50%;
-    }
-
-    .toolTipMobileContainer {
-      display: flex;
-      height: 100%;
-      position: relative;
-      top: 2rem;
-
-      .toolTipMobileImageContainer {
-        width: 40%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .ToolTipMobileChapterImage {
-          width: 90%;
-          height: auto;
-          border-radius: 5px;
-        }
-      }
-
-      .toolTipMobileInformationContainer {
-        width: 60%;
-        // border: solid 1px pink;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        position: relative;
-
-        .xMark {
-          position: absolute;
-          margin-left: auto;
-          font-weight: 600;
-          font-size: 1.7rem;
-          top: -2rem;
-          right: 5vw;
-          opacity: 50%;
-        }
-
-        .toolTipTitle {
-          font-size: 1.3rem;
-          margin-bottom: 0;
-          color: $light-pink-color;
-        }
-
-        .toolTipDescription {
-          padding: 0 2vw;
-          margin-top: 0;
-        }
-      }
-    }
-  }
-
   // characters here vvvvvvvvvvvv
 
   #characters {
     height: fit-content;
+    // min-height: 600px;
     width: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
+    margin-top: 1rem;
 
     ::-webkit-scrollbar {
       width: 0vh;
@@ -1123,6 +1011,119 @@ footer {
 
   .sanContainer {
     width: 100vw !important;
+  }
+
+  // chapters here vvvvvvvvvv
+
+  #chapters {
+    height: 80vh;
+    padding: 0;
+    align-items: center;
+    margin-bottom: -10vh;
+
+    * {
+      transition: 500ms;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0vh;
+      height: 1vh;
+    }
+
+    #chaptersTitle {
+      font-size: 2rem;
+      padding: 0;
+    }
+
+    .backgroundText {
+      font-size: 4rem;
+      margin-top: -48vh;
+      padding: 0;
+      text-shadow: 1px 0 rgb(255, 223, 239), 0px 0 rgb(255, 223, 239),
+        0 0px rgb(255, 223, 239), 0 -1px rgb(255, 223, 239),
+        1px 0px rgb(255, 223, 239), 0px 0px rgb(255, 223, 239), -1px -1px #fff,
+        -1px 1px rgb(255, 223, 239);
+      right: auto;
+      left: auto;
+    }
+
+    #chaptersContainer {
+      height: 60%;
+      padding: 0 20vw 0 10vw;
+      position: relative;
+      gap: 1.5rem;
+      // margin-left: 20vw;
+
+      img {
+        height: 94%;
+      }
+    }
+  }
+
+  .triggered {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 75vw;
+    width: 100%;
+
+    hr {
+      opacity: 50%;
+    }
+
+    .toolTipMobileContainer {
+      display: flex;
+      height: 100%;
+      position: relative;
+      top: 2rem;
+
+      .toolTipMobileImageContainer {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .ToolTipMobileChapterImage {
+          width: 90%;
+          height: auto;
+          border-radius: 5px;
+        }
+      }
+
+      .toolTipMobileInformationContainer {
+        width: 60%;
+        // border: solid 1px pink;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        position: relative;
+
+        .xMark {
+          position: absolute;
+          margin-left: auto;
+          font-weight: 600;
+          font-size: 1.7rem;
+          top: -2rem;
+          right: 5vw;
+          opacity: 50%;
+        }
+
+        .toolTipTitle {
+          font-size: 1.3rem;
+          margin-bottom: 0;
+          color: $light-pink-color;
+        }
+
+        .toolTipDescription {
+          padding: 0 2vw;
+          margin-top: 0;
+        }
+      }
+    }
   }
 
   // footer here vvvvvvvvvv
