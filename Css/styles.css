@@ -417,7 +417,7 @@ header #headerImageContainer .headerImageBall {
 #characters #charactersContainer div #close-button img {
   height: 2rem;
   width: 5rem;
-  opacity: 80%;
+  opacity: 100%;
 }
 #characters #charactersContainer div #close-button img:hover {
   content: url("./assets/icons/pngwing.com (2).png");
