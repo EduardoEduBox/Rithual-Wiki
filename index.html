@@ -20,8 +20,8 @@
       <img src="Css/assets/icon.png" alt="" id="menuIcon" />
       <ul class="navList">
         <li><a href="#header">Home</a></li>
-        <li><a href="#chapters">Capítulos</a></li>
         <li><a href="#characters">Personagens</a></li>
+        <li><a href="#chapters">Capítulos</a></li>
         <li>Sobre mim</li>
       </ul>
     </nav>
@@ -36,14 +36,14 @@
           </h1>
           <div class="paragraphContainer">
             <p class="headerParagraph">
-              (૨¡Ƭષαℓ é um mangá brasileiro sobre um mundo dividido entre duas
-              raças: humanos e demônios. Disputando a influência total sobre a
-              sociedade, essas duas raças travam uma exorbitante guerra de poder
-              entre si! Nesta história você encontrará
-              <strong>Singer Faksumi</strong>, um garoto tímido e bastante
-              sorridente que está descobrindo o mundo pela primeira vez. além de
-              <strong>Aika'Nu</strong>, <strong>San Majutsu-Shi</strong> e
-              <strong>Madger Yasáshi</strong>
+              (૨¡Ƭષαℓ é um mangá brasileiro sobre um mundo que presencia
+              conflitos sangrentos entre humanos e demônios que disputam
+              influência sobre a sociedade. Nesta história você irá acompanhar a
+              vida de
+              <strong>Singer</strong>, um garoto tímido e bastante sorridente
+              que está descobrindo o mundo pela primeira vez ao lado de seus
+              amigos <strong>Aika</strong>, <strong>San</strong> e
+              <strong>Madger</strong>
             </p>
           </div>
 
@@ -57,63 +57,6 @@
           <div class="headerImageBall"></div>
         </div>
       </header>
-
-      <section id="chapters">
-        <h1 id="chaptersTitle">Capítulos</h1>
-        <strong class="backgroundText">Capítulos</strong>
-
-        <div id="chaptersContainer">
-          <a href="https://tapas.io/episode/2307820"
-            ><img
-              src="Css/assets/chapters/rithual pré pagina cap 0.png"
-              alt="Imagem do capítulo zero"
-              class="prePages"
-          /></a>
-          <a href="https://tapas.io/episode/2478257 "
-            ><img
-              src="Css/assets/chapters/ritual pré pagina cap 1.png"
-              alt="Imagem do capítulo zero"
-              class="prePages"
-          /></a>
-          <a href="https://tapas.io/episode/2571907"
-            ><img
-              src="Css/assets/chapters/ritual pré pagina cap 2.png"
-              alt="Imagem do capítulo zero"
-              class="prePages"
-          /></a>
-          <a href="https://tapas.io/episode/2689791"
-            ><img
-              src="Css/assets/chapters/ritual pré pagina cap 3.png"
-              alt="Imagem do capítulo zero"
-              class="prePages"
-          /></a>
-          <a href="https://tapas.io/episode/2846137"
-            ><img
-              src="Css/assets/chapters/ritual pré pagina cap 4.png"
-              alt="Imagem do capítulo zero"
-              class="prePages"
-          /></a>
-        </div>
-      </section>
-
-      <div id="toolTipMobileTemplate" style="display: none">
-        <div class="toolTipMobileContainer">
-          <div class="toolTipMobileImageContainer">
-            <img src="" alt="" class="ToolTipMobileChapterImage" />
-          </div>
-
-          <div class="toolTipMobileInformationContainer">
-            <span class="xMark">x</span>
-            <h1 class="toolTipTitle"></h1>
-            <hr style="width: 75%" />
-            <span
-              class="dblclickInformation"
-              style="font-size: 0.7rem; opacity: 50%"
-            ></span>
-            <p class="toolTipDescription"></p>
-          </div>
-        </div>
-      </div>
 
       <div class="contentRemover">
         <section id="characters">
@@ -188,14 +131,82 @@
         </section>
       </div>
 
+      <section id="chapters">
+        <h1 id="chaptersTitle">Capítulos</h1>
+        <strong class="backgroundText" id="bcChapters">Capítulos</strong>
+
+        <div id="chaptersContainer">
+          <a href="https://tapas.io/episode/2307820"
+            ><img
+              src="Css/assets/chapters/rithual pré pagina cap 0.png"
+              alt="Imagem do capítulo zero"
+              class="prePages"
+          /></a>
+          <a href="https://tapas.io/episode/2478257 "
+            ><img
+              src="Css/assets/chapters/ritual pré pagina cap 1.png"
+              alt="Imagem do capítulo zero"
+              class="prePages"
+          /></a>
+          <a href="https://tapas.io/episode/2571907"
+            ><img
+              src="Css/assets/chapters/ritual pré pagina cap 2.png"
+              alt="Imagem do capítulo zero"
+              class="prePages"
+          /></a>
+          <a href="https://tapas.io/episode/2689791"
+            ><img
+              src="Css/assets/chapters/ritual pré pagina cap 3.png"
+              alt="Imagem do capítulo zero"
+              class="prePages"
+          /></a>
+          <a href="https://tapas.io/episode/2846137"
+            ><img
+              src="Css/assets/chapters/ritual pré pagina cap 4.png"
+              alt="Imagem do capítulo zero"
+              class="prePages"
+          /></a>
+        </div>
+      </section>
+
+      <div id="toolTipMobileTemplate" style="display: none">
+        <div class="toolTipMobileContainer">
+          <div class="toolTipMobileImageContainer">
+            <img src="" alt="" class="ToolTipMobileChapterImage" />
+          </div>
+
+          <div class="toolTipMobileInformationContainer">
+            <span class="xMark">x</span>
+            <h1 class="toolTipTitle"></h1>
+            <hr style="width: 75%" class="normalHr" />
+            <span
+              class="dblclickInformation"
+              style="font-size: 0.7rem; opacity: 50%"
+            ></span>
+            <p class="toolTipDescription"></p>
+          </div>
+        </div>
+      </div>
+
       <section
         style="
           height: 100vh;
           display: flex;
           align-items: end;
           justify-content: center;
+          position: relative;
         "
+        class="futureSection"
       >
+        <hr
+          style="
+            position: absolute;
+            top: 0;
+            width: 90%;
+            margin: 0 auto;
+            opacity: 30%;
+          "
+        />
         <p style="opacity: 10%; margin-bottom: 10vh">
           nada pra checar aqui parceiro...
         </p>

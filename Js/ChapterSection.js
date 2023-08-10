@@ -3,8 +3,9 @@ const c = (el) => document.querySelector(el);
 
 const images = document.getElementsByClassName("prePages");
 const textElement = c("#chaptersTitle");
-const backgroundTextElement = c(".backgroundText");
+const backgroundTextElement = c("#bcChapters");
 const container = c("#chaptersContainer");
+const futureSection = c(".futureSection");
 
 const bodyWidth = document.body.offsetWidth;
 const htmlWidth = document.documentElement.offsetWidth;
@@ -101,6 +102,8 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
 
   [...images].forEach((image, i) => {
     image.addEventListener("mouseover", function () {
+      console.log("triggered");
+
       const chapter = chaptersData[i];
       chapter.setInformationDesktop(textElement, backgroundTextElement);
       currentTooltip = changeToolTip(
@@ -157,7 +160,7 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
       tooltip.style.opacity = "0";
       setTimeout(() => {
         tooltip.style.opacity = "1";
-      }, 1500);
+      }, 500);
     });
 
     [...images].forEach((element) => {
@@ -172,7 +175,7 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
         }
 
         tooltip.style.left = tooltipX + "px";
-        tooltip.style.top = event.clientY / 2 + tooltipHeight * 3.5 + "px";
+        tooltip.style.top = event.clientY + tooltipHeight * 6 + "px";
       });
     });
 
@@ -196,7 +199,7 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
   // variable to prevent the user to click on the xMark and then brake the application by clicking on a page fast.
   let checkTime = 0;
 
-  let horizontalLines = document.getElementsByTagName("hr");
+  const normalHr = c(".normalHr");
 
   [...images].forEach((element, index) => {
     element.addEventListener("click", () => {
@@ -222,13 +225,13 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
             mobileTemplate.style.opacity = 1;
           } else {
             gsap.fromTo(
-              contentRemover,
+              futureSection,
               { y: 0 },
               {
                 y: "75vw",
                 duration: 0.8,
                 onComplete: () => {
-                  gsap.set(contentRemover, { y: 0 });
+                  gsap.set(futureSection, { y: 0 });
                   // Move this function call here to ensure the tooltip appears after the animation is completed
                   changeMobileTooltip(index);
                 },
@@ -250,9 +253,7 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
   let dblClickInformation = c(".dblclickInformation");
 
   function changeMobileTooltip(index) {
-    [...horizontalLines].forEach((el) => {
-      el.style.display = "block";
-    });
+    normalHr.style.display = "block";
 
     xMark.style.display = "block";
 
@@ -293,19 +294,17 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
         mobileChapterImage.src = "";
         dblClickInformation.innerHTML = "";
 
-        [...horizontalLines].forEach((el) => {
-          el.style.display = "none";
-        });
+        normalHr.style.display = "none";
 
         xMark.style.display = "none";
 
         gsap.set(mobileTemplate, { opacity: 1 }); // Reset the opacity back to 1
 
-        gsap.to(contentRemover, {
+        gsap.to(futureSection, {
           y: "-75vw",
           duration: 1,
           onComplete: () => {
-            gsap.set(contentRemover, { y: 0 });
+            gsap.set(futureSection, { y: 0 });
             mobileTemplate.classList.remove("triggered");
 
             checkTime = 0;

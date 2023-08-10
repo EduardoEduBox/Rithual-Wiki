@@ -1,11 +1,9 @@
 // min selector
-const c = (el) => document.querySelector(el) 
+const c = (el) => document.querySelector(el);
 
 // Header part
 
-const headerBackgroundImages = c(
-  "#headerBackgroundImages"
-);
+const headerBackgroundImages = c("#headerBackgroundImages");
 const headerCharacterImages = c("#headerCharacterImages");
 const headerBall = c(".headerImageBall");
 
@@ -124,14 +122,14 @@ setInterval(() => {
 
         headerTitle.innerHTML = "Bem vindos ao <br /> (૨¡Ƭષαℓ";
         headerParagraph.style.fontFamily = "Outfit";
-        headerParagraph.innerHTML = `(૨¡Ƭષαℓ é um mangá brasileiro sobre um mundo dividido entre duas
-                raças: humanos e demônios. Disputando a influência total sobre a
-                sociedade, essas duas raças travam uma exorbitante guerra de poder
-                entre si! Nesta história você encontrará
-                <strong>Singer Faksumi</strong>, um garoto tímido e bastante
-                sorridente que está descobrindo o mundo pela primeira vez. além de
-                <strong>Aika'Nu</strong>, <strong>San Majutsu-Shi</strong> e
-                <strong>Madger Yasáshi</strong>`;
+        headerParagraph.innerHTML = `(૨¡Ƭષαℓ é um mangá brasileiro sobre um mundo que presencia
+          conflitos sangrentos entre humanos e demônios que disputam
+          influência sobre a sociedade. Nesta história você irá acompanhar a
+          vida de
+          <strong>Singer</strong>, um garoto tímido e bastante sorridente
+          que está descobrindo o mundo pela primeira vez ao lado de seus
+          amigos <strong>Aika</strong>, <strong>San</strong> e
+          <strong>Madger</strong>`;
 
         headerKnowmore.innerHTML = "Conheça mais esse universo!";
         headerButton.innerHTML = "Capítulos";

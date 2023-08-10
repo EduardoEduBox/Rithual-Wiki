@@ -259,7 +259,7 @@ class RenderCharacter {
                             if (body.clientWidth <= 1279) {
                                 characterInfo.style.display = "none";
                                 imageAndInformation.style.display = "none";
-                                console.log("what????");
+                                console.log("no");
                             }
                             gsap.to(charactersEl, { display: "flex", opacity: 1 });
                             validation = false;
@@ -310,3 +310,11 @@ charactersContainer.forEach((el, index) => {
         });
     }
 });
+if (body.clientWidth <= 1279) {
+    setTimeout(() => {
+        const charactersHeight = c("#characters");
+        let charactersContainerHeight = charactersHeight.clientHeight;
+        console.log(charactersContainerHeight);
+        charactersHeight.style.minHeight = `${charactersContainerHeight}px`;
+    }, 1000);
+}

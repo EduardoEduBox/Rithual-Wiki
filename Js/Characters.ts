@@ -418,7 +418,7 @@ class RenderCharacter {
                 characterInfo.style.display = "none";
                 imageAndInformation.style.display = "none";
 
-                console.log("what????");
+                console.log("no");
               }
 
               // bgTextAnimation.revert();
@@ -455,6 +455,27 @@ charactersContainer.forEach((el, index) => {
 
   // animate character
   function changeElementsWhenTrue(): void {
+    // console.log("yes");
+    // const chapterContainer = c("#chapters") as HTMLDivElement;
+    // const imageAndInformationHeight = c(
+    //   "#characters > div.imageAndInformation"
+    // ) as HTMLDivElement;
+
+    // gsap.fromTo(
+    //   chapterContainer,
+    //   { y: 0 },
+    //   {
+    //     y: 300,
+    //     duration: 1, // Animation duration in seconds
+    //     ease: "power1.out", // Easing function
+    //     onComplete: () => {
+    //       gsap.to(chapterContainer, {
+    //         y: 0,
+    //       });
+    //     },
+    //   }
+    // );
+
     gsap.to(charactersContainer, {
       duration: 0.5,
       opacity: 0,
@@ -491,3 +512,15 @@ charactersContainer.forEach((el, index) => {
     });
   }
 });
+
+// set the min height of the container to its normal size in mobile version
+if (body.clientWidth <= 1279) {
+  setTimeout(() => {
+    const charactersHeight = c("#characters") as HTMLDivElement;
+    let charactersContainerHeight = charactersHeight.clientHeight;
+
+    console.log(charactersContainerHeight);
+
+    charactersHeight.style.minHeight = `${charactersContainerHeight}px`;
+  }, 1000);
+}
