@@ -443,7 +443,7 @@ header {
             margin-top: 0;
           }
 
-          #ageAndStatus {
+          #age {
             width: 50%;
             height: 100%;
             // border: solid 1px lightgreen;
@@ -655,6 +655,7 @@ footer {
 @media (max-width: 1279px) {
   body {
     font-size: 1rem;
+    background-color: rgb(28, 28, 2 8);
 
     * {
       transition: none;
@@ -915,7 +916,7 @@ footer {
             right: 0;
             height: 100%;
 
-            #ageAndStatus {
+            #age {
               display: flex;
               flex-direction: column-reverse;
               padding: 30vw 3vw 0 0;
