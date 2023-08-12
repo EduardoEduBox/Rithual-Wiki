@@ -16,8 +16,8 @@ hamburguerIcon.addEventListener("click", function () {
     navElements.innerHTML = `
       <ul class="navList2">
         <li><a href="#header">Home</a></li>
-        <li><a href="#chapters">Capítulos</a></li>
         <li><a href="#characters">Personagens</a></li>
+        <li><a href="#chapters">Capítulos</a></li>
         <li><a href="#">Sobre mim</a></li>
         <li><hr></li> 
       </ul>`;

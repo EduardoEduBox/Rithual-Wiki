@@ -385,7 +385,7 @@ header #headerImageContainer .headerImageBall {
   text-align: center;
   margin-top: 0;
 }
-#characters #charactersContainer div #informationContainer #informationOrganizator #ageAndStatus {
+#characters #charactersContainer div #informationContainer #informationOrganizator #age {
   width: 50%;
   height: 100%;
   position: absolute;
@@ -395,17 +395,17 @@ header #headerImageContainer .headerImageBall {
   gap: 1.5rem;
   padding: 1vh 0;
 }
-#characters #charactersContainer div #informationContainer #informationOrganizator #ageAndStatus div {
+#characters #charactersContainer div #informationContainer #informationOrganizator #age div {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   gap: 0.8rem;
   align-items: center;
 }
-#characters #charactersContainer div #informationContainer #informationOrganizator #ageAndStatus div span {
+#characters #charactersContainer div #informationContainer #informationOrganizator #age div span {
   font-weight: 1000;
 }
-#characters #charactersContainer div #informationContainer #informationOrganizator #ageAndStatus * {
+#characters #charactersContainer div #informationContainer #informationOrganizator #age * {
   margin: 0;
 }
 #characters #charactersContainer div #close-button {
@@ -564,6 +564,7 @@ footer strong {
 @media (max-width: 1279px) {
   body {
     font-size: 1rem;
+    background-color: rgb(28, 28, 28);
   }
   body * {
     transition: none;
@@ -741,7 +742,7 @@ footer strong {
     right: 0;
     height: 100%;
   }
-  #characters #charactersContainer .character-info #informationContainer #informationOrganizator #ageAndStatus {
+  #characters #charactersContainer .character-info #informationContainer #informationOrganizator #age {
     display: flex;
     flex-direction: column-reverse;
     padding: 30vw 3vw 0 0;
@@ -749,7 +750,7 @@ footer strong {
     align-items: end;
     justify-content: start;
   }
-  #characters #charactersContainer .character-info #informationContainer #informationOrganizator #ageAndStatus div {
+  #characters #charactersContainer .character-info #informationContainer #informationOrganizator #age div {
     right: 0;
     font-size: 0.8rem;
     gap: 0.4rem;
