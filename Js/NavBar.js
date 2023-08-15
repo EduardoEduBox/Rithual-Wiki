@@ -9,7 +9,7 @@ hamburguerIcon.addEventListener("click", function () {
   hamburguerIcon.classList.toggle("hamburguerToggled");
 
   if (hamburguerIcon.classList.contains("hamburguerToggled")) {
-    hamburguerIcon.src = "Css/assets/logoChanged.png";
+    hamburguerIcon.src = "Css/assets/icons/closedEye.png";
 
     // Code to make the list appear when you click
     navElements.classList.add("navMediaQuery");
@@ -28,7 +28,7 @@ hamburguerIcon.addEventListener("click", function () {
       navElements.style.right = "0";
     }, 0);
   } else {
-    hamburguerIcon.src = "Css/assets/icon.png";
+    hamburguerIcon.src = "Css/assets/icons/openedEye.png";
 
     navElements.style.right = `calc(-${navElements.offsetWidth}px - 1.5rem)`;
   }
