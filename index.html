@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="Css/assets/icons/openedEye.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="Css/assets/icons/openedEye.png"
+      type="image/x-icon"
+    />
     <!-- css vvvvvvvv -->
     <link rel="stylesheet" href="Css/Scss/Body.css" />
     <link rel="stylesheet" href="Css/Scss/NavBar/NavBar.css" />
@@ -225,6 +229,11 @@
       </p>
     </footer>
 
+    <div id="loading-screen">
+      <div class="loading-spinner"></div>
+      <p>Carregando...</p>
+    </div>
+
     <script type="module" src="./Js/NavBar.js"></script>
     <script type="module" src="./Js/Header.js"></script>
     <script type="module" src="./Js/ChapterSection.js"></script>
@@ -232,5 +241,12 @@
     <script type="module" src="./Js/dist/Characters.js"></script>
     <!-- common vvv -->
     <script type="module" src="./Js/dist/common/LoadAlert.js"></script>
+
+    <script>
+      window.addEventListener("load", () => {
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.display = "none";
+      });
+    </script>
   </body>
 </html>
