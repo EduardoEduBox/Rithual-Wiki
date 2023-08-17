@@ -14,28 +14,40 @@ class Images {
     this.characterImage = characterImage;
     this.ballColor = ballColor;
   }
+
+  preloadImages() {
+    const imagesToPreload = [this.backgroundImage, this.characterImage];
+
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }
 }
 
-const config1 = new Images(
-  1,
-  "Css/assets/backgrounds/backgroundHeader.png",
-  "Css/assets/characters/demonio_cap_0_site_prototipo.png",
-  "rgb(255, 0, 0)"
-);
+// Create image configurations
+const configuration = [
+  new Images(
+    1,
+    "Css/assets/backgrounds/backgroundHeader.png",
+    "Css/assets/characters/demonio_cap_0_site_prototipo.png",
+    "rgb(255, 0, 0)"
+  ),
 
-const config2 = new Images(
-  2,
-  "Css/assets/backgrounds/backgroundHeader2.png",
-  "Css/assets/characters/málanus_cap_2_site_prototipo.png",
-  "#9400d3"
-);
+  new Images(
+    2,
+    "Css/assets/backgrounds/backgroundHeader2.png",
+    "Css/assets/characters/málanus_cap_2_site_prototipo.png",
+    "#9400d3"
+  ),
 
-const config3 = new Images(
-  3,
-  "Css/assets/backgrounds/backgroundHeader3.png",
-  "Css/assets/characters/singer_cap_3_site_prototipo.png",
-  "rgb(90, 206, 255)"
-);
+  new Images(
+    3,
+    "Css/assets/backgrounds/backgroundHeader3.png",
+    "Css/assets/characters/singer_cap_3_site_prototipo.png",
+    "rgb(90, 206, 255)"
+  ),
+];
 
 const terror = new Images(
   4,
@@ -44,20 +56,20 @@ const terror = new Images(
   "rgba(255, 0, 0, .7)"
 );
 
-const changeHeaderImages = [config1, config2, config3];
+// Preload images for each configuration
+configuration.forEach((el) => el.preloadImages());
+
+terror.preloadImages();
 
 // seting the first object as default when you load the page
 
-headerBackgroundImages.style.backgroundImage = `url('${config1.backgroundImage}')`;
-headerCharacterImages.src = config1.characterImage;
-headerBall.style.backgroundColor = config1.ballColor;
+headerBackgroundImages.style.backgroundImage = `url('${configuration[0].backgroundImage}')`;
+headerCharacterImages.src = configuration[0].characterImage;
+headerBall.style.backgroundColor = configuration[0].ballColor;
 
 let randomNumber = () => {
-  return Math.floor(Math.random() * changeHeaderImages.length);
+  return Math.floor(Math.random() * configuration.length);
 };
-
-// console.log("printing the first value: ", randomNumber()); // they are different values so it is working :D
-// console.log("printing the second value: ", randomNumber());
 
 let i = 1;
 
@@ -76,10 +88,10 @@ setTimeout(() => {
 }, 30000);
 
 setInterval(() => {
-  if (changeHeaderImages[i]) {
-    headerBackgroundImages.style.backgroundImage = `url('${changeHeaderImages[i].backgroundImage}')`;
-    headerCharacterImages.src = changeHeaderImages[i].characterImage;
-    headerBall.style.backgroundColor = changeHeaderImages[i].ballColor;
+  if (configuration[i]) {
+    headerBackgroundImages.style.backgroundImage = `url('${configuration[i].backgroundImage}')`;
+    headerCharacterImages.src = configuration[i].characterImage;
+    headerBall.style.backgroundColor = configuration[i].ballColor;
 
     if (i === randomNumber() && checker === true) {
       headerBackgroundImages.style.backgroundImage = `url('${terror.backgroundImage}')`;
@@ -91,8 +103,6 @@ setInterval(() => {
       headerBackgroundImages.style.transition = "0ms";
       headerCharacterImages.style.transition = "0ms";
       headerBall.style.transition = "0ms";
-
-      // console.log(randomNumber());
 
       // setting the custom font and message
       headerTitle.innerHTML = "Eu vejo você";
@@ -107,10 +117,10 @@ setInterval(() => {
       setTimeout(() => {
         i - 1;
         headerBackgroundImages.style.backgroundImage = `url('${
-          changeHeaderImages[i - 1].backgroundImage
+          configuration[i - 1].backgroundImage
         }')`;
-        headerCharacterImages.src = changeHeaderImages[i - 1].characterImage;
-        headerBall.style.backgroundColor = changeHeaderImages[i - 1].ballColor;
+        headerCharacterImages.src = configuration[i - 1].characterImage;
+        headerBall.style.backgroundColor = configuration[i - 1].ballColor;
 
         // setting the transition to normal when its done
 
@@ -138,9 +148,9 @@ setInterval(() => {
 
     i++;
   } else {
-    headerBackgroundImages.style.backgroundImage = `url('${changeHeaderImages[0].backgroundImage}')`;
-    headerCharacterImages.src = changeHeaderImages[0].characterImage;
-    headerBall.style.backgroundColor = changeHeaderImages[0].ballColor;
+    headerBackgroundImages.style.backgroundImage = `url('${configuration[0].backgroundImage}')`;
+    headerCharacterImages.src = configuration[0].characterImage;
+    headerBall.style.backgroundColor = configuration[0].ballColor;
     i = 1;
   }
 }, 10000);

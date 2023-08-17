@@ -23,6 +23,13 @@ class Characters {
         this.appeared = appeared;
         this.fightingStyle = fightingStyle;
     }
+    preloadImages() {
+        const imagesToPreload = [this.profile, this.withoutText];
+        imagesToPreload.forEach((src) => {
+            const img = new Image();
+            img.src = src;
+        });
+    }
 }
 const characters = [
     new Characters("characterSinger", "Singer Faksumi", 17, "um jovem aventureiro que nasceu no vilarejo Uxclavasa e sonha em conhecer o mundo e as maravilhas do reino de Belgadina e Ázuma!", "Css/assets/charactersSection/profile/Singer Profile.png", "Css/assets/charactersSection/withoutText/singer withoutText.png", "Css/assets/charactersSection/Singer corpo completo.png", "lightblue", true, FightingStyle.Assassin),
@@ -30,6 +37,7 @@ const characters = [
     new Characters("characterMadger", "Madger Yasáshi", 17, "Artista marcial nascido na vila Yasáshi, após uma batalha curta e sangrenta, Madger perdeu pessoas preciosas quando ainda era criança, agora, ele busca honrar aqueles que lutaram por ele em sua antiga vila!", "Css/assets/charactersSection/profile/Madger Profile.png", "Css/assets/charactersSection/withoutText/madger withoutText.png", "Css/assets/charactersSection/Madger corpo completo.png", "rgb(186, 235, 186)", true, FightingStyle.Fighter),
     new Characters("characterSan", "San Majutsu-shi", 19, `Ainda sem registros...`, "Css/assets/charactersSection/profile/San Profile.png", "Css/assets/charactersSection/withoutText/san withoutText.png", "Css/assets/charactersSection/San corpo completo.png", "rgb(255, 223, 164)", false, FightingStyle.Mage),
 ];
+characters.forEach((el) => el.preloadImages());
 const bigContainer = c("#characters");
 const contentRemover = c(".contentRemover");
 let validation = false;
