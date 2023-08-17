@@ -46,6 +46,15 @@ class Characters {
     this.appeared = appeared;
     this.fightingStyle = fightingStyle;
   }
+
+  preloadImages(): void {
+    const imagesToPreload: string[] = [this.profile, this.withoutText];
+
+    imagesToPreload.forEach((src) => {
+      const img: HTMLImageElement = new Image();
+      img.src = src;
+    });
+  }
 }
 
 const characters: Characters[] = [
@@ -99,6 +108,9 @@ const characters: Characters[] = [
   ),
   // Add more characters here...
 ];
+
+// preloading the images
+characters.forEach((el) => el.preloadImages());
 
 const bigContainer = c("#characters") as HTMLDivElement;
 const contentRemover = c(".contentRemover") as HTMLDivElement;
