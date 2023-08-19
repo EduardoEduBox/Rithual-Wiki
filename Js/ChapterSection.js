@@ -132,6 +132,25 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
     return tooltip;
   }
 
+  // just to calculate the position of the scroll relative to the screen
+  const section = c("#chapters");
+
+  let sectionPosition = 0;
+
+  function calculateSectionPosition() {
+    const rect = section.getBoundingClientRect();
+    sectionPosition = rect.top;
+  }
+
+  // Initial calculation
+  calculateSectionPosition();
+
+  // Add a scroll event listener
+  window.addEventListener("scroll", () => {
+    calculateSectionPosition();
+    console.log("Section position relative to the screen:", sectionPosition);
+  });
+
   function changeToolTip(imageSrc, title, description) {
     const tooltip = createTooltip();
 
@@ -175,7 +194,8 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
         }
 
         tooltip.style.left = tooltipX + "px";
-        tooltip.style.top = event.clientY + tooltipHeight * 6 + "px";
+        tooltip.style.top =
+          event.clientY + tooltipHeight * 5.8 + -sectionPosition + "px";
       });
     });
 
