@@ -95,11 +95,6 @@ const chaptersData = [
 if (bodyWidth >= 1279 || htmlWidth >= 1279) {
   let currentTooltip = null;
 
-  // this code is to set the scrollBar to a specific value when you load the page
-  setTimeout(function () {
-    container.scrollLeft = 88;
-  }, 100);
-
   [...images].forEach((image, i) => {
     image.addEventListener("mouseover", function () {
       console.log("triggered");
@@ -203,10 +198,6 @@ if (bodyWidth >= 1279 || htmlWidth >= 1279) {
   }
 } else {
   const contentRemover = c(".contentRemover");
-
-  setTimeout(function () {
-    container.scrollLeft = 55;
-  }, 100);
 
   // resets the pages so we can remove the 'a' tag
   Information.setInformationMobile();
