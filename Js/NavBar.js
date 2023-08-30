@@ -18,7 +18,7 @@ hamburguerIcon.addEventListener("click", function () {
         <li><a href="#header">Home</a></li>
         <li><a href="#characters">Personagens</a></li>
         <li><a href="#chapters">Capítulos</a></li>
-        <li><a href="#">Sobre mim</a></li>
+        <li class='readyes'>Ler agora</li>
         <li><hr></li> 
       </ul>`;
 
@@ -52,3 +52,38 @@ function handleResize() {
 // Function to handle the click event on the advice element
 
 window.addEventListener("resize", handleResize);
+
+const triggerAlert = () => {
+  Swal.fire({
+    title: '<strong style="color: pink">(૨¡Ƭષαℓ Reader</strong> em produção!',
+    text: "Estamos desenvolvendo o leitor do Rithual para que você possa ter a melhor experiência lendo esse mangá, enquanto ele não está pronto, você pode ler no Tapas.io",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/421344962303623189/1146492460294475907/image.png",
+    background: "rgb(31, 31, 31)",
+    color: "white",
+    imageWidth: "60%",
+    imageHeight: "auto",
+    imageAlt: "san pensativo",
+    showCancelButton: true,
+    cancelButtonText: "Ok",
+    confirmButtonText:
+      '<strong style="color: lightblue"><a href="https://tapas.io/series/Rithual_manga/info">Tapas.io</a></strong>',
+    confirmButtonColor: "#ff009d",
+  });
+};
+
+function handleLerAgoraClick() {
+  triggerAlert();
+}
+
+// For desktop version
+const navReadDesktop = c(".readNow");
+navReadDesktop.addEventListener("click", handleLerAgoraClick);
+
+// For mobile version
+document.addEventListener("click", function (event) {
+  // Check if the clicked element is the "Ler agora" element
+  if (event.target && event.target.matches(".navList2 li")) {
+    handleLerAgoraClick();
+  }
+});

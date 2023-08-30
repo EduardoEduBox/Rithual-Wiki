@@ -99,4 +99,9 @@ a {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.swal2-image {
+  border-bottom: solid 8px pink;
+  border-radius: 50vh;
 }/*# sourceMappingURL=Body.css.map */
